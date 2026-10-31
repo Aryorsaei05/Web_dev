@@ -4,60 +4,65 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f5f4ef" />
-    <title>Capabilities · Aryo Rasaei</title>
+    <title>Capabilities - Aryo Rasaei</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
-      <a class="brand" href="index.html"
-        ><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a
-      >
+      <a class="brand" href="index.html"><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a>
       <nav aria-label="Main navigation">
         <a href="index.html#home">Home</a>
         <a href="Showcase.html">Selected work</a>
-        <a href="skills.html">Capabilities</a>
+        <a href="skills.html" aria-current="page">Capabilities</a>
         <a href="restauraunt.html">Restaurant concept</a>
-        <a class="nav-cta" href="Contact.html">Let's talk ↗</a>
+        <a class="nav-cta" href="Contact.html">Let's talk ?</a>
       </nav>
     </header>
     <main class="section">
       <div class="section-kicker">CAPABILITIES</div>
       <h1 class="page-title">A toolkit for <em>moving forward.</em></h1>
-      <div class="skills-list">
-        <div class="skill-row">
-          <small>01</small><strong>Data analysis</strong
-          ><span>Find the signal</span>
-        </div>
-        <div class="skill-row">
-          <small>02</small><strong>Power BI &amp; Excel</strong
-          ><span>Make it visible</span>
-        </div>
-        <div class="skill-row">
-          <small>03</small><strong>Business analysis</strong
-          ><span>See the whole system</span>
-        </div>
-        <div class="skill-row">
-          <small>04</small><strong>Research &amp; insight</strong
-          ><span>Ask better questions</span>
-        </div>
-        <div class="skill-row">
-          <small>05</small><strong>Communication &amp; teamwork</strong
-          ><span>Bring people with me</span>
-        </div>
+      <div class="skills-list" aria-label="Skills and capabilities">
+        <article class="skill-row">
+          <small>01</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-1">Business Analysis</button><span>See the whole system</span>
+          <p class="skill-description" id="skill-description-1">Translating complex business needs into clear requirements, practical recommendations, and actionable solutions.</p>
+        </article>
+        <article class="skill-row">
+          <small>02</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-2">Data Analysis</button><span>Find the signal</span>
+          <p class="skill-description" id="skill-description-2">Turning raw data into meaningful patterns, comparisons, and insights that support better decisions.</p>
+        </article>
+        <article class="skill-row">
+          <small>03</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-3">Microsoft Excel</button><span>Organise with accuracy</span>
+          <p class="skill-description" id="skill-description-3">Certified proficiency in organising, analysing, and presenting business data with accuracy and structure.</p>
+        </article>
+        <article class="skill-row">
+          <small>04</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-4">Power BI</button><span>Make it visible</span>
+          <p class="skill-description" id="skill-description-4">Transforming datasets into interactive dashboards that make trends, performance, and insights easy to interpret.</p>
+        </article>
+        <article class="skill-row">
+          <small>05</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-5">Research</button><span>Ask better questions</span>
+          <p class="skill-description" id="skill-description-5">Structured investigation of markets, competitors, and business challenges to support evidence-based decision-making.</p>
+        </article>
+        <article class="skill-row">
+          <small>06</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-6">Problem Solving</button><span>Find practical answers</span>
+          <p class="skill-description" id="skill-description-6">Breaking down challenges, evaluating alternatives, and identifying practical solutions grounded in evidence.</p>
+        </article>
+        <article class="skill-row">
+          <small>07</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-7">Stakeholder Communication</button><span>Bring people with me</span>
+          <p class="skill-description" id="skill-description-7">Communicating progress, findings, and recommendations clearly across different audiences and project contexts.</p>
+        </article>
+        <article class="skill-row">
+          <small>08</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-8">Market Analysis</button><span>Spot opportunities</span>
+          <p class="skill-description" id="skill-description-8">Assessing competitors, customer needs, and market conditions to identify gaps, trends, and opportunities.</p>
+        </article>
       </div>
       <p><a href="index.html">Back to portfolio</a></p>
     </main>
     <footer>
-      <span>© 2025 ARYO RASAEI</span
-      ><span>BUILT WITH CURIOSITY · MANCHESTER, UK</span
-      ><a href="index.html">PORTFOLIO HOME</a>
+      <span>c 2025 ARYO RASAEI</span><span>BUILT WITH CURIOSITY - MANCHESTER, UK</span><a href="index.html">PORTFOLIO HOME</a>
     </footer>
     <script src="script.js" defer></script>
   </body>

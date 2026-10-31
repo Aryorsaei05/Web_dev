@@ -171,3 +171,46 @@ footer {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Expandable skill descriptions */
+.skill-row { grid-template-columns: 70px minmax(0, 1fr) minmax(150px, 1fr); }
+.skill-trigger {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 19px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+.skill-trigger:focus-visible { outline: 2px solid #a6be62; outline-offset: 5px; }
+.skill-description {
+  grid-column: 2 / -1;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height .28s ease, opacity .2s ease, transform .2s ease, margin .2s ease;
+}
+.skill-row:hover .skill-description,
+.skill-row:focus-within .skill-description,
+.skill-row.is-open .skill-description {
+  max-height: 5em;
+  margin: 0 0 18px;
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 680px) {
+  .skill-row { grid-template-columns: 38px 1fr; }
+  .skill-trigger { grid-column: 2; }
+  .skill-row > span { grid-column: 2; text-align: left; }
+  .skill-description { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skill-description { transition: none; }
+}
