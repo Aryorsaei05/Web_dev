@@ -311,3 +311,80 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .homepage .venture-photo { transition: none; }
 }
+
+/* Compact Skills orbit and separate evidence panel; isolated to this page. */
+.skills-page .skills-orbit {
+  display: grid;
+  grid-template-columns: 600px minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  margin: 32px 0;
+  overflow-anchor: none;
+}
+.skills-page .skills-orbit__stage { position: relative; width: 500px; height: 500px; overflow: clip; overflow-clip-margin: 5px; }
+.skills-page .skills-orbit__list { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.skills-page .skills-orbit__item {
+  position: absolute;
+  left: var(--skill-x);
+  top: var(--skill-y);
+  width: 112px;
+  height: 112px;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+.skills-page .skills-orbit__control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid rgb(198 169 106 / 55%);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.35;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.skills-page .skills-orbit__number { color: var(--accent); font: 10px var(--mono); }
+.skills-page .skills-orbit__name { font-size: 13px; font-weight: 500; }
+/* Retain the supporting taglines for assistive technology without crowding circles. */
+.skills-page .skills-orbit__tagline { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.skills-page .skills-orbit__control:is(.is-previewed, [aria-pressed="true"]) { border-color: var(--accent); box-shadow: 0 0 24px rgb(198 169 106 / 15%); }
+.skills-page .skills-orbit__control:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.skills-page .skills-orbit__centre { position: relative; height: 440px; min-width: 0; border-left: 1px solid rgb(198 169 106 / 30%); }
+.skills-page .skills-orbit__content { position: absolute; inset: 0; padding: 24px 0 24px 36px; overflow: auto; }
+.skills-page .skills-orbit__label { margin: 0 0 20px; color: var(--accent); font: 10px var(--mono); letter-spacing: .1em; }
+.skills-page .skills-orbit__title { margin: 0 0 18px; color: var(--ink); font: 500 30px/1.2 Manrope, var(--sans); letter-spacing: -.04em; }
+.skills-page .skills-orbit__source { margin: 0 0 16px; color: var(--accent); font: 11px/1.6 var(--mono); }
+.skills-page .skills-orbit__detail { margin: 0; color: var(--muted); font-size: 16px; }
+.skills-page .skills-orbit__instruction { margin: 24px 0 0; color: var(--muted); font-size: 13px; }
+.skills-page .skills-orbit__ghost { pointer-events: none; }
+@keyframes skills-orbit-revolution { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes skills-orbit-upright { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(-360deg); } }
+@media (min-width: 1100px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .skills-page .skills-orbit__list { animation: skills-orbit-revolution 40s linear infinite; }
+  .skills-page .skills-orbit__item { animation: skills-orbit-upright 40s linear infinite; }
+  .skills-page .skills-orbit:is(.is-interacting, :focus-within) .skills-orbit__list,
+  .skills-page .skills-orbit:is(.is-interacting, :focus-within) .skills-orbit__item { animation-play-state: paused; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .skills-page .skills-orbit__control:hover { transform: scale(1.1); }
+}
+@media (max-width: 1099px) {
+  .skills-page .skills-orbit { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .skills-page .skills-orbit__stage { width: 100%; height: auto; overflow: visible; }
+  .skills-page .skills-orbit__list { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding: 8px; justify-items: center; }
+  .skills-page .skills-orbit__item { position: static; transform: none; }
+  .skills-page .skills-orbit__centre { height: 500px; border-left: 0; border-top: 1px solid rgb(198 169 106 / 30%); }
+  .skills-page .skills-orbit__content { padding: 28px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skills-page .skills-orbit__control { transition: none !important; }
+  .skills-page .skills-orbit__control:hover { transform: none; }
+}

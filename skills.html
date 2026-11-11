@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="skills-page">
     <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="index.html"><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a>
@@ -25,36 +25,85 @@
     <main class="section">
       <div class="section-kicker">CAPABILITIES</div>
       <h1 class="page-title">A toolkit for <em>moving forward.</em></h1>
-      <div class="skills-list" aria-label="Skills and capabilities">
-        <article class="skill-row">
-          <small>01</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-1">Business Analysis</button><span>See the whole system</span>
-          <p class="skill-description" id="skill-description-1">Translating complex business needs into clear requirements, practical recommendations, and actionable solutions.</p>
-        </article>
-        <article class="skill-row">
-          <small>02</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-2">Data Analysis</button><span>Find the signal</span>
-          <p class="skill-description" id="skill-description-2">Turning raw data into meaningful patterns, comparisons, and insights that support better decisions.</p>
-        </article>
-        <article class="skill-row">
-          <small>03</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-3">Microsoft Excel</button><span>Organise with accuracy</span>
-          <p class="skill-description" id="skill-description-3">Certified proficiency in organising, analysing, and presenting business data with accuracy and structure.</p>
-        </article>
-        <article class="skill-row">
-          <small>04</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-4">Power BI</button><span>Make it visible</span>
-          <p class="skill-description" id="skill-description-4">Transforming datasets into interactive dashboards that make trends, performance, and insights easy to interpret.</p>
-        </article>
-        <article class="skill-row">
-          <small>05</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-5">Market Analysis &amp; Research</button><span>Ask better questions</span>
-          <p class="skill-description" id="skill-description-5">Structured investigation of markets, competitors, customer needs, and business challenges to identify trends and opportunities and support evidence-based decisions.</p>
-        </article>
-        <article class="skill-row">
-          <small>06</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-6">Problem Solving</button><span>Find practical answers</span>
-          <p class="skill-description" id="skill-description-6">Breaking down challenges, evaluating alternatives, and identifying practical solutions grounded in evidence.</p>
-        </article>
-        <article class="skill-row">
-          <small>06</small><button class="skill-trigger" type="button" aria-expanded="false" aria-controls="skill-description-6">Stakeholder Communication</button><span>Bring people with me</span>
-          <p class="skill-description" id="skill-description-6">Communicating progress, findings, and recommendations clearly across different audiences and project contexts.</p>
-        </article>
-      </div>
+      <section class="skills-orbit" aria-label="Skills and capabilities">
+        <div class="skills-orbit__stage">
+        <ul class="skills-orbit__list">
+          <li class="skills-orbit__item" style="--skill-x: 50.0000%; --skill-y: 13.0000%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-1" aria-describedby="orbit-description-1">
+              <small class="skills-orbit__number">01</small>
+              <span class="skills-orbit__name">Business Analysis</span>
+              <span class="skills-orbit__tagline">See the whole system</span>
+            </button>
+            <p id="orbit-source-1" hidden>PurposeTech.ai | Analyst &amp; Research Internship</p>
+            <p id="orbit-description-1" hidden>Translated business questions into structured research plans during an Analyst &amp; Research Internship at PurposeTech.ai. Investigated challenges within the UK charity sector and evaluated competitor platforms to identify insights that could support business and product decisions.</p>
+          </li>
+          <li class="skills-orbit__item" style="--skill-x: 78.9278%; --skill-y: 26.9309%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-2" aria-describedby="orbit-description-2">
+              <small class="skills-orbit__number">02</small>
+              <span class="skills-orbit__name">Data Analysis</span>
+              <span class="skills-orbit__tagline">Find the signal</span>
+            </button>
+            <p id="orbit-source-2" hidden>University Assessment | Business Intelligence in Practice</p>
+            <p id="orbit-description-2" hidden>Analysed survey responses from 545 students to investigate exercise habits and barriers to physical activity. Identified a 23.3-percentage-point intention–action gap and helped present findings and recommendations through a university group presentation.</p>
+          </li>
+          <li class="skills-orbit__item" style="--skill-x: 86.0723%; --skill-y: 58.2333%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-3" aria-describedby="orbit-description-3">
+              <small class="skills-orbit__number">03</small>
+              <span class="skills-orbit__name">Microsoft Excel</span>
+              <span class="skills-orbit__tagline">Organise with accuracy</span>
+            </button>
+            <p id="orbit-source-3" hidden>PurposeTech.ai Internship | MOS Excel Certification</p>
+            <p id="orbit-description-3" hidden>Microsoft Office Specialist (MOS) certified in Excel, with practical experience organising and analysing market research, competitor comparisons and pricing data during an Analyst &amp; Research Internship at PurposeTech.ai. Developed structured Excel workbooks to support data analysis, reporting and informed business decisions.</p>
+          </li>
+          <li class="skills-orbit__item" style="--skill-x: 66.0537%; --skill-y: 83.3358%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-4" aria-describedby="orbit-description-4">
+              <small class="skills-orbit__number">04</small>
+              <span class="skills-orbit__name">Power BI</span>
+              <span class="skills-orbit__tagline">Make it visible</span>
+            </button>
+            <p id="orbit-source-4" hidden>University Assessment | Business Intelligence &amp; Dashboards</p>
+            <p id="orbit-description-4" hidden>Developed an interactive Power BI dashboard for a university assessment based on an NHS client scenario. Analysed UK CO₂ emissions from 1990 to 2023, examined trends by fuel source and compared the UK with Germany and France. Used data modelling, DAX measures and interactive visualisations to communicate trends and support evidence-based decision-making.</p>
+          </li>
+          <li class="skills-orbit__item" style="--skill-x: 33.9463%; --skill-y: 83.3358%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-5" aria-describedby="orbit-description-5">
+              <small class="skills-orbit__number">05</small>
+              <span class="skills-orbit__name">Market Analysis &amp; Research</span>
+              <span class="skills-orbit__tagline">Ask better questions</span>
+            </button>
+            <p id="orbit-source-5" hidden>PurposeTech.ai | Analyst &amp; Research Internship</p>
+            <p id="orbit-description-5" hidden>Researched 20 real-world patient-data platforms and narrowed the longlist to 6 key competitors for detailed comparison. Also investigated the UK charity grant market and developed 4 outreach segments to support more focused research and stakeholder engagement.</p>
+          </li>
+          <li class="skills-orbit__item" style="--skill-x: 13.9277%; --skill-y: 58.2333%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-6" aria-describedby="orbit-description-6">
+              <small class="skills-orbit__number">06</small>
+              <span class="skills-orbit__name">Problem Solving</span>
+              <span class="skills-orbit__tagline">Find practical answers</span>
+            </button>
+            <p id="orbit-source-6" hidden>PurposeTech.ai Internship | AI Automation Initiative</p>
+            <p id="orbit-description-6" hidden>Helped develop and test an AI-assisted workflow for identifying journalist requests and organising media outreach opportunities. Investigated problems involving incomplete request information, deadline tracking and workflow reliability, then used structured testing and feedback to refine the process and document improvements.</p>
+          </li>
+          <li class="skills-orbit__item" style="--skill-x: 21.0722%; --skill-y: 26.9309%">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-7" aria-describedby="orbit-description-7">
+              <small class="skills-orbit__number">07</small>
+              <span class="skills-orbit__name">Stakeholder Communication</span>
+              <span class="skills-orbit__tagline">Bring people with me</span>
+            </button>
+            <p id="orbit-source-7" hidden>PurposeTech.ai | Analyst &amp; Research Internship</p>
+            <p id="orbit-description-7" hidden>Interviewed UK charity fundraisers to understand their challenges and gather first-hand research insights. Also communicated progress and findings to the internship supervisor through weekly updates, explaining completed work, discussing feedback and refining research outputs based on recommendations.</p>
+          </li>
+        </ul>
+        </div>
+        <div class="skills-orbit__centre" role="status" aria-live="polite" aria-atomic="true">
+          <div class="skills-orbit__content">
+            <p class="skills-orbit__label">SKILLS &amp; EXPERIENCE</p>
+            <h2 class="skills-orbit__title">Turning knowledge into practice.</h2>
+            <p class="skills-orbit__source" hidden></p>
+            <p class="skills-orbit__detail" id="skills-orbit-description">A collection of analytical, technical and interpersonal skills developed through university projects, internship experience and professional engagements.</p>
+            <p class="skills-orbit__instruction">Hover over a skill to explore how it has been applied.</p>
+          </div>
+        </div>
+      </section>
+
       <p><a href="index.html">Back to portfolio</a></p>
     </main>
     <footer>
