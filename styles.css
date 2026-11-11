@@ -124,16 +124,20 @@ footer {
 .soft { color: #8e8b82; }
 .hero-bottom { display: block; min-width: 0; }
 .hero-intro { width: min(100%, 58ch); margin: 0; color: #eeece6; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.65; text-wrap: pretty; text-shadow: 0 1px 18px #0009; }
-/* Keep biography growth below the name and away from the portrait. */
-.hero-cinematic .hero-intro {
-  transform-origin: top right;
+/* Homepage descriptive paragraphs grow into the existing surrounding space. */
+.homepage :is(.hero-intro, .hero-copy, .contact-copy) {
+  transform-origin: top center;
   transition: scale .35s cubic-bezier(.22, 1, .36, 1);
 }
-@media (hover: hover) and (pointer: fine) {
-  .hero-cinematic .hero-intro:hover { scale: 1.08; }
+.homepage .hero-cinematic .hero-intro { transform-origin: top right; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .homepage :is(.hero-intro, .hero-copy, .contact-copy):hover { scale: 1.08; }
 }
 @media (max-width: 680px) {
-  .hero-cinematic .hero-intro { transform-origin: top center; }
+  .homepage .hero-cinematic .hero-intro { transform-origin: top center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .homepage :is(.hero-intro, .hero-copy, .contact-copy) { transition: none; }
 }
 .hero-copy { max-width: 620px; color: #c1beb5; font-size: clamp(17px, 2vw, 21px); line-height: 1.65; }
 .hero-copy strong { color: var(--ink); font-weight: 600; }
