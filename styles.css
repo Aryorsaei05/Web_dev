@@ -388,3 +388,119 @@ footer {
   .skills-page .skills-orbit__control { transition: none !important; }
   .skills-page .skills-orbit__control:hover { transform: none; }
 }
+
+
+/* Restrained galaxy atmosphere: static CSS layers, with motion reserved for skills. */
+.skills-page .skills-orbit__stage { justify-self: center; isolation: isolate; }
+.skills-page .skills-orbit__list { z-index: 1; }
+.skills-page .skills-galaxy { position: absolute; inset: 0; z-index: 0; overflow: hidden; border-radius: 50%; pointer-events: none; }
+.skills-page .skills-galaxy::before {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 52% 48%, rgb(198 169 106 / 12%), transparent 48%),
+    radial-gradient(ellipse at 30% 60%, rgb(112 100 127 / 10%), transparent 54%),
+    radial-gradient(ellipse at 68% 35%, rgb(161 134 85 / 9%), transparent 52%);
+  filter: blur(18px);
+  transform: rotate(-25deg) scaleY(.72);
+}
+.skills-page .skills-galaxy__stars {
+  position: absolute;
+  inset: 3%;
+  opacity: .55;
+  background:
+    radial-gradient(circle at 17% 24%, #ded7c4 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 42% 12%, #c6a96a 0 .6px, transparent 1.1px),
+    radial-gradient(circle at 76% 21%, #ded7c4 0 .7px, transparent 1.3px),
+    radial-gradient(circle at 88% 49%, #c6a96a 0 .6px, transparent 1.2px),
+    radial-gradient(circle at 63% 82%, #ded7c4 0 .8px, transparent 1.3px),
+    radial-gradient(circle at 24% 78%, #ded7c4 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 9% 59%, #c6a96a 0 .5px, transparent 1px),
+    radial-gradient(circle at 34% 38%, #ded7c4 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 62% 31%, #c6a96a 0 .5px, transparent 1.1px),
+    radial-gradient(circle at 70% 62%, #ded7c4 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 39% 66%, #ded7c4 0 .5px, transparent 1px),
+    radial-gradient(circle at 81% 76%, #c6a96a 0 .6px, transparent 1.1px),
+    radial-gradient(circle at 51% 91%, #ded7c4 0 .5px, transparent 1px),
+    radial-gradient(circle at 29% 15%, #ded7c4 0 .5px, transparent 1px),
+    radial-gradient(circle at 55% 40%, #c6a96a 0 .6px, transparent 1.1px),
+    radial-gradient(circle at 15% 41%, #ded7c4 0 .5px, transparent 1px);
+}
+.skills-page .skills-galaxy__ring {
+  position: absolute;
+  inset: 13%;
+  border: 1px solid rgb(198 169 106 / 13%);
+  border-radius: 50%;
+  box-shadow: 0 0 22px rgb(198 169 106 / 3%), inset 0 0 22px rgb(198 169 106 / 3%);
+}
+.skills-page .skills-galaxy__ring--inclined {
+  inset: 9%;
+  border-color: rgb(198 169 106 / 9%);
+  transform: rotate(-28deg) scaleY(.48);
+}
+.skills-page .skills-galaxy__core {
+  position: absolute;
+  inset: 34%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(236 219 179 / 18%) 0, rgb(198 169 106 / 9%) 20%, rgb(198 169 106 / 3%) 44%, transparent 70%);
+}
+.skills-page .skills-galaxy__core::after {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 2px);
+  border-radius: 50%;
+  background: #c6a96a;
+  box-shadow: 0 0 12px 3px rgb(198 169 106 / 24%), 0 0 36px 12px rgb(198 169 106 / 8%);
+}
+.skills-page .skills-orbit__control {
+  background: radial-gradient(circle at 32% 20%, #29271f, #171814 65%);
+  border-color: rgb(198 169 106 / 48%);
+  box-shadow: inset 0 1px 0 rgb(238 236 230 / 5%), 0 8px 20px rgb(0 0 0 / 22%);
+}
+.skills-page .skills-orbit__control:is(.is-previewed, [aria-pressed="true"]) {
+  border-color: var(--accent);
+  box-shadow: inset 0 1px 0 rgb(238 236 230 / 8%), 0 0 22px rgb(198 169 106 / 18%), 0 8px 22px rgb(0 0 0 / 25%);
+}
+@media (max-width: 1099px) {
+  .skills-page .skills-galaxy { opacity: .45; }
+  .skills-page .skills-galaxy__ring,
+  .skills-page .skills-galaxy__core { display: none; }
+}
+
+
+/* Stationary, noninteractive constellation inside the existing 500px orbit. */
+.skills-page .skills-orbit .skills-network {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.skills-page .skills-network__path { opacity: .65; transition: opacity .3s ease; }
+.skills-page .skills-network__path line { stroke: var(--accent); stroke-width: .75; stroke-opacity: .55; transition: stroke-opacity .3s ease, filter .3s ease; }
+.skills-page .skills-network__path circle { fill: #ded7c4; transition: fill .3s ease, filter .3s ease; }
+.skills-page .skills-network.has-active .skills-network__path { opacity: .22; }
+.skills-page .skills-network.has-active .skills-network__path.is-active { opacity: 1; }
+.skills-page .skills-network__path.is-active line { stroke-opacity: 1; filter: drop-shadow(0 0 2px rgb(198 169 106 / 45%)); }
+.skills-page .skills-network__path.is-active circle { fill: var(--accent); filter: drop-shadow(0 0 4px rgb(198 169 106 / 80%)); }
+.skills-page .skills-network__hub { fill: rgb(17 18 16 / 60%); stroke: rgb(198 169 106 / 35%); stroke-width: .75; }
+.skills-page .skills-network__label { fill: var(--accent); font: 9px var(--mono); letter-spacing: .12em; }
+.skills-page .skills-orbit__stage:has(.skills-network) .skills-galaxy__core::after { display: none; }
+@keyframes skills-network-glimmer { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+  .skills-page .skills-network:not(.has-active) .skills-network__path circle { animation: skills-network-glimmer 7s ease-in-out var(--network-delay) infinite; }
+}
+@media (max-width: 1099px) {
+  .skills-page .skills-orbit .skills-network { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skills-page .skills-network__path,
+  .skills-page .skills-network__path line,
+  .skills-page .skills-network__path circle { transition: none !important; }
+}

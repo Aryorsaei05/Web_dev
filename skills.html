@@ -27,9 +27,49 @@
       <h1 class="page-title">A toolkit for <em>moving forward.</em></h1>
       <section class="skills-orbit" aria-label="Skills and capabilities">
         <div class="skills-orbit__stage">
+          <!-- Decorative atmosphere stays outside the interactive animation layer. -->
+          <div class="skills-galaxy" aria-hidden="true">
+            <span class="skills-galaxy__stars"></span>
+            <span class="skills-galaxy__ring"></span>
+            <span class="skills-galaxy__ring skills-galaxy__ring--inclined"></span>
+            <span class="skills-galaxy__core"></span>
+          </div>
+          <!-- Stable skill identities link this noninteractive constellation to the buttons. -->
+          <svg class="skills-network" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+            <g class="skills-network__path" data-skill="business-analysis" style="--network-delay: 0.0s">
+              <line x1="100.00" y1="70.00" x2="100.00" y2="21.00" />
+              <circle cx="100.00" cy="21.00" r="2.6" />
+            </g>
+            <g class="skills-network__path" data-skill="data-analysis" style="--network-delay: -0.7s">
+              <line x1="123.45" y1="81.30" x2="158.64" y2="53.24" />
+              <circle cx="158.64" cy="53.24" r="2.6" />
+            </g>
+            <g class="skills-network__path" data-skill="microsoft-excel" style="--network-delay: -1.4s">
+              <line x1="129.25" y1="106.68" x2="180.92" y2="118.47" />
+              <circle cx="180.92" cy="118.47" r="2.6" />
+            </g>
+            <g class="skills-network__path" data-skill="power-bi" style="--network-delay: -2.1s">
+              <line x1="113.02" y1="127.03" x2="132.98" y2="168.47" />
+              <circle cx="132.98" cy="168.47" r="2.6" />
+            </g>
+            <g class="skills-network__path" data-skill="market-research" style="--network-delay: -2.8s">
+              <line x1="86.98" y1="127.03" x2="64.86" y2="172.98" />
+              <circle cx="64.86" cy="172.98" r="2.6" />
+            </g>
+            <g class="skills-network__path" data-skill="problem-solving" style="--network-delay: -3.5s">
+              <line x1="70.75" y1="106.68" x2="27.86" y2="116.47" />
+              <circle cx="27.86" cy="116.47" r="2.6" />
+            </g>
+            <g class="skills-network__path" data-skill="stakeholder-communication" style="--network-delay: -4.2s">
+              <line x1="76.55" y1="81.30" x2="35.89" y2="48.87" />
+              <circle cx="35.89" cy="48.87" r="2.6" />
+            </g>
+            <circle class="skills-network__hub" cx="100" cy="100" r="28" />
+            <text class="skills-network__label" x="100" y="100" text-anchor="middle" dominant-baseline="middle">SKILLS</text>
+          </svg>
         <ul class="skills-orbit__list">
           <li class="skills-orbit__item" style="--skill-x: 50.0000%; --skill-y: 13.0000%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-1" aria-describedby="orbit-description-1">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="business-analysis" data-source="orbit-source-1" aria-describedby="orbit-description-1">
               <small class="skills-orbit__number">01</small>
               <span class="skills-orbit__name">Business Analysis</span>
               <span class="skills-orbit__tagline">See the whole system</span>
@@ -38,7 +78,7 @@
             <p id="orbit-description-1" hidden>Translated business questions into structured research plans during an Analyst &amp; Research Internship at PurposeTech.ai. Investigated challenges within the UK charity sector and evaluated competitor platforms to identify insights that could support business and product decisions.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 78.9278%; --skill-y: 26.9309%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-2" aria-describedby="orbit-description-2">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="data-analysis" data-source="orbit-source-2" aria-describedby="orbit-description-2">
               <small class="skills-orbit__number">02</small>
               <span class="skills-orbit__name">Data Analysis</span>
               <span class="skills-orbit__tagline">Find the signal</span>
@@ -47,7 +87,7 @@
             <p id="orbit-description-2" hidden>Analysed survey responses from 545 students to investigate exercise habits and barriers to physical activity. Identified a 23.3-percentage-point intention–action gap and helped present findings and recommendations through a university group presentation.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 86.0723%; --skill-y: 58.2333%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-3" aria-describedby="orbit-description-3">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="microsoft-excel" data-source="orbit-source-3" aria-describedby="orbit-description-3">
               <small class="skills-orbit__number">03</small>
               <span class="skills-orbit__name">Microsoft Excel</span>
               <span class="skills-orbit__tagline">Organise with accuracy</span>
@@ -56,7 +96,7 @@
             <p id="orbit-description-3" hidden>Microsoft Office Specialist (MOS) certified in Excel, with practical experience organising and analysing market research, competitor comparisons and pricing data during an Analyst &amp; Research Internship at PurposeTech.ai. Developed structured Excel workbooks to support data analysis, reporting and informed business decisions.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 66.0537%; --skill-y: 83.3358%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-4" aria-describedby="orbit-description-4">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="power-bi" data-source="orbit-source-4" aria-describedby="orbit-description-4">
               <small class="skills-orbit__number">04</small>
               <span class="skills-orbit__name">Power BI</span>
               <span class="skills-orbit__tagline">Make it visible</span>
@@ -65,7 +105,7 @@
             <p id="orbit-description-4" hidden>Developed an interactive Power BI dashboard for a university assessment based on an NHS client scenario. Analysed UK CO₂ emissions from 1990 to 2023, examined trends by fuel source and compared the UK with Germany and France. Used data modelling, DAX measures and interactive visualisations to communicate trends and support evidence-based decision-making.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 33.9463%; --skill-y: 83.3358%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-5" aria-describedby="orbit-description-5">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="market-research" data-source="orbit-source-5" aria-describedby="orbit-description-5">
               <small class="skills-orbit__number">05</small>
               <span class="skills-orbit__name">Market Analysis &amp; Research</span>
               <span class="skills-orbit__tagline">Ask better questions</span>
@@ -74,7 +114,7 @@
             <p id="orbit-description-5" hidden>Researched 20 real-world patient-data platforms and narrowed the longlist to 6 key competitors for detailed comparison. Also investigated the UK charity grant market and developed 4 outreach segments to support more focused research and stakeholder engagement.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 13.9277%; --skill-y: 58.2333%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-6" aria-describedby="orbit-description-6">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="problem-solving" data-source="orbit-source-6" aria-describedby="orbit-description-6">
               <small class="skills-orbit__number">06</small>
               <span class="skills-orbit__name">Problem Solving</span>
               <span class="skills-orbit__tagline">Find practical answers</span>
@@ -83,7 +123,7 @@
             <p id="orbit-description-6" hidden>Helped develop and test an AI-assisted workflow for identifying journalist requests and organising media outreach opportunities. Investigated problems involving incomplete request information, deadline tracking and workflow reliability, then used structured testing and feedback to refine the process and document improvements.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 21.0722%; --skill-y: 26.9309%">
-            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-source="orbit-source-7" aria-describedby="orbit-description-7">
+            <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="stakeholder-communication" data-source="orbit-source-7" aria-describedby="orbit-description-7">
               <small class="skills-orbit__number">07</small>
               <span class="skills-orbit__name">Stakeholder Communication</span>
               <span class="skills-orbit__tagline">Bring people with me</span>

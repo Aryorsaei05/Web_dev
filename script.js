@@ -19,6 +19,8 @@ document.querySelectorAll('.skill-trigger').forEach((trigger) => {
 // Preview with pointer/focus; clicking pins a skill until toggled or cleared.
 document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
   const controls = [...orbit.querySelectorAll('.skills-orbit__control')];
+  const network = orbit.querySelector('.skills-network');
+  const networkPaths = [...orbit.querySelectorAll('.skills-network__path')];
   const title = orbit.querySelector('.skills-orbit__title');
   const detail = orbit.querySelector('.skills-orbit__detail');
   const source = orbit.querySelector('.skills-orbit__source');
@@ -34,9 +36,67 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
   let hovered = null;
   let focused = null;
 
+  const orbitList = orbit.querySelector('.skills-orbit__list');
+  const networkGeometry = networkPaths.map((path) => {
+    const point = path.querySelector('circle');
+    return {
+      path,
+      baseAngle: Math.atan2(Number(point.getAttribute('cy')) - 100, Number(point.getAttribute('cx')) - 100),
+    };
+  });
+  let alignmentFrame = null;
+
+  const alignNetwork = () => {
+    alignmentFrame = null;
+    const active = hovered || focused || selected;
+    if (!active || !network || !network.getClientRects().length || document.hidden) return;
+    const matrix = network.getScreenCTM();
+    if (!matrix) return;
+    // Convert the actual button centre from screen pixels into SVG coordinates.
+    // Counter-rotation, hover scale, scrolling and viewport changes are included.
+    const bounds = active.getBoundingClientRect();
+    const target = new DOMPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
+      .matrixTransform(matrix.inverse());
+    const angle = Math.atan2(target.y - 100, target.x - 100);
+    const geometry = networkGeometry.find(({ path }) => path.dataset.skill === active.dataset.skill);
+    if (geometry) {
+      const degrees = (angle - geometry.baseAngle) * 180 / Math.PI;
+      geometry.path.setAttribute('transform', `rotate(${degrees} 100 100)`);
+    }
+    // Normally interaction pauses the orbit, so only one frame is needed.
+    // Track frames only if the active button's orbit is actually moving.
+    const moving = [orbitList, active.closest('.skills-orbit__item')].some((element) =>
+      element && element.getAnimations().some((animation) => animation.playState === 'running')
+    );
+    if (moving) alignmentFrame = requestAnimationFrame(alignNetwork);
+  };
+  const scheduleAlignment = () => {
+    if (alignmentFrame !== null) cancelAnimationFrame(alignmentFrame);
+    alignmentFrame = null;
+    if (hovered || focused || selected) alignmentFrame = requestAnimationFrame(alignNetwork);
+  };
+  // These events also cover switching between the mobile grid and desktop orbit.
+  window.addEventListener('resize', scheduleAlignment, { passive: true });
+  reducedMotion.addEventListener('change', scheduleAlignment);
+  document.addEventListener('visibilitychange', scheduleAlignment);
+  orbitList.addEventListener('animationstart', scheduleAlignment);
+  if (network && 'ResizeObserver' in window) {
+    const observer = new ResizeObserver(scheduleAlignment);
+    observer.observe(orbit.querySelector('.skills-orbit__stage'));
+    observer.observe(network);
+  }
+
   const render = () => {
     const active = hovered || focused || selected;
     orbit.classList.toggle('is-interacting', Boolean(active));
+    // Share the panel's active skill; the network has no independent selection state.
+    if (network) network.classList.toggle('has-active', Boolean(active));
+    networkPaths.forEach((path) => {
+      const isActive = Boolean(active && path.dataset.skill === active.dataset.skill);
+      path.classList.toggle('is-active', isActive);
+      if (!isActive) path.removeAttribute('transform');
+    });
+    scheduleAlignment();
     controls.forEach((control) => {
       control.setAttribute('aria-pressed', String(control === selected));
       control.classList.toggle('is-previewed', control === active);
