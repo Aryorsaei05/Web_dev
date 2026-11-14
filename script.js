@@ -36,7 +36,6 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
   let hovered = null;
   let focused = null;
 
-  const orbitList = orbit.querySelector('.skills-orbit__list');
   const networkGeometry = networkPaths.map((path) => {
     const point = path.querySelector('circle');
     return {
@@ -48,38 +47,32 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
 
   const alignNetwork = () => {
     alignmentFrame = null;
-    const active = hovered || focused || selected;
-    if (!active || !network || !network.getClientRects().length || document.hidden) return;
+    if (!network || !network.getClientRects().length || document.hidden) return;
     const matrix = network.getScreenCTM();
     if (!matrix) return;
-    // Convert the actual button centre from screen pixels into SVG coordinates.
-    // Counter-rotation, hover scale, scrolling and viewport changes are included.
-    const bounds = active.getBoundingClientRect();
-    const target = new DOMPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
-      .matrixTransform(matrix.inverse());
-    const angle = Math.atan2(target.y - 100, target.x - 100);
-    const geometry = networkGeometry.find(({ path }) => path.dataset.skill === active.dataset.skill);
-    if (geometry) {
-      const degrees = (angle - geometry.baseAngle) * 180 / Math.PI;
-      geometry.path.setAttribute('transform', `rotate(${degrees} 100 100)`);
-    }
-    // Normally interaction pauses the orbit, so only one frame is needed.
-    // Track frames only if the active button's orbit is actually moving.
-    const moving = [orbitList, active.closest('.skills-orbit__item')].some((element) =>
-      element && element.getAnimations().some((animation) => animation.playState === 'running')
-    );
-    if (moving) alignmentFrame = requestAnimationFrame(alignNetwork);
+    const inverse = matrix.inverse();
+    // Align every fixed ray to its button centre, independent of galaxy rotation.
+    // Hover enlargement is centred, so it cannot change the connection direction.
+    networkGeometry.forEach(({ path, baseAngle }) => {
+      const control = controls.find((button) => button.dataset.skill === path.dataset.skill);
+      if (!control) return;
+      const bounds = control.getBoundingClientRect();
+      const target = new DOMPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
+        .matrixTransform(inverse);
+      const angle = Math.atan2(target.y - 100, target.x - 100);
+      path.setAttribute('transform', `rotate(${(angle - baseAngle) * 180 / Math.PI} 100 100)`);
+    });
   };
   const scheduleAlignment = () => {
     if (alignmentFrame !== null) cancelAnimationFrame(alignmentFrame);
     alignmentFrame = null;
-    if (hovered || focused || selected) alignmentFrame = requestAnimationFrame(alignNetwork);
+    alignmentFrame = requestAnimationFrame(alignNetwork);
   };
   // These events also cover switching between the mobile grid and desktop orbit.
   window.addEventListener('resize', scheduleAlignment, { passive: true });
   reducedMotion.addEventListener('change', scheduleAlignment);
   document.addEventListener('visibilitychange', scheduleAlignment);
-  orbitList.addEventListener('animationstart', scheduleAlignment);
+  scheduleAlignment();
   if (network && 'ResizeObserver' in window) {
     const observer = new ResizeObserver(scheduleAlignment);
     observer.observe(orbit.querySelector('.skills-orbit__stage'));
@@ -94,7 +87,6 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
     networkPaths.forEach((path) => {
       const isActive = Boolean(active && path.dataset.skill === active.dataset.skill);
       path.classList.toggle('is-active', isActive);
-      if (!isActive) path.removeAttribute('transform');
     });
     scheduleAlignment();
     controls.forEach((control) => {

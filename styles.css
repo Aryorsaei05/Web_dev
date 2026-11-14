@@ -365,14 +365,6 @@ footer {
 .skills-page .skills-orbit__detail { margin: 0; color: var(--muted); font-size: 16px; }
 .skills-page .skills-orbit__instruction { margin: 24px 0 0; color: var(--muted); font-size: 13px; }
 .skills-page .skills-orbit__ghost { pointer-events: none; }
-@keyframes skills-orbit-revolution { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes skills-orbit-upright { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(-360deg); } }
-@media (min-width: 1100px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .skills-page .skills-orbit__list { animation: skills-orbit-revolution 40s linear infinite; }
-  .skills-page .skills-orbit__item { animation: skills-orbit-upright 40s linear infinite; }
-  .skills-page .skills-orbit:is(.is-interacting, :focus-within) .skills-orbit__list,
-  .skills-page .skills-orbit:is(.is-interacting, :focus-within) .skills-orbit__item { animation-play-state: paused; }
-}
 @media (hover: hover) and (pointer: fine) {
   .skills-page .skills-orbit__control:hover { transform: scale(1.1); }
 }
@@ -390,10 +382,22 @@ footer {
 }
 
 
-/* Restrained galaxy atmosphere: static CSS layers, with motion reserved for skills. */
+/* Original subtle orbital atmosphere; skills and network remain stationary. */
 .skills-page .skills-orbit__stage { justify-self: center; isolation: isolate; }
-.skills-page .skills-orbit__list { z-index: 1; }
+.skills-page .skills-orbit__list { z-index: 2; }
 .skills-page .skills-galaxy { position: absolute; inset: 0; z-index: 0; overflow: hidden; border-radius: 50%; pointer-events: none; }
+/* Rotate only the existing decorative layer about the fixed orbit centre.
+   The mobile star field rotates inside its unchanged clipping container. */
+@keyframes skills-galaxy-revolution {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+  .skills-page .skills-galaxy { transform-origin: 50% 50%; animation: skills-galaxy-revolution 60s linear infinite; }
+}
+@media (max-width: 1099px) and (prefers-reduced-motion: no-preference) {
+  .skills-page .skills-galaxy__stars { transform-origin: 50% 50%; animation: skills-galaxy-revolution 60s linear infinite; }
+}
 .skills-page .skills-galaxy::before {
   content: "";
   position: absolute;
@@ -427,6 +431,27 @@ footer {
     radial-gradient(circle at 29% 15%, #ded7c4 0 .5px, transparent 1px),
     radial-gradient(circle at 55% 40%, #c6a96a 0 .6px, transparent 1.1px),
     radial-gradient(circle at 15% 41%, #ded7c4 0 .5px, transparent 1px);
+}
+/* Tiny decorative stars change opacity only, without affecting layout or hit testing. */
+.skills-page .skills-galaxy__twinkle {
+  position: absolute;
+  left: var(--star-x);
+  top: var(--star-y);
+  width: var(--star-size);
+  height: var(--star-size);
+  border-radius: 50%;
+  background: var(--star-colour);
+  opacity: .18;
+  pointer-events: none;
+}
+@keyframes skills-galaxy-twinkle {
+  0%, 100% { opacity: .1; }
+  50% { opacity: var(--star-peak, .32); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .skills-page .skills-galaxy__twinkle {
+    animation: skills-galaxy-twinkle var(--star-duration) ease-in-out var(--star-delay) infinite;
+  }
 }
 .skills-page .skills-galaxy__ring {
   position: absolute;
@@ -478,7 +503,7 @@ footer {
   width: 200px;
   height: 200px;
   transform: translate(-50%, -50%);
-  z-index: 0;
+  z-index: 1;
   overflow: visible;
   pointer-events: none;
 }
@@ -492,10 +517,6 @@ footer {
 .skills-page .skills-network__hub { fill: rgb(17 18 16 / 60%); stroke: rgb(198 169 106 / 35%); stroke-width: .75; }
 .skills-page .skills-network__label { fill: var(--accent); font: 9px var(--mono); letter-spacing: .12em; }
 .skills-page .skills-orbit__stage:has(.skills-network) .skills-galaxy__core::after { display: none; }
-@keyframes skills-network-glimmer { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
-@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
-  .skills-page .skills-network:not(.has-active) .skills-network__path circle { animation: skills-network-glimmer 7s ease-in-out var(--network-delay) infinite; }
-}
 @media (max-width: 1099px) {
   .skills-page .skills-orbit .skills-network { display: none; }
 }
