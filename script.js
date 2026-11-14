@@ -156,3 +156,89 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
     });
   });
 });
+
+// Shared, native modal viewer: only explicitly marked image links opt in.
+// showModal supplies background inertness and keyboard focus containment.
+(() => {
+  const triggers = [...document.querySelectorAll('a[data-lightbox]')];
+  if (!triggers.length) return;
+
+  const viewer = document.createElement('dialog');
+  viewer.className = 'image-lightbox';
+  viewer.setAttribute('aria-label', 'Enlarged image');
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'image-lightbox__close';
+  closeButton.setAttribute('aria-label', 'Close enlarged image');
+  closeButton.autofocus = true;
+  closeButton.textContent = '\u00d7';
+  const image = document.createElement('img');
+  image.className = 'image-lightbox__image';
+  image.alt = '';
+  viewer.append(closeButton, image);
+  document.body.append(viewer);
+
+  let activeTrigger = null;
+  let scrollState = null;
+  const close = () => { if (viewer.open) viewer.close(); };
+  const open = (trigger) => {
+    if (viewer.open) return;
+    activeTrigger = trigger;
+    const thumbnail = trigger.querySelector('img');
+    image.src = trigger.href;
+    image.alt = thumbnail ? thumbnail.alt : 'Enlarged image';
+    const root = document.documentElement;
+    const body = document.body;
+    const scrollbarWidth = window.innerWidth - root.clientWidth;
+    scrollState = {
+      rootOverflow: root.style.overflow,
+      rootPadding: root.style.paddingRight,
+      bodyOverflow: body.style.overflow,
+    };
+    // Compensate for the hidden scrollbar without moving the underlying layout.
+    if (scrollbarWidth > 0) {
+      root.style.paddingRight = `${parseFloat(getComputedStyle(root).paddingRight) + scrollbarWidth}px`;
+    }
+    root.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    viewer.showModal();
+    closeButton.focus({ preventScroll: true });
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      open(trigger);
+    });
+    trigger.addEventListener('auxclick', (event) => event.preventDefault());
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        open(trigger);
+      }
+    });
+  });
+  closeButton.addEventListener('click', close);
+  // Require the gesture to start and end outside the image, avoiding drag dismissals.
+  let startedOutside = false;
+  viewer.addEventListener('pointerdown', (event) => { startedOutside = event.target === viewer; });
+  viewer.addEventListener('click', (event) => {
+    if (event.target === viewer && startedOutside) close();
+    startedOutside = false;
+  });
+  viewer.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    close();
+  });
+  viewer.addEventListener('close', () => {
+    if (scrollState) {
+      document.documentElement.style.overflow = scrollState.rootOverflow;
+      document.documentElement.style.paddingRight = scrollState.rootPadding;
+      document.body.style.overflow = scrollState.bodyOverflow;
+      scrollState = null;
+    }
+    image.removeAttribute('src');
+    if (activeTrigger && activeTrigger.isConnected) activeTrigger.focus({ preventScroll: true });
+    activeTrigger = null;
+  });
+})();
