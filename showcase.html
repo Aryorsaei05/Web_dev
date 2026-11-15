@@ -302,164 +302,44 @@
            Project 03: Restaurant prototype (styles: showcase.css)
            Documents the implemented restaurant page and its limits.
            ============================================================ -->
-      <article class="showcase-restaurant" aria-labelledby="restaurant-project-title">
+      <article class="showcase-restaurant restaurant-case" aria-labelledby="restaurant-project-title">
         <header class="showcase-restaurant__heading">
           <div class="project-meta"><span>03</span><span>Restaurant digital transformation</span></div>
-          <h2 id="restaurant-project-title">Ember &amp; Grain: from enquiry to email draft</h2>
-          <p class="showcase-restaurant__subtitle">University Assessment | Fictional local restaurant scenario | HTML &middot; CSS &middot; JavaScript</p>
+          <h2 id="restaurant-project-title">Restaurant Digital Transformation</h2>
+          <p class="restaurant-case__subtitle">Ember &amp; Grain &mdash; A Digital Dining Experience</p>
+          <p class="showcase-restaurant__subtitle">University Assessment | HTML &middot; CSS &middot; JavaScript</p>
         </header>
 
-        <!-- Wireframe of the restaurant page (left) and factual feature cards (right). -->
-        <div class="showcase-restaurant__visual">
-          <figure class="showcase-restaurant__wireframe">
-            <div class="showcase-restaurant__frame">
-              <svg viewBox="0 0 400 420" role="img" aria-labelledby="restaurant-wireframe-title restaurant-wireframe-desc" focusable="false">
-                <title id="restaurant-wireframe-title">Wireframe of the Ember &amp; Grain restaurant page</title>
-                <desc id="restaurant-wireframe-desc">Five numbered blocks in page order: 01 business context across the top; below it, 02 contact and social links on the left, with 03 the booking form and 04 the email preview stacked on the right; 05 design choices across the bottom.</desc>
-                <!-- Browser frame -->
-                <rect class="wf-frame" x="0.75" y="0.75" width="398.5" height="418.5" rx="8"/>
-                <path class="wf-rule" d="M1 26h398"/>
-                <circle class="wf-dot" cx="16" cy="13.5" r="3.5"/>
-                <circle class="wf-dot" cx="28" cy="13.5" r="3.5"/>
-                <circle class="wf-dot" cx="40" cy="13.5" r="3.5"/>
-                <!-- 01 Business context -->
-                <rect class="wf-block" x="16" y="42" width="368" height="72" rx="4"/>
-                <text class="wf-number" x="30" y="66">01</text>
-                <text class="wf-label" x="58" y="66">Business context</text>
-                <path class="wf-line" d="M30 84h220M30 98h160"/>
-                <!-- 02 Contact & social -->
-                <rect class="wf-block" x="16" y="128" width="140" height="200" rx="4"/>
-                <text class="wf-number" x="30" y="152">02</text>
-                <text class="wf-label" x="30" y="174">Contact &amp;</text>
-                <text class="wf-label" x="30" y="192">social</text>
-                <path class="wf-line" d="M30 214h96M30 228h80M30 242h88"/>
-                <rect class="wf-chip" x="30" y="262" width="34" height="16" rx="8"/>
-                <rect class="wf-chip" x="70" y="262" width="34" height="16" rx="8"/>
-                <rect class="wf-chip" x="30" y="286" width="34" height="16" rx="8"/>
-                <!-- 03 Booking form -->
-                <rect class="wf-block wf-block--accent" x="168" y="128" width="216" height="124" rx="4"/>
-                <text class="wf-number" x="182" y="152">03</text>
-                <text class="wf-label" x="210" y="152">Booking form</text>
-                <rect class="wf-field" x="182" y="166" width="188" height="14" rx="2"/>
-                <rect class="wf-field" x="182" y="188" width="188" height="14" rx="2"/>
-                <rect class="wf-field" x="182" y="210" width="90" height="14" rx="2"/>
-                <rect class="wf-field" x="280" y="210" width="90" height="14" rx="2"/>
-                <rect class="wf-chip" x="182" y="232" width="70" height="12" rx="6"/>
-                <!-- 04 Email preview -->
-                <rect class="wf-block" x="168" y="264" width="216" height="64" rx="4"/>
-                <text class="wf-number" x="182" y="288">04</text>
-                <text class="wf-label" x="210" y="288">Email preview</text>
-                <path class="wf-line" d="M182 306h150M182 318h110"/>
-                <!-- 05 Design choices -->
-                <rect class="wf-block" x="16" y="342" width="368" height="62" rx="4"/>
-                <text class="wf-number" x="30" y="366">05</text>
-                <text class="wf-label" x="58" y="366">Design choices</text>
-                <path class="wf-line" d="M30 386h260"/>
-              </svg>
-            </div>
-            <figcaption>Restaurant page structure: business context &rarr; contact &amp; social &rarr; booking form &rarr; email preview &rarr; design choices</figcaption>
+        <!-- User-supplied restaurant concept presentation, enlarged through the shared lightbox. -->
+        <div class="restaurant-case__lead">
+          <figure class="restaurant-case__screenshot">
+            <a href="restaurant-showcase.png" data-lightbox aria-haspopup="dialog" aria-label="Enlarge the Ember and Grain dining concept presentation" hidden>
+              <img src="restaurant-showcase.png" alt="Ember and Grain digital dining concept presentation showing laptop and phone mockups against a warm restaurant interior." decoding="async">
+            </a>
+            <p class="restaurant-case__image-note">Restaurant concept image unavailable.</p>
+            <figcaption hidden>Restaurant concept presentation &middot; Select to enlarge in this page.</figcaption>
           </figure>
-
-          <!-- Feature cards: facts about the implemented prototype only. -->
-          <ul class="showcase-restaurant__features" aria-label="Prototype features">
-            <li>
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <rect x="4" y="3" width="16" height="18" rx="2"/>
-                  <path d="M8 8h8M8 12h8M8 16h5"/>
-                </svg>
-              </span>
-              <span class="showcase-restaurant__feature-value">6</span>
-              <span class="showcase-restaurant__feature-label">Booking form fields: name, email, date, time, guests, message</span>
-            </li>
-            <li>
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M12 7v5l3 2"/>
-                </svg>
-              </span>
-              <span class="showcase-restaurant__feature-value">30 min</span>
-              <span class="showcase-restaurant__feature-label">Time slots generated from the opening hours</span>
-            </li>
-            <li>
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <rect x="3" y="5" width="18" height="14" rx="2"/>
-                  <path d="m3 7 9 6 9-6"/>
-                </svg>
-              </span>
-              <span class="showcase-restaurant__feature-value">Preview</span>
-              <span class="showcase-restaurant__feature-label">Email draft shown for review before sending</span>
-            </li>
-            <li>
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <rect x="8" y="8" width="12" height="13" rx="2"/>
-                  <path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2"/>
-                </svg>
-              </span>
-              <span class="showcase-restaurant__feature-value">Copy</span>
-              <span class="showcase-restaurant__feature-label">Fallback for visitors without a configured email app</span>
-            </li>
-          </ul>
+          <div class="restaurant-case__overview">
+            <p class="section-kicker">The project</p>
+            <p>Designed and developed a responsive restaurant website prototype as part of a digital transformation scenario. Acting as the restaurant's CTO, the objective was to improve customer communication, simplify booking enquiries and bring essential information together in one accessible digital experience.</p>
+            <p class="restaurant-case__disclaimer">Fictional university assessment scenario.</p>
+          </div>
         </div>
 
-        <!-- STUDENT TO WRITE: "Design concept: why this structure" goes here,
-             explaining in your own words why the page is ordered as shown in the
-             wireframe above. Add your reflection on the project after it. -->
+        <!-- Compact highlights describe the current client-side prototype. -->
+        <ul class="restaurant-case__features" aria-label="Core prototype features">
+          <li><span class="showcase-restaurant__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="2" y="4" width="14" height="12" rx="1"/><path d="M6 20h6m-3-4v4"/><rect x="17" y="9" width="5" height="12" rx="1"/></svg></span><div><span class="restaurant-case__number">01</span><h3>Responsive Website</h3><p>A layout designed for desktop, tablet and mobile visitors.</p></div></li>
+          <li><span class="showcase-restaurant__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><span class="restaurant-case__number">02</span><h3>Customer Enquiry Form</h3><p>A structured form collecting customer details, enquiry type and optional booking preferences.</p></div></li>
+          <li><span class="showcase-restaurant__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="restaurant-case__number">03</span><h3>Email Draft Generation</h3><p>JavaScript generates a formatted email preview from the user's input.</p></div></li>
+          <li><span class="showcase-restaurant__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><span class="restaurant-case__number">04</span><h3>Accessible Contact Information</h3><p>Restaurant contact details and clearly labelled demonstration social media integration.</p></div></li>
+        </ul>
 
-        <!-- Project notes: role, structure, implementation, outcome. -->
-        <div class="project-notes">
-          <section aria-labelledby="restaurant-role">
-            <h3 id="restaurant-role">
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <circle cx="12" cy="8" r="4"/>
-                  <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>
-                </svg>
-              </span>
-              <span>Role &amp; problem</span>
-            </h3>
-            <p>The assessment role is CTO: turn a restaurant's communication needs into a usable web prototype. The page brings business context, a contact route, social sharing and structured booking requests into a single experience.</p>
-          </section>
-          <section aria-labelledby="restaurant-structure">
-            <h3 id="restaurant-structure">
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <rect x="3" y="4" width="18" height="16" rx="2"/>
-                  <path d="M3 9h18M10 9v11"/>
-                </svg>
-              </span>
-              <span>Page structure</span>
-            </h3>
-            <p>The introduction explains the concept and its demonstration status. Contact and sharing links precede the form. Visitors then enter a name, email, date, time, guest count and optional message, inspect the generated draft and choose whether to open an email app or copy it.</p>
-          </section>
-          <section aria-labelledby="restaurant-implementation">
-            <h3 id="restaurant-implementation">
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>
-                </svg>
-              </span>
-              <span>Implementation</span>
-            </h3>
-            <p>Hand-written HTML and external CSS provide labelled controls and a responsive two-column layout. JavaScript prevents page submission, checks the input, encodes the email subject and body, and generates a copyable preview. Editing an input clears a stale draft.</p>
-          </section>
-          <section aria-labelledby="restaurant-outcome">
-            <h3 id="restaurant-outcome">
-              <span class="showcase-restaurant__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6z"/>
-                  <path d="m8 12 3 3 5-6"/>
-                </svg>
-              </span>
-              <span>Outcome &amp; limitations</span>
-            </h3>
-            <p>The deliverable is an email-draft prototype, with no database, payment processing or booking confirmation. A visible copy fallback supports visitors without a configured email app. The concept uses the portfolio author's address and sharing actions; a real launch would require restaurant-owned contact details, social profiles and an agreed enquiry-handling process.</p>
-          </section>
+        <div class="restaurant-case__notes">
+          <section aria-labelledby="restaurant-role"><h3 id="restaurant-role">My role / Business problem</h3><p>Restaurant information and customer communication need to be more accessible, booking enquiries easier to prepare, and contact details and social media clearly presented.</p><p>I planned and developed the prototype using HTML5 and CSS3, with JavaScript generating formatted email drafts. Usability, responsive design and clear navigation informed the interface.</p></section>
+          <section aria-labelledby="restaurant-design"><h3 id="restaurant-design">Design rationale</h3><p>Dark premium colours and elegant typography establish a distinctive restaurant identity. Clear visual hierarchy guides visitors towards the enquiry form, while responsive layouts support phones and smaller devices.</p><p>Clearly labelled fields and validation reduce confusion. Contact information and demonstration social media details are easy to locate.</p></section>
+          <section class="restaurant-case__outcome" aria-labelledby="restaurant-outcome"><h3 id="restaurant-outcome">Outcome &amp; limitations</h3><p>A responsive, client-side restaurant website prototype demonstrating how web development can support customer communication. The form generates a copyable email draft and offers an optional email-app link; it does not automatically send email or confirm reservations.</p><p>No database, payment system or backend is implemented. Restaurant contact information and social profiles are demonstration details; the fictional recipient is not a working inbox.</p></section>
         </div>
-        <p class="showcase-restaurant__cta"><a class="text-link" href="restaurant.html">Try the restaurant prototype &rarr;</a></p>
+        <p class="showcase-restaurant__cta"><a class="text-link" href="restaurant.html">Explore Restaurant Prototype &rarr;</a></p>
       </article>
 
       <!-- ============================================================
@@ -482,6 +362,7 @@
     </footer>
     <!-- script.js: shared lightbox for data-lightbox links; navigation.js: mobile menu. -->
     <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/showcase-restaurant.js" defer></script>
     <script src="assets/js/navigation.js" defer></script>
 </body>
 </html>

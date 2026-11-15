@@ -299,3 +299,49 @@
     padding: 18px 16px;
   }
 }
+/* Project 03 editorial case study only; projects 01/02 and shared lightbox are unchanged. */
+.showcase-restaurant.restaurant-case .restaurant-case__subtitle { color: var(--ink); font: 22px/1.4 var(--serif); margin: 0 0 12px; }
+.restaurant-case .restaurant-case__lead { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1fr); align-items: center; gap: 32px; margin: 32px 0; }
+.restaurant-case .restaurant-case__screenshot { margin: 0; min-width: 0; }
+.restaurant-case .restaurant-case__screenshot a { display: block; overflow: hidden; border: 1px solid var(--line); transition: border-color 350ms ease; }
+.restaurant-case .restaurant-case__screenshot a[hidden], .restaurant-case [hidden] { display: none; }
+.restaurant-case .restaurant-case__screenshot img { display: block; width: 100%; height: auto; transition: transform 350ms cubic-bezier(.22,1,.36,1); }
+.restaurant-case .restaurant-case__screenshot figcaption { color: var(--muted); margin-top: 12px; font: 10px/1.7 var(--mono); }
+.restaurant-case .restaurant-case__image-note { padding: 28px; border: 1px dashed #c6a96a55; background: #191a15; font-size: 14px; }
+.restaurant-case .restaurant-case__image-note code { overflow-wrap: anywhere; }
+.restaurant-case .restaurant-case__overview { min-width: 0; transition: transform 350ms ease; transform-origin: center; }
+.restaurant-case .restaurant-case__overview .section-kicker { color: var(--accent); margin-bottom: 14px; }
+.restaurant-case .restaurant-case__overview > p:not(.section-kicker) { font-size: 15px; }
+.restaurant-case .restaurant-case__overview .restaurant-case__disclaimer { font-size: 12px; margin-top: 16px; }
+.restaurant-case .restaurant-case__features { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); list-style: none; padding: 0; margin: 32px 0 40px; gap: 14px 24px; }
+.restaurant-case .restaurant-case__features li { display: flex; gap: 18px; align-items: start; min-width: 0; padding: 20px 0; border-top: 1px solid var(--line); transition: transform 350ms ease, border-color 350ms ease; }
+.restaurant-case .restaurant-case__features li > div { min-width: 0; }
+.restaurant-case .restaurant-case__number { color: var(--accent); font: 10px/1.5 var(--mono); }
+.restaurant-case .restaurant-case__features h3 { color: var(--ink); font: 500 17px/1.4 Manrope,var(--sans); margin: 5px 0 8px; }
+.restaurant-case .restaurant-case__features p { font-size: 13px; }
+.restaurant-case .restaurant-case__notes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px 40px; }
+.restaurant-case .restaurant-case__notes section { min-width: 0; transition: transform 350ms ease; }
+.restaurant-case .restaurant-case__notes h3 { color: var(--accent); font: 11px/1.5 var(--mono); letter-spacing: .06em; text-transform: uppercase; margin: 0 0 14px; }
+.restaurant-case .restaurant-case__notes p { font-size: 14px; }
+.restaurant-case .restaurant-case__notes p + p { margin-top: 12px; }
+.restaurant-case .restaurant-case__outcome { grid-column: 1 / -1; padding-top: 24px; border-top: 1px solid var(--line); }
+.restaurant-case .showcase-restaurant__heading h2 { transform-origin: left center; transition: transform 350ms ease; }
+@media (hover:hover) and (pointer:fine) {
+  .restaurant-case .restaurant-case__features li:hover { border-color: #c6a96a99; }
+  .restaurant-case .restaurant-case__features li:hover .showcase-restaurant__icon { color: #dfc58f; border-color: #c6a96a99; box-shadow: 0 0 20px #c6a96a18; }
+  .restaurant-case .restaurant-case__screenshot a:hover { border-color: var(--accent); }
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .restaurant-case .showcase-restaurant__heading h2:hover { transform: scale(1.03); }
+  .restaurant-case :is(.restaurant-case__overview,.restaurant-case__notes section):hover { transform: scale(1.02); }
+  .restaurant-case .restaurant-case__features li:hover { transform: translateY(-3px); }
+  .restaurant-case .restaurant-case__features li:hover .showcase-restaurant__icon { transform: scale(1.09); }
+  .restaurant-case .restaurant-case__screenshot a:hover img { transform: scale(1.05); }
+}
+@media (max-width:900px) {
+  .restaurant-case .restaurant-case__lead { grid-template-columns: minmax(0,1fr); gap: 24px; }
+}
+@media (max-width:680px) {
+  .restaurant-case .restaurant-case__features, .restaurant-case .restaurant-case__notes { grid-template-columns: minmax(0,1fr); }
+  .restaurant-case .restaurant-case__outcome { grid-column: 1; }
+}
