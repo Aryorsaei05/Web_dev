@@ -129,10 +129,10 @@
       </div>
     </section>
 
-    <!-- 05 / Enquiry interface: stable field names for later JavaScript integration.
-         No recipient or submit handler is connected. The disabled button prevents submission. -->
+    <!-- 05 / Email-generating enquiry prototype. JavaScript enables submission after
+         validation handlers attach. The recipient is a fictional demonstration address. -->
     <section class="restaurant-section restaurant-split restaurant-enquiry" aria-labelledby="booking-title">
-      <div><p class="section-kicker">05 / Customer enquiry</p><h2 id="booking-title" tabindex="-1">Plan <em>your visit.</em></h2><p class="restaurant-copy">A simple starting point for a booking request, a question or a little feedback.</p><p class="restaurant-note" id="booking-help">Interface preview only. Email generation is not available yet. This form does not send messages, store details or confirm bookings.</p></div>
+      <div><p class="section-kicker">05 / Customer enquiry</p><h2 id="booking-title" tabindex="-1">Plan <em>your visit.</em></h2><p class="restaurant-copy">A simple starting point for a booking request, a question or a little feedback.</p><p class="restaurant-note" id="booking-help">This demonstration generates an email draft from your enquiry. It does not send messages or confirm reservations.</p></div>
       <form class="booking-form" id="booking-form" aria-labelledby="booking-title" aria-describedby="booking-help booking-required">
         <p class="restaurant-note" id="booking-required">All fields are required unless marked optional.</p>
         <div class="restaurant-fields">
@@ -148,8 +148,24 @@
           <div class="booking-field"><label for="booking-guests">Number of guests (optional)</label><input id="booking-guests" name="guests" type="number" min="1" step="1" inputmode="numeric"></div>
         </fieldset>
         <div class="booking-field"><label for="booking-message">Message</label><textarea id="booking-message" name="message" rows="5" maxlength="1000" required aria-describedby="message-help"></textarea><p class="restaurant-note" id="message-help">Up to 1,000 characters. Please avoid sensitive personal information.</p></div>
-        <div><button class="contact-button" type="button" id="generate-email" disabled aria-describedby="email-stage">Generate Email</button><p class="restaurant-note" id="email-stage">Email generation will be added in the next stage.</p></div>
+        <div><button class="contact-button" type="submit" id="generate-email" disabled aria-describedby="email-stage">Generate Email</button><p class="restaurant-note" id="email-stage">Preview recipient: hello@restaurant.example &mdash; a fictional demonstration address. Real delivery is not available.</p></div>
+        <p class="restaurant-note enquiry-status" id="enquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <noscript><p class="restaurant-note">Enable JavaScript to prepare an email draft. This form does not submit details without JavaScript.</p></noscript>
       </form>
+      <!-- Client-side generated draft: outside the form so preview controls are not validated. -->
+      <section class="enquiry-preview" id="email-preview" aria-labelledby="preview-title" hidden>
+        <p class="section-kicker">YOUR GENERATED EMAIL</p>
+        <h3 id="preview-title" tabindex="-1">Review your draft.</h3>
+        <p class="restaurant-note">This demonstration generates an email draft from your enquiry. It does not send messages or confirm reservations.</p>
+        <dl class="enquiry-preview-recipient"><dt>Recipient</dt><dd>hello@restaurant.example <span class="restaurant-note">Fictional demonstration address &mdash; not a working inbox.</span></dd></dl>
+        <label for="email-subject">Subject</label>
+        <textarea id="email-subject" rows="3" readonly></textarea>
+        <label for="email-body">Email body</label>
+        <textarea id="email-body" rows="16" readonly></textarea>
+        <div class="enquiry-preview-actions"><button class="contact-button" id="copy-email" type="button">Copy Email</button><a class="contact-button" id="open-email-app">Open in Email App</a></div>
+        <p class="restaurant-note">Opening an email app is optional and requires your own configured email application. You would review and send the message there; real delivery to this fictional recipient is not available. Email apps may truncate long drafts; use Copy Email to retain the complete text.</p>
+        <p class="restaurant-note" id="copy-status" role="status" aria-live="polite"></p>
+      </section>
     </section>
 
     <!-- 06 / Design rationale: concise decisions linked to visitor needs. -->
@@ -167,6 +183,7 @@
   <footer>
     <span>ARYO RASAEI &middot; MANCHESTER, UK</span><a href="index.html">PORTFOLIO HOME</a>
   </footer>
+  <script src="assets/js/restaurant-enquiry.js" defer></script>
   <script src="assets/js/restaurant-layout.js" defer></script>
   <script src="assets/js/navigation.js" defer></script>
 </body>

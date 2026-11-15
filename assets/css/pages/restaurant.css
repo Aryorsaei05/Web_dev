@@ -326,3 +326,24 @@
 @media (prefers-reduced-motion: reduce) {
   .restaurant-page .restaurant-connect :is(.connect-icon,dd,.connect-cue) { transform: none !important; }
 }
+/* Accessible validation feedback for the enquiry form only. */
+.restaurant-page .restaurant-enquiry .enquiry-error { margin: 0; color: #ebbaaa; font-size: 13px; line-height: 1.5; }
+.restaurant-page .restaurant-enquiry .booking-form [aria-invalid="true"] { border-color: #d39b88; }
+.restaurant-page .restaurant-enquiry .enquiry-status { margin: 0; }
+.restaurant-page .restaurant-enquiry .enquiry-status:empty { display: none; }
+/* Generated draft stays directly beneath the right-hand form, with no changes to field layout. */
+.restaurant-page .restaurant-enquiry .enquiry-preview { grid-column: 2; min-width: 0; padding: clamp(20px, 3vw, 32px); border: 1px solid #8e785366; background: #10110e; }
+.restaurant-page .restaurant-enquiry .enquiry-preview[hidden] { display: none; }
+.restaurant-page .restaurant-enquiry .enquiry-preview h3 { margin-top: 0; font: 30px/1.2 var(--serif); }
+.restaurant-page .restaurant-enquiry .enquiry-preview-recipient { margin: 24px 0; }
+.restaurant-page .restaurant-enquiry .enquiry-preview dd { margin-top: 6px; }
+.restaurant-page .restaurant-enquiry .enquiry-preview dd span { display: block; }
+.restaurant-page .restaurant-enquiry .enquiry-preview label { display: block; margin: 20px 0 8px; color: var(--muted); font-size: 13px; }
+.restaurant-page .restaurant-enquiry .enquiry-preview :is(input,textarea) { display: block; min-width: 0; width: 100%; padding: 12px; border: 1px solid #514735; background: #181914; color: var(--ink); font: 14px/1.7 var(--sans); border-radius: 0; }
+.restaurant-page .restaurant-enquiry .enquiry-preview textarea { resize: vertical; }
+.restaurant-page .restaurant-enquiry .enquiry-preview :is(input,textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.restaurant-page .restaurant-enquiry .enquiry-preview-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.restaurant-page .restaurant-enquiry #copy-status:empty { display: none; }
+@media (max-width:680px) {
+  .restaurant-page .restaurant-enquiry .enquiry-preview { grid-column: 1; margin-top: 20px; }
+}
