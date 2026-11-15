@@ -250,3 +250,47 @@
     align-self: center;
   }
 }
+/* Three movements: all visual and motion rules stay inside the experience section. */
+.restaurant-page .maison-experience { position: relative; isolation: isolate; }
+.restaurant-page .maison-experience > :not(.movement-atmosphere) { position: relative; z-index: 1; }
+.restaurant-page .maison-experience .movement-atmosphere { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+.restaurant-page .maison-experience .movement-atmosphere > div { position: absolute; inset: 8% -8% -15%; opacity: 0; filter: blur(44px); transition: opacity 900ms cubic-bezier(.22,.61,.36,1); }
+.restaurant-page .maison-experience .atmosphere-ember { background: radial-gradient(ellipse at 22% 64%, #853b2629, #64233212 40%, transparent 73%); }
+.restaurant-page .maison-experience .atmosphere-harmonie { background: radial-gradient(ellipse at 50% 64%, #68704725, #414b2810 42%, transparent 73%); }
+.restaurant-page .maison-experience .atmosphere-apogee { background: radial-gradient(ellipse at 78% 64%, #a0834d26, #71604210 42%, transparent 73%); }
+.restaurant-page .maison-experience[data-movement="ember"] .atmosphere-ember,
+.restaurant-page .maison-experience[data-movement="harmonie"] .atmosphere-harmonie,
+.restaurant-page .maison-experience[data-movement="apogee"] .atmosphere-apogee { opacity: 1; }
+/* Buttons retain the original artwork dimensions and use native keyboard/touch behavior. */
+.restaurant-page .maison-experience .movement-trigger { width: 100%; padding: 0; color: inherit; font: inherit; cursor: pointer; border-radius: 0; appearance: none; }
+.restaurant-page .maison-experience .movement-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.restaurant-page .maison-experience .maison-art::before { transition: opacity 850ms ease, transform 900ms cubic-bezier(.22,.61,.36,1); }
+.restaurant-page .maison-experience .movement-numeral { transition: opacity 700ms ease, transform 900ms cubic-bezier(.22,.61,.36,1); }
+.restaurant-page .maison-experience .movement-graphic { position: absolute; width: 180px; height: 150px; max-width: 85%; opacity: 0; transform: translateY(9px) scale(.94); transition: opacity 900ms ease, transform 1000ms cubic-bezier(.22,.61,.36,1); pointer-events: none; }
+.restaurant-page .maison-experience .movement-active .movement-numeral { opacity: 0; transform: translateY(-6px) scale(.96); }
+.restaurant-page .maison-experience .movement-active .maison-art::before { opacity: .18; transform: scale(1.04); }
+.restaurant-page .maison-experience .movement-active .movement-graphic { opacity: 1; transform: translateY(0) scale(1); }
+/* Animations keep their phase while hidden and pause, rather than restart, on departure. */
+.restaurant-page .maison-experience .movement-flame { transform-origin: 90px 126px; animation: movement-fire 5.5s ease-in-out infinite; }
+.restaurant-page .maison-experience .movement-sparks circle { animation: movement-ember 6s ease-in-out infinite; }
+.restaurant-page .maison-experience .movement-sparks circle:nth-child(2) { animation-delay: -2s; }
+.restaurant-page .maison-experience .movement-sparks circle:nth-child(3) { animation-delay: -4s; }
+.restaurant-page .maison-experience .movement-branch { transform-origin: 66px 129px; animation: movement-breeze 7s ease-in-out infinite; }
+.restaurant-page .maison-experience .movement-branch path { stroke-dasharray: 100; animation: movement-draw 8s ease-in-out infinite; }
+.restaurant-page .maison-experience .movement-cloche { animation: movement-reveal 6s ease-in-out infinite; }
+.restaurant-page .maison-experience .movement-shimmer { stroke-dasharray: 18 70; animation: movement-light 6s ease-in-out infinite; }
+.restaurant-page .maison-experience :is(.movement-flame,.movement-sparks circle,.movement-branch,.movement-branch path,.movement-cloche,.movement-shimmer) { animation-play-state: paused; }
+.restaurant-page .maison-experience .movement-active :is(.movement-flame,.movement-sparks circle,.movement-branch,.movement-branch path,.movement-cloche,.movement-shimmer) { animation-play-state: running; }
+@keyframes movement-fire { 0%,100% { transform: rotate(-1.5deg) scaleX(.98); } 50% { transform: rotate(2deg) scaleX(1.025) scaleY(1.02); } }
+@keyframes movement-ember { 0%,100% { opacity: 0; transform: translateY(6px); } 35% { opacity: .65; } 85% { opacity: 0; transform: translate(3px,-17px); } }
+@keyframes movement-breeze { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(2deg); } }
+@keyframes movement-draw { 0%,100% { stroke-dashoffset: 24; opacity: .65; } 50% { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes movement-reveal { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes movement-light { 0%,100% { stroke-dashoffset: 80; opacity: .15; } 50% { stroke-dashoffset: 0; opacity: .9; } }
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page .maison-experience :is(.movement-flame,.movement-sparks circle,.movement-branch,.movement-branch path,.movement-cloche,.movement-shimmer) { animation: none; }
+  .restaurant-page .maison-experience .movement-branch path { stroke-dashoffset: 0; }
+  .restaurant-page .maison-experience .movement-sparks { opacity: .4; }
+  .restaurant-page .maison-experience .movement-graphic,
+  .restaurant-page .maison-experience .movement-numeral { transform: none; }
+}

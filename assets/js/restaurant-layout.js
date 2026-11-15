@@ -15,3 +15,51 @@
     document.querySelector('#booking-name').focus({ preventScroll: true });
   });
 })();
+
+/* Dining movements: one active atmosphere for hover, keyboard focus or touch selection. */
+(() => {
+  'use strict';
+  const section = document.querySelector('.maison-experience');
+  if (!section) return;
+  const triggers = [...section.querySelectorAll('.movement-trigger')];
+  let hovered = null;
+  let focused = null;
+  let selected = null;
+  const render = () => {
+    const active = hovered || focused || selected;
+    section.dataset.movement = active || '';
+    triggers.forEach(button => {
+      const on = button.dataset.movement === active;
+      button.closest('article').classList.toggle('movement-active', on);
+      button.setAttribute('aria-pressed', String(button.dataset.movement === selected));
+    });
+  };
+  triggers.forEach(button => {
+    const article = button.closest('article');
+    article.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
+        hovered = button.dataset.movement;
+        render();
+      }
+    });
+    article.addEventListener('pointerleave', () => { hovered = null; render(); });
+    button.addEventListener('focus', () => { focused = button.dataset.movement; render(); });
+    button.addEventListener('blur', () => { focused = null; render(); });
+    button.addEventListener('click', () => {
+      selected = selected === button.dataset.movement ? null : button.dataset.movement;
+      render();
+    });
+  });
+  section.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      selected = hovered = focused = null;
+      render();
+    }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!section.contains(event.target)) {
+      selected = focused = hovered = null;
+      render();
+    }
+  });
+})();
