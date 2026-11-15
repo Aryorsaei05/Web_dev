@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111210">
   <meta name="description" content="A fictional restaurant digital transformation prototype exploring clearer communication, customer engagement and a responsive enquiry form interface.">
-  <title>Restaurant Concept &middot; Restaurant case study</title>
+  <title>MAISON EMBER &middot; Fictional restaurant case study</title>
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,32 +28,42 @@
     </nav>
   </header>
   <main id="main-content" tabindex="-1">
-    <!-- 01 / Restaurant hero: neutral identity for the proposed restaurant. -->
+    <!-- Restaurant identity stays inside the existing five-page portfolio shell. -->
+    <div class="maison-header">
+      <a class="maison-brand" href="#restaurant-title"><span class="maison-monogram" aria-hidden="true">ME</span><span>MAISON EMBER<small>A FICTIONAL DINING CONCEPT</small></span></a>
+      <nav aria-label="Restaurant sections"><a href="#experience">The concept</a><a href="#connect-title">Connect</a><a href="#booking-title">Enquiries</a></nav>
+    </div>
+    <!-- 01 / Cinematic introduction and a working handoff to the full enquiry prototype. -->
     <section class="restaurant-hero" aria-labelledby="restaurant-title">
-      <div>
-        <p class="section-kicker">01 / A restaurant digital transformation concept</p>
-        <h1 id="restaurant-title">Restaurant<br><em>Concept.</em></h1>
-        <p class="restaurant-subtitle">A more connected dining experience.<br>A warmer welcome, from the first enquiry.</p>
-        <a class="contact-button" href="#booking-title">Make an enquiry <span aria-hidden="true">&darr;</span></a>
+      <div class="maison-intro">
+        <p class="section-kicker">WHERE FIRE MEETS CRAFT</p>
+        <h1 id="restaurant-title">An Evening of<br>Fire <span class="maison-amp">&amp;</span> <em>Flavor.</em></h1>
+        <p class="restaurant-subtitle">Bold ingredients. Thoughtful technique. An unforgettable experience, from ember to savour.</p>
+        <div class="maison-actions"><a class="contact-button maison-primary" href="#booking-title">RESERVE A TABLE</a><a class="contact-button maison-secondary" href="#experience">EXPLORE THE EXPERIENCE</a></div>
+        <p class="restaurant-note">Fictional university concept &middot; Reservation enquiries only</p>
       </div>
-      <!-- Abstract place setting: decorative, locally drawn and independent of a final brand. -->
-      <div class="restaurant-setting" aria-hidden="true">
-        <svg viewBox="0 0 400 400" focusable="false">
-          <circle cx="200" cy="200" r="150" class="setting-halo"/>
-          <circle cx="200" cy="200" r="114"/>
-          <circle cx="200" cy="200" r="95"/>
-          <path d="M48 108v63q0 18 16 18t16-18v-63M64 108v184M350 108q-24 27-24 72v28h24m0-100v184"/>
-          <path d="M174 200h52m-26-26v52" class="setting-detail"/>
-        </svg>
-        <p>A thoughtful first impression.</p>
-      </div>
+      <aside class="maison-reservation" aria-labelledby="quick-title">
+        <p class="section-kicker">YOUR EVENING STARTS HERE</p>
+        <h2 id="quick-title">A seat at <em>the table.</em></h2>
+        <p>Choose your preferences, then continue to the full enquiry form.</p>
+        <form id="quick-enquiry" class="booking-form" aria-describedby="quick-help">
+          <div class="booking-field"><label for="quick-date">Preferred booking date</label><input id="quick-date" name="date" type="date"></div>
+          <div class="restaurant-fields">
+            <div class="booking-field"><label for="quick-time">Preferred booking time</label><input id="quick-time" name="time" type="time"></div>
+            <div class="booking-field"><label for="quick-guests">Number of guests</label><input id="quick-guests" name="guests" type="number" min="1" step="1" inputmode="numeric"></div>
+          </div>
+          <button class="contact-button maison-primary" type="submit">PREPARE BOOKING ENQUIRY</button>
+        </form>
+        <p class="restaurant-note" id="quick-help">This step copies your preferences into the enquiry below. It does not reserve a table or send a message.</p>
+        <noscript><p><a href="#booking-title">Continue to the full enquiry form</a>. Copy your preferences manually when JavaScript is unavailable.</p></noscript>
+      </aside>
     </section>
 
     <!-- 02 / Business context: assessment scenario, not a claim of client work. -->
     <section class="restaurant-section restaurant-split" aria-labelledby="challenge-title">
       <div><p class="section-kicker">02 / Business context</p><h2 id="challenge-title">The <em>challenge.</em></h2></div>
       <div class="restaurant-copy">
-        <p>A local restaurant wants to strengthen its digital presence, make customer communication more accessible and simplify booking enquiries.</p>
+        <p>A local restaurant wants a more consistent digital customer experience: accessible restaurant information, clearly presented contact and social details, and booking enquiries that are easier to prepare.</p>
         <p>In this proposed assessment scenario, I take the role of Chief Technology Officer (CTO), planning a website prototype that brings essential information and customer enquiries together.</p>
         <p class="restaurant-note">University of Salford &middot; Web App Development Assessment 1. This is a fictional business scenario, not a real client project.</p>
       </div>
@@ -66,16 +76,26 @@
       <div class="restaurant-objectives">
         <article>
           <svg class="restaurant-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5"/></svg>
-          <h3>Improve customer engagement.</h3><p>Give guests a welcoming introduction and clear ways to connect.</p>
+          <h3>Customer engagement.</h3><p>Give guests a welcoming introduction and clear ways to connect.</p>
         </article>
         <article>
           <svg class="restaurant-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 5 3 3 5-5"/></svg>
-          <h3>Simplify enquiries.</h3><p>Bring booking requests and general questions into one straightforward form.</p>
+          <h3>Simplified enquiries.</h3><p>Bring booking requests and general questions into one straightforward form.</p>
         </article>
         <article>
           <svg class="restaurant-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v12H9l-5 4V4zM8 8h8m-8 4h5"/></svg>
-          <h3>Make communication clearer.</h3><p>Help guests share the details the restaurant needs to respond.</p>
+          <h3>Connected communication.</h3><p>Help guests share the details the restaurant needs to respond.</p>
         </article>
+      </div>
+    </section>
+
+    <!-- Conceptual dining highlights, with no claims of real dishes or accolades. -->
+    <section class="restaurant-section maison-experience" id="experience" aria-labelledby="experience-title">
+      <div class="maison-experience-heading"><div><p class="section-kicker">THE ART OF THE EVENING</p><h2 id="experience-title">An experience in <em>three movements.</em></h2></div><p class="restaurant-note">Imagined dining directions for this fictional concept.</p></div>
+      <div class="maison-highlights">
+        <article><div class="maison-art art-ember" aria-hidden="true"><span>I</span></div><p class="section-kicker">01 / EMBER</p><h3>Fire-led cooking</h3><p>A concept shaped by warmth, flame and thoughtful technique.</p></article>
+        <article><div class="maison-art art-harmonie" aria-hidden="true"><span>II</span></div><p class="section-kicker">02 / HARMONIE</p><h3>Seasonal ingredients</h3><p>An imagined balance of seasonal colour, texture and flavour.</p></article>
+        <article><div class="maison-art art-apogee" aria-hidden="true"><span>III</span></div><p class="section-kicker">03 / APOG&Eacute;E</p><h3>Refined dining experience</h3><p>A considered journey, from the first welcome to the final detail.</p></article>
       </div>
     </section>
 
@@ -104,7 +124,7 @@
       <form class="booking-form" id="booking-form" aria-labelledby="booking-title" aria-describedby="booking-help booking-required">
         <p class="restaurant-note" id="booking-required">All fields are required unless marked optional.</p>
         <div class="restaurant-fields">
-          <div class="booking-field"><label for="booking-name">Customer name</label><input id="booking-name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
+          <div class="booking-field"><label for="booking-name">Full name</label><input id="booking-name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
           <div class="booking-field"><label for="booking-email">Email address</label><input id="booking-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
         </div>
         <div class="booking-field"><label for="enquiry-type">Enquiry type</label><select id="enquiry-type" name="enquiryType" required><option value="">Select an enquiry type</option><option value="booking">Booking</option><option value="general">General Enquiry</option><option value="feedback">Feedback</option></select></div>
@@ -122,19 +142,20 @@
 
     <!-- 06 / Design rationale: concise decisions linked to visitor needs. -->
     <section class="restaurant-section restaurant-split" aria-labelledby="design-title">
-      <div><p class="section-kicker">06 / Design rationale</p><h2 id="design-title">Why this <em>design works.</em></h2></div>
+      <div><p class="section-kicker">06 / Design rationale</p><h2 id="design-title">Designed with <em>purpose.</em></h2></div>
       <ul class="restaurant-rationale">
         <li><strong>Clear navigation.</strong> Familiar links and a direct route to the enquiry form reduce friction.</li>
         <li><strong>Responsive layout.</strong> Stacked mobile sections, readable text and generous tap targets improve accessibility.</li>
         <li><strong>Visible contact information.</strong> A dedicated contact area makes communication easier.</li>
         <li><strong>A simple enquiry form.</strong> One clear interface reduces unnecessary steps.</li>
-        <li><strong>Consistent hierarchy.</strong> Editorial typography, gold accents and considered spacing make information easier to find.</li>
+        <li><strong>Consistent hierarchy.</strong> Ivory serif headings establish visual hierarchy; gold details and burgundy actions create a consistent brand identity and make information easier to find.</li>
       </ul>
     </section>
   </main>
   <footer>
     <span>ARYO RASAEI &middot; MANCHESTER, UK</span><a href="index.html">PORTFOLIO HOME</a>
   </footer>
+  <script src="assets/js/restaurant-layout.js" defer></script>
   <script src="assets/js/navigation.js" defer></script>
 </body>
 </html>

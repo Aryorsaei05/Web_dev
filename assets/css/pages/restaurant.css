@@ -78,3 +78,82 @@
   .restaurant-page .restaurant-copy { font-size: 17px; }
   .restaurant-page h1 { font-size: clamp(44px, 12vw, 70px); }
 }
+/* MAISON EMBER: a fictional fine-dining identity within the portfolio shell. */
+.restaurant-page { background: #0b0c0b; --paper: #0b0c0b; --ink: #f1ecdf; --accent: #c6ad7c; --line: #393329; }
+.restaurant-page .maison-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 8px 30px; border-bottom: 1px solid var(--line); }
+.restaurant-page .maison-brand { display: inline-flex; gap: 16px; align-items: center; font-family: var(--serif); font-size: 19px; letter-spacing: .16em; text-decoration: none; }
+.restaurant-page .maison-brand small { display: block; font: 8px/2 var(--mono); letter-spacing: .16em; color: var(--accent); }
+.restaurant-page .maison-monogram { display: grid; place-items: center; width: 48px; height: 54px; border: 1px solid #aa8c58; font-size: 20px; letter-spacing: -.12em; padding-right: 3px; }
+.restaurant-page .maison-header nav { gap: 26px; }
+.restaurant-page .maison-header nav a { color: var(--muted); font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .1em; min-height: 44px; display: inline-flex; align-items: center; }
+.restaurant-page .restaurant-hero { grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 72px); padding: 80px 28px 88px; border: 0; border-bottom: 1px solid var(--line); background: radial-gradient(ellipse at 15% 70%, #742b201b, transparent 65%), radial-gradient(ellipse at 90% 30%, #be9c5910, transparent 55%); }
+.restaurant-page h1 { font-size: clamp(56px, 6.2vw, 88px); letter-spacing: -.045em; line-height: 1.08; margin: 26px 0; }
+.restaurant-page h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 54px); letter-spacing: -.035em; }
+.restaurant-page :is(h1,h2) em { color: var(--ink); }
+.restaurant-page .maison-amp { color: #a94e53; font-style: italic; }
+.restaurant-page .restaurant-subtitle { max-width: 40ch; font-size: 17px; line-height: 1.8; }
+.restaurant-page .maison-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 20px; }
+.restaurant-page .contact-button { border-radius: 0; min-height: 48px; font: 10px/1.6 var(--mono); letter-spacing: .07em; padding: 16px 19px; margin: 0; text-align: center; }
+.restaurant-page .maison-primary { background: #70282f; border-color: #a25355; color: #f4eadd; }
+.restaurant-page .maison-primary:hover { background: #8a3540; border-color: #c3897c; color: #fff6ea; box-shadow: 0 5px 24px #70282f30; }
+.restaurant-page .maison-secondary { border-color: #736041; }
+.restaurant-page .maison-secondary:hover { background: #c6ad7c12; color: var(--ink); }
+.restaurant-page .maison-reservation { position: relative; border: 1px solid #8b7247; background: linear-gradient(145deg, #201d17aa, #101110); padding: clamp(24px, 3vw, 38px); }
+.restaurant-page .maison-reservation::before, .restaurant-page .maison-reservation::after { content: ''; position: absolute; width: 16px; height: 16px; border-color: #ddc396; border-style: solid; pointer-events: none; }
+.restaurant-page .maison-reservation::before { top: -5px; left: -5px; border-width: 1px 0 0 1px; }
+.restaurant-page .maison-reservation::after { bottom: -5px; right: -5px; border-width: 0 1px 1px 0; }
+.restaurant-page .maison-reservation h2 { font-size: clamp(30px, 3vw, 40px); margin: 12px 0; }
+.restaurant-page .maison-reservation > p:not(.section-kicker) { font-size: 13px; color: var(--muted); }
+.restaurant-page .maison-reservation .booking-form { gap: 18px; margin-top: 24px; }
+.restaurant-page .maison-reservation .restaurant-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.restaurant-page .booking-form :is(input,select,textarea) { background: #10110f; border-color: #514735; border-radius: 0; font-size: 15px; transition: border-color .3s ease, box-shadow .3s ease; }
+.restaurant-page .booking-form :is(input,select,textarea):focus { box-shadow: 0 0 16px #c6ad7c18; }
+.restaurant-page .restaurant-objectives article { border-color: #6e5a38; padding: 26px 12px 12px; transition: background-color .3s ease, box-shadow .3s ease; }
+.restaurant-page .restaurant-objectives h3 { font-family: var(--serif); font-size: 25px; font-weight: 400; }
+.restaurant-page .restaurant-section { padding-inline: 28px; }
+.restaurant-page .maison-experience-heading { display: flex; gap: 32px; justify-content: space-between; align-items: end; }
+.restaurant-page .maison-experience-heading h2 { max-width: 580px; }
+.restaurant-page .maison-experience-heading > p { max-width: 220px; margin-bottom: 32px; }
+.restaurant-page .maison-highlights { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; margin-top: 24px; }
+.restaurant-page .maison-highlights article > p:last-child { color: var(--muted); font-size: 14px; max-width: 32ch; }
+.restaurant-page .maison-highlights h3 { font: 26px/1.2 var(--serif); margin: 12px 0; }
+.restaurant-page .maison-highlights .section-kicker { margin: 24px 0 0; }
+/* Abstract CSS still lifes evoke atmosphere without presenting invented dishes. */
+.restaurant-page .maison-art { height: 190px; position: relative; display: grid; place-items: center; border: 1px solid #665336; overflow: hidden; }
+.restaurant-page .maison-art::before { content: ''; width: 110px; height: 110px; border: 1px solid #c6ad7c70; border-radius: 50%; box-shadow: 0 0 0 12px #0002, 0 0 0 13px #c6ad7c25; }
+.restaurant-page .maison-art span { position: absolute; font: italic 40px var(--serif); color: #ddc396; }
+.restaurant-page .art-ember { background: radial-gradient(ellipse at 50% 110%, #9e3d24, #351811 45%, #131310 80%); }
+.restaurant-page .art-harmonie { background: radial-gradient(ellipse at 20% 80%, #50563a, #20291f 48%, #101310 90%); }
+.restaurant-page .art-apogee { background: radial-gradient(ellipse at 80% 20%, #76603d, #31291f 45%, #15120f 90%); }
+.restaurant-page .restaurant-enquiry { background: #141410; border-top: 1px solid var(--line); }
+.restaurant-page .restaurant-enquiry .contact-button:disabled { background: #452127; color: #c5b7ad; border-color: #765246; }
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .restaurant-page :is(h1,h2):hover { transform: scale(1.02); }
+  .restaurant-page .restaurant-icon { transition: transform .3s ease, filter .3s ease; }
+  .restaurant-page .restaurant-objectives article:hover { transform: none; background: #c6ad7c06; box-shadow: 0 -1px 16px #c6ad7c0c; }
+  .restaurant-page .restaurant-objectives article:hover .restaurant-icon { transform: scale(1.09); filter: drop-shadow(0 0 5px #c6ad7c60); }
+  .restaurant-page .maison-art::before { transition: transform .35s ease; }
+  .restaurant-page .maison-art:hover::before { transform: rotate(8deg) scale(1.025); }
+}
+@media (max-width:1000px) {
+  .restaurant-page .restaurant-hero { padding: 56px 8px; gap: 30px; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+  .restaurant-page .restaurant-section { padding-inline: 8px; }
+  .restaurant-page .maison-reservation { padding: 24px; }
+  .restaurant-page .maison-reservation .restaurant-fields { grid-template-columns: 1fr; }
+}
+@media (max-width:760px) {
+  .restaurant-page .restaurant-hero { grid-template-columns: minmax(0,1fr); }
+  .restaurant-page .maison-header { flex-wrap: wrap; padding-inline: 0; gap: 12px; }
+  .restaurant-page .maison-header nav { display: flex; width: auto; gap: 24px; flex-wrap: wrap; }
+  .restaurant-page .maison-header nav a { font-size: 10px; padding: 0; }
+  .restaurant-page h1 { font-size: clamp(48px, 9vw, 72px); }
+  .restaurant-page .maison-experience-heading { display: block; }
+  .restaurant-page .maison-experience-heading > p { max-width: none; }
+  .restaurant-page .maison-highlights { grid-template-columns: 1fr; gap: 32px; }
+  .restaurant-page .maison-art { height: 200px; }
+  .restaurant-page .maison-reservation .restaurant-fields { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:380px) {
+  .restaurant-page .maison-actions { display: grid; }
+  .restaurant-page .maison-reservation .restaurant-fields { grid-template-columns: 1fr; }
+}
