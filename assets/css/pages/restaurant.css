@@ -1,32 +1,39 @@
-/* Restaurant prototype: information first, then a clearly labelled email draft. */
-.restaurant-intro {
-  max-width: 800px;
+/* ==========================================================================
+   Restaurant concept page (restaurant.html)
+   Builds on the shared tokens in base.css. Order: page tokens, hero band,
+   business context, contact column, booking form, email preview,
+   design choices, responsive adjustments.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Page tokens
+   A warmer "ember" orange sits beside the site's gold accent so the page
+   feels like the restaurant while still matching the portfolio.
+   -------------------------------------------------------------------------- */
+.restaurant-page {
+  --ember: #e08a4f;          /* about 7:1 contrast on --paper, so safe for text */
+  --ember-soft: #e08a4f26;   /* 15% alpha tint for backgrounds */
+  --panel: #1b1c19;          /* raised surface, one step lighter than --paper */
+  --error: #ff9b8a;          /* readable error red on the dark panels */
 }
 
-.restaurant-intro .page-title {
-  font-size: clamp(44px, 7vw, 80px);
+/* Hide content visually but keep it for screen readers
+   (used for "(opens in a new tab)" and the counter announcements). */
+.restaurant-page .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
-.prototype-note {
-  max-width: 72ch;
-  padding: 16px 20px;
-  border-left: 2px solid var(--accent);
-  background: #1b1c19;
-  color: var(--muted);
-}
-
-.restaurant-layout {
-  display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-  align-items: start;
-  gap: clamp(28px, 6vw, 72px);
-  margin-top: 44px;
-}
-
-.restaurant-layout > *, .restaurant-page input, .restaurant-page textarea {
-  min-width: 0;
-}
-
+/* --------------------------------------------------------------------------
+   Shared text styles on this page
+   -------------------------------------------------------------------------- */
 .restaurant-page h2 {
   font: 500 clamp(24px, 3vw, 34px)/1.25 Manrope, var(--sans);
   letter-spacing: -.04em;
@@ -34,10 +41,6 @@
 
 .restaurant-page h3 {
   font: 500 21px/1.4 Manrope, var(--sans);
-}
-
-.restaurant-page address {
-  font-style: normal;
 }
 
 .restaurant-page p, .restaurant-page li {
@@ -52,12 +55,160 @@
   color: var(--accent);
 }
 
+.restaurant-page .field-help {
+  font-size: 13px;
+}
+
+/* Grid children default to min-width:auto, which lets long words or wide
+   controls push the column past the viewport; 0 lets them shrink. */
+.restaurant-layout > *, .restaurant-page input, .restaurant-page select, .restaurant-page textarea {
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Hero band: name, tagline and the inline SVG mark
+   -------------------------------------------------------------------------- */
+.restaurant-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px clamp(24px, 5vw, 64px);
+  padding: clamp(24px, 5vw, 56px);
+  overflow: hidden; /* keeps the glow below inside the rounded band */
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  /* Two soft radial glows suggest firelight without any image file. */
+  background:
+    radial-gradient(circle at 85% 50%, var(--ember-soft), transparent 55%),
+    radial-gradient(circle at 0 100%, #c6a96a14, transparent 50%),
+    var(--panel);
+}
+
+.restaurant-hero .page-title {
+  margin-bottom: 16px;
+  font-size: clamp(40px, 7vw, 80px);
+}
+
+.restaurant-hero .page-title em {
+  color: var(--ember);
+}
+
+.restaurant-hero .hero-copy {
+  margin: 0 0 12px;
+}
+
+.restaurant-hero__meta {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.restaurant-mark {
+  width: clamp(120px, 18vw, 200px);
+  height: auto;
+}
+
+/* SVG parts are styled here rather than with attributes so the colours
+   come from the page tokens. */
+.mark-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.mark-ring--inner {
+  stroke: var(--line);
+}
+
+.mark-flame {
+  fill: var(--ember);
+}
+
+.mark-flame-core {
+  fill: var(--accent);
+}
+
+.mark-wheat {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* --------------------------------------------------------------------------
+   Business context and the single case-study note
+   -------------------------------------------------------------------------- */
+.restaurant-context {
+  max-width: 800px;
+  margin-top: 44px;
+}
+
+.restaurant-context h2 {
+  margin-top: 0;
+}
+
+.prototype-note {
+  max-width: 72ch;
+  padding: 16px 20px;
+  border-left: 2px solid var(--ember);
+  background: var(--panel);
+}
+
+/* --------------------------------------------------------------------------
+   Two-column layout: contact details beside the booking form
+   -------------------------------------------------------------------------- */
+.restaurant-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(28px, 6vw, 72px);
+  margin-top: 44px;
+}
+
+/* --------------------------------------------------------------------------
+   Contact details with icons
+   -------------------------------------------------------------------------- */
+.contact-list {
+  font-style: normal; /* <address> is italic by default */
+}
+
+.contact-list p {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Line icons share one style: drawn with stroke so they stay crisp at any size. */
+.contact-icon, .social-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-list .contact-icon {
+  margin-top: 3px; /* align with the first line of text */
+}
+
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 /* Opening hours: day on the left, times on the right. */
 .restaurant-hours {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 6px 24px;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .restaurant-hours dt {
@@ -70,6 +221,23 @@
   white-space: nowrap;
 }
 
+/* Today's row, set by restaurant.js. A "(today)" text tag goes with it,
+   so colour is not the only cue. */
+.restaurant-hours .is-today {
+  color: var(--ember);
+  font-weight: 600;
+}
+
+.today-tag {
+  font-weight: 400;
+}
+
+.open-status {
+  margin: 0;
+  color: var(--ink);
+}
+
+/* Social links: profiles (with icons) and share links. */
 .restaurant-social {
   display: flex;
   flex-wrap: wrap;
@@ -81,12 +249,54 @@
 .restaurant-social a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  gap: 10px;
+  min-height: 44px; /* comfortable touch target */
 }
 
+.restaurant-social--profiles {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.restaurant-social--profiles a {
+  text-decoration: none;
+}
+
+.restaurant-social--profiles a:hover .social-icon {
+  stroke: var(--ember);
+}
+
+.social-icon .icon-fill {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.social-handle {
+  margin-left: 4px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Booking form
+   Base input styles come from components.css; additions here cover the
+   time <select>, field wrappers and inline errors.
+   -------------------------------------------------------------------------- */
 .restaurant-page .booking-form {
   max-width: none;
   margin: 24px 0;
+}
+
+/* Each field is label + control + messages. */
+.booking-field {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.booking-field .field-help, .booking-field .field-error {
+  margin: 0;
 }
 
 .booking-fields {
@@ -95,8 +305,50 @@
   gap: 18px;
 }
 
-.restaurant-page .field-help {
-  font-size: 13px;
+/* Match the select to the text inputs in components.css. */
+.restaurant-page .booking-form select {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+}
+
+.restaurant-page .booking-form select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+
+.restaurant-page .booking-form select:disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* Invalid fields get a coloured border; the message below explains why. */
+.restaurant-page .booking-form [aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+/* Empty error elements take no space until a message is written into them. */
+.field-error:empty {
+  display: none;
+}
+
+.restaurant-page .field-error {
+  color: var(--error);
+  font-size: 14px;
+}
+
+.restaurant-page .field-error::before {
+  content: "! ";
+  font-weight: 700;
+}
+
+.restaurant-page .char-count.is-low {
+  color: var(--ember);
 }
 
 .restaurant-page .booking-form button {
@@ -104,7 +356,17 @@
   margin: 0;
 }
 
+.restaurant-page .booking-form button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+/* --------------------------------------------------------------------------
+   Email preview
+   -------------------------------------------------------------------------- */
 .email-preview {
+  display: grid;
+  gap: 8px;
   margin-top: 32px;
   padding: clamp(18px, 3vw, 28px);
   border: 1px solid var(--accent);
@@ -112,30 +374,63 @@
   background: #191a17;
 }
 
+/* The display:grid above would otherwise override the hidden attribute. */
 .email-preview[hidden] {
   display: none;
 }
 
 .email-preview h3 {
-  margin-top: 0;
+  margin: 0 0 8px;
 }
 
-.email-preview textarea {
+.email-preview label {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.draft-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 0 0 8px;
+}
+
+.draft-meta dt {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.draft-meta dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.email-preview input, .email-preview textarea {
   display: block;
   width: 100%;
-  min-height: 290px;
-  padding: 14px;
+  padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--paper);
   color: var(--ink);
   font: 14px/1.7 var(--mono);
+}
+
+.email-preview textarea {
+  min-height: 290px;
   resize: vertical;
 }
 
-.email-preview textarea:focus-visible {
+.email-preview input:focus-visible, .email-preview textarea:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
+}
+
+.draft-warning {
+  margin: 0;
+  padding: 10px 14px;
+  border-left: 2px solid var(--ember);
+  background: var(--ember-soft);
 }
 
 .draft-actions {
@@ -145,6 +440,18 @@
   gap: 8px 18px;
 }
 
+.draft-actions .contact-button {
+  margin: 8px 0 0;
+}
+
+/* Secondary action: same shape, softer border. */
+.contact-button--quiet {
+  border-color: var(--line);
+}
+
+/* --------------------------------------------------------------------------
+   Design choices
+   -------------------------------------------------------------------------- */
 .restaurant-design {
   margin-top: 48px;
   padding-top: 28px;
@@ -155,14 +462,40 @@
   max-width: 75ch;
 }
 
+/* --------------------------------------------------------------------------
+   Responsive adjustments
+   -------------------------------------------------------------------------- */
 @media (max-width: 760px) {
   .restaurant-layout {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
+@media (max-width: 560px) {
+  /* Stack the mark above the text and shrink it on phones. */
+  .restaurant-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .restaurant-mark {
+    grid-row: 1;
+    width: 96px;
+  }
+}
+
 @media (max-width: 420px) {
   .booking-fields {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Let the handle drop under the network name on very narrow screens. */
+  .restaurant-social--profiles .social-text {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4px;
+  }
+
+  .social-handle {
+    margin-left: 0;
   }
 }
