@@ -917,3 +917,89 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .homepage #portfolio .work-card, .homepage #portfolio .work-card-visual, .homepage #portfolio .work-card-copy strong { transition: none; transform: none; }
 }
+
+/* Showcase PDF/print only. Named pages avoid changing printing on other website pages. */
+@page showcase-report {
+  size: A4 portrait;
+  margin: 12mm;
+  background: #111210;
+}
+@media print {
+  :root:has(body.showcase-page) { background: #111210; color-scheme: dark; overflow: visible !important; padding-right: 0 !important; }
+  body.showcase-page {
+    page: showcase-report;
+    overflow: visible !important;
+    min-width: 0;
+    background: #111210;
+    color: #eeece6;
+    font-size: 9pt;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .showcase-page *, .showcase-page *::before, .showcase-page *::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    outline: none !important;
+  }
+  .showcase-page .grain, .showcase-page .image-lightbox { display: none !important; }
+  .showcase-page main, .showcase-page .topbar, .showcase-page footer { width: 100%; max-width: none; margin-inline: 0; }
+  .showcase-page main.section { padding: 5mm 0 0; min-height: 0; }
+  .showcase-page .topbar { flex-direction: row; align-items: center; min-height: 0; gap: 4mm; padding: 0 0 4mm; }
+  .showcase-page .brand { gap: 2mm; font-size: 7pt; }
+  .showcase-page .brand-mark { width: 25px; height: 25px; font-size: 7pt; }
+  .showcase-page nav { width: auto; gap: 3mm; flex-wrap: wrap; }
+  .showcase-page nav a { font-size: 7pt; }
+  .showcase-page nav .nav-cta { padding: 1mm 2mm; }
+  .showcase-page footer { margin-top: 7mm; padding: 3mm 0 0; font-size: 7pt; }
+  .showcase-page .section-kicker { margin: 0 0 2mm; font-size: 7pt; }
+  .showcase-page .page-title { margin: 0 0 5mm; font-size: 26pt; line-height: 1.15; }
+  .showcase-page :is(.powerbi-project, .research-project) { margin: 0; padding: 5mm 0; }
+  .showcase-page :is(.powerbi-project__heading, .research-project__heading) { margin: 0 0 4mm; break-inside: avoid; }
+  .showcase-page :is(.powerbi-project, .research-project) h2 { margin: 2mm 0; font-size: 19pt; line-height: 1.2; }
+  .showcase-page :is(.powerbi-project, .research-project) h3 { margin: 0 0 3mm; font-size: 8pt; line-height: 1.5; break-after: avoid; }
+  .showcase-page :is(.powerbi-project, .research-project) h4 { margin: 0 0 2mm; font-size: 10pt; line-height: 1.4; break-after: avoid; }
+  .showcase-page :is(.powerbi-project__subtitle, .research-project__subtitle) { font-size: 7.5pt; }
+  .showcase-page p { orphans: 3; widows: 3; }
+  /* Paper width must not activate the single-column mobile layout. */
+  .showcase-page .powerbi-project__gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4mm; padding: 0; margin: 0 0 5mm; break-inside: avoid; }
+  .showcase-page .powerbi-project__screenshot { break-inside: avoid; }
+  .showcase-page .powerbi-project__screenshot a { aspect-ratio: 16 / 10; padding: 1mm; }
+  .showcase-page .powerbi-project__screenshot img { width: 100%; height: 100%; object-fit: contain; }
+  .showcase-page .powerbi-project__screenshot figcaption { margin-top: 2mm; font-size: 7pt; }
+  .showcase-page .powerbi-project__summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5mm; padding: 0; margin: 0 0 4mm; }
+  .showcase-page .powerbi-project__summary section { break-inside: avoid; }
+  .showcase-page .powerbi-project__figures { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4mm; margin: 0 0 4mm; padding: 0; break-inside: avoid; }
+  .showcase-page .powerbi-project__figures > div { padding: 3mm; gap: 2mm; }
+  .showcase-page .powerbi-project__figures dd { flex-direction: row; font-size: 22pt; gap: 3mm; }
+  .showcase-page .powerbi-project__figures dt { font-size: 8pt; }
+  .showcase-page .powerbi-project__findings { padding: 0; break-inside: avoid; }
+  /* Keep both icon families explicitly sized and stroked, including PDF output. */
+  .showcase-page :is(.powerbi-project__icon, .research-worksheet__icon) { width: 30px; height: 30px; flex-basis: 30px; border-radius: 7px; color: #b39a65; }
+  .showcase-page :is(.powerbi-project__icon, .research-worksheet__icon) svg { width: 20px; height: 20px; fill: none; stroke: #b39a65; stroke-width: 1.5; }
+  .showcase-page :is(.powerbi-project__summary, .powerbi-project__findings) h3 { gap: 3mm; }
+  .showcase-page .research-project { break-before: page; }
+  .showcase-page .research-project__metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3mm; margin: 4mm 0 5mm; padding: 0; break-inside: avoid; }
+  .showcase-page .research-project__metrics > div { padding: 3mm; gap: 2mm; break-inside: avoid; }
+  .showcase-page .research-project__metrics dd { font-size: 30pt; }
+  .showcase-page .research-project__metrics dt { min-height: 0; font-size: 7.5pt; }
+  .showcase-page .research-project__section { margin-top: 5mm; }
+  .showcase-page .research-project__worksheets { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4mm 5mm; }
+  .showcase-page .research-project__worksheets > li { grid-template-columns: 30px minmax(0, 1fr); gap: 3mm; padding: 0; break-inside: avoid; }
+  .showcase-page .research-worksheet__rail { gap: 2mm; }
+  .showcase-page .research-project__findings { padding: 4mm; }
+  .showcase-page .research-project__attribution { margin-bottom: 3mm; font-size: 8pt; }
+  .showcase-page .research-project__finding-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4mm 5mm; }
+  .showcase-page .research-project__finding-list li { break-inside: avoid; }
+  .showcase-page .research-project__sources { margin-top: 3mm; padding-top: 3mm; break-inside: avoid; }
+  .showcase-page .research-project__sources ul { gap: 1mm 4mm; font-size: 7pt; }
+  .showcase-page .research-project__intro { margin-bottom: 3mm; }
+  .showcase-page .research-project__segments { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3mm 4mm; }
+  .showcase-page .research-project__segments li { padding: 2mm 0; break-inside: avoid; }
+  .showcase-page .research-project__segments h4 { margin: 1mm 0 0; font-size: 9pt; }
+  .showcase-page .research-project__closing { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5mm; margin-top: 5mm; padding-top: 4mm; }
+  .showcase-page .research-project__closing section { break-inside: avoid; }
+}
