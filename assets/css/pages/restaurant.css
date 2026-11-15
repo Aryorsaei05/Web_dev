@@ -157,3 +157,76 @@
   .restaurant-page .maison-actions { display: grid; }
   .restaurant-page .maison-reservation .restaurant-fields { grid-template-columns: 1fr; }
 }
+/* Dining hero only. The supplied photograph is expected at /restaurant-interior.png. */
+.restaurant-page .restaurant-hero--dining {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 40px;
+  padding: clamp(36px, 6vw, 80px) clamp(24px, 5vw, 64px);
+  border: 1px solid var(--line);
+  background: #171814;
+}
+/* Overscan prevents blurred edges; the content is never filtered. */
+.restaurant-page .restaurant-hero--dining::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  inset: -16px;
+  background: url('../../../restaurant-interior.png') center 48% / cover no-repeat;
+  filter: blur(5px);
+  pointer-events: none;
+}
+.restaurant-page .restaurant-hero--dining::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: rgb(8 9 8 / 70%);
+  pointer-events: none;
+}
+.restaurant-page .restaurant-hero--dining h1 {
+  font-size: clamp(54px, 7vw, 100px);
+  margin: 24px 0;
+}
+.restaurant-page .restaurant-hero--dining h1 em { color: var(--accent); }
+.restaurant-page .restaurant-hero--dining .restaurant-subtitle {
+  font-size: clamp(17px, 1.7vw, 20px);
+  max-width: none;
+}
+.restaurant-page .restaurant-hero--dining .contact-button {
+  margin: 18px 0;
+  border-radius: 999px;
+  padding: 11px 17px;
+  font: inherit;
+  letter-spacing: normal;
+}
+.restaurant-page .restaurant-hero--dining .restaurant-setting svg {
+  width: min(100%, 390px);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* view-box makes 50% 50% the centre of the 400 x 400 SVG, not the group's bounds. */
+.restaurant-page .dining-orbit {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: dining-orbit-clockwise 25s linear infinite;
+}
+@keyframes dining-orbit-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 900px) {
+  .restaurant-page .restaurant-hero--dining { gap: 24px; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .restaurant-page .restaurant-hero--dining { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .restaurant-page .restaurant-hero--dining h1 { font-size: clamp(44px, 12vw, 70px); }
+  .restaurant-page .restaurant-hero--dining .restaurant-setting svg { width: 190px; }
+  .restaurant-page .restaurant-hero--dining::before { background-position: 50% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page .dining-orbit { animation: none; }
+}

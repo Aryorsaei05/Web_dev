@@ -33,30 +33,39 @@
       <a class="maison-brand" href="#restaurant-title"><span class="maison-monogram" aria-hidden="true">ME</span><span>MAISON EMBER<small>A FICTIONAL DINING CONCEPT</small></span></a>
       <nav aria-label="Restaurant sections"><a href="#experience">The concept</a><a href="#connect-title">Connect</a><a href="#booking-title">Enquiries</a></nav>
     </div>
-    <!-- 01 / Cinematic introduction and a working handoff to the full enquiry prototype. -->
-    <section class="restaurant-hero" aria-labelledby="restaurant-title">
-      <div class="maison-intro">
-        <p class="section-kicker">WHERE FIRE MEETS CRAFT</p>
-        <h1 id="restaurant-title">An Evening of<br>Fire <span class="maison-amp">&amp;</span> <em>Flavor.</em></h1>
-        <p class="restaurant-subtitle">Bold ingredients. Thoughtful technique. An unforgettable experience, from ember to savour.</p>
-        <div class="maison-actions"><a class="contact-button maison-primary" href="#booking-title">RESERVE A TABLE</a><a class="contact-button maison-secondary" href="#experience">EXPLORE THE EXPERIENCE</a></div>
-        <p class="restaurant-note">Fictional university concept &middot; Reservation enquiries only</p>
+    <!-- 01 / Dining hero. Save the supplied photograph as restaurant-interior.png
+         in the repository root; CSS blurs only the separate background layer. -->
+    <section class="restaurant-hero restaurant-hero--dining" aria-labelledby="restaurant-title">
+      <div>
+        <p class="section-kicker">01 / A restaurant digital transformation concept</p>
+        <h1 id="restaurant-title">Restaurant<br><em>Concept.</em></h1>
+        <p class="restaurant-subtitle">A more connected dining experience.<br>A warmer welcome, from the first enquiry.</p>
+        <a class="contact-button" href="#booking-title">Make an enquiry <span aria-hidden="true">&darr;</span></a>
       </div>
-      <aside class="maison-reservation" aria-labelledby="quick-title">
-        <p class="section-kicker">YOUR EVENING STARTS HERE</p>
-        <h2 id="quick-title">A seat at <em>the table.</em></h2>
-        <p>Choose your preferences, then continue to the full enquiry form.</p>
-        <form id="quick-enquiry" class="booking-form" aria-describedby="quick-help">
-          <div class="booking-field"><label for="quick-date">Preferred booking date</label><input id="quick-date" name="date" type="date"></div>
-          <div class="restaurant-fields">
-            <div class="booking-field"><label for="quick-time">Preferred booking time</label><input id="quick-time" name="time" type="time"></div>
-            <div class="booking-field"><label for="quick-guests">Number of guests</label><input id="quick-guests" name="guests" type="number" min="1" step="1" inputmode="numeric"></div>
-          </div>
-          <button class="contact-button maison-primary" type="submit">PREPARE BOOKING ENQUIRY</button>
-        </form>
-        <p class="restaurant-note" id="quick-help">This step copies your preferences into the enquiry below. It does not reserve a table or send a message.</p>
-        <noscript><p><a href="#booking-title">Continue to the full enquiry form</a>. Copy your preferences manually when JavaScript is unavailable.</p></noscript>
-      </aside>
+      <!-- Only the ornament group rotates. Plate and cutlery are separate stationary groups. -->
+      <div class="restaurant-setting" aria-hidden="true">
+        <svg viewBox="0 0 400 400" focusable="false">
+          <g class="dining-orbit">
+            <circle cx="200" cy="200" r="150" stroke-dasharray="1 9" opacity=".55"/>
+            <path d="M200 50a150 150 0 0 1 32 3.5M330 275a150 150 0 0 1-20 27"/>
+            <path d="m200 44 3 6-3 6-3-6zM51 200h7m284 0h7"/>
+            <circle cx="94" cy="306" r="2.5"/>
+          </g>
+          <g class="dining-plate">
+            <circle cx="200" cy="200" r="106"/>
+            <circle cx="200" cy="200" r="95" opacity=".6"/>
+            <circle cx="200" cy="200" r="78" opacity=".22"/>
+          </g>
+          <g class="dining-cutlery">
+            <!-- Four slender tines flow into a tapered neck and rounded handle. -->
+            <path d="M50 109v40c0 13 5 21 13 24v27l-3 89q0 7 5 7t5-7l-3-89v-27c8-3 13-11 13-24v-40M60 109v39M70 109v39"/>
+            <path d="M55 157q10 7 20 0" opacity=".5"/>
+            <!-- A curved blade and fine bolster meet a gently tapered handle. -->
+            <path d="M344 107c-16 14-25 43-25 70v23q0 5 5 5h14l-3 84q0 7 5 7t5-7l-1-182zM338 205h6M340 216v67"/>
+          </g>
+        </svg>
+        <p>A thoughtful first impression.</p>
+      </div>
     </section>
 
     <!-- 02 / Business context: assessment scenario, not a claim of client work. -->
