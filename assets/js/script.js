@@ -1,98 +1,84 @@
-// Allow one skill description to stay open when activated by click or keyboard.
-document.querySelectorAll('.skill-trigger').forEach((trigger) => {
-  trigger.addEventListener('click', () => {
-    const row = trigger.closest('.skill-row');
-    const willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+/*
+ * script.js - shared page behaviour (loaded by index.html, showcase.html and skills.html).
+ *   1. Skills orbit (skills.html): enhances the always-visible skill evidence cards.
+ *   2. Image lightbox (showcase.html, skills.html): native <dialog> viewer for a[data-lightbox].
+ * Each block looks for its own elements first, so it does nothing on other pages.
+ */
 
-    document.querySelectorAll('.skill-trigger[aria-expanded="true"]').forEach((openTrigger) => {
-      openTrigger.setAttribute('aria-expanded', 'false');
-      openTrigger.closest('.skill-row').classList.remove('is-open');
-    });
-
-    if (willOpen) {
-      trigger.setAttribute('aria-expanded', 'true');
-      row.classList.add('is-open');
-    }
-  });
-});
-
-// Preview with pointer/focus; clicking pins a skill until toggled or cleared.
+/*
+ * 1. Skills orbit
+ * The evidence cards (.skills-evidence__item) hold the only copy of each skill's text, so the
+ * page is fully readable without JavaScript. On wide screens the orbit buttons preview a card in
+ * the centre panel. A skill is "active" from one of three states, in priority order:
+ *   - hovered:  a mouse or pen is over its button (temporary preview);
+ *   - focused:  keyboard focus (:focus-visible) is on its button (temporary preview);
+ *   - selected: its button was pressed (aria-pressed="true"); this stays until the button is
+ *               pressed again or Escape is used, and its evidence card is highlighted.
+ * The panel is deliberately not a live region and its heading is never rewritten, so hovering
+ * causes no screen reader announcements; the pressed state is conveyed by aria-pressed.
+ */
 document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
   const controls = [...orbit.querySelectorAll('.skills-orbit__control')];
   const network = orbit.querySelector('.skills-network');
   const networkPaths = [...orbit.querySelectorAll('.skills-network__path')];
-  const title = orbit.querySelector('.skills-orbit__title');
-  const detail = orbit.querySelector('.skills-orbit__detail');
-  const source = orbit.querySelector('.skills-orbit__source');
   const panel = orbit.querySelector('.skills-orbit__centre');
   const content = orbit.querySelector('.skills-orbit__content');
+  const preview = orbit.querySelector('.skills-orbit__preview');
   const instruction = orbit.querySelector('.skills-orbit__instruction');
+  if (!controls.length || !panel || !content || !preview) return;
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // Each button's evidence card, matched by data-skill="x" -> id="skill-x".
+  const cardFor = (control) => document.getElementById(`skill-${control.dataset.skill}`);
+  const textOf = (parent, selector) => {
+    const element = parent ? parent.querySelector(selector) : null;
+    return element ? element.textContent : '';
+  };
   let fade = null;
   let ghost = null;
-  const defaultTitle = title.textContent;
-  const defaultDetail = detail.textContent;
+  let shown = null;
   let selected = null;
   let hovered = null;
   let focused = null;
 
-  // Reuse the same evidence for native phone disclosures and the larger orbit.
-  const accordion = document.createElement('div');
-  accordion.className = 'skills-accordion';
-  const intro = document.createElement('p');
-  intro.className = 'skills-accordion__intro';
-  intro.textContent = `${defaultDetail} Select a skill to explore its experience.`;
-  accordion.append(intro);
-  controls.forEach((control) => {
-    const disclosure = document.createElement('details');
-    disclosure.className = 'skills-accordion__item';
-    disclosure.name = 'phone-skills';
-    const summary = document.createElement('summary');
-    const number = document.createElement('span');
-    number.className = 'skills-accordion__number';
-    number.setAttribute('aria-hidden', 'true');
-    number.textContent = control.querySelector('.skills-orbit__number').textContent;
-    const name = document.createElement('span');
-    name.textContent = control.querySelector('.skills-orbit__name').textContent;
-    summary.append(number, name);
-    const evidence = document.createElement('div');
-    evidence.className = 'skills-accordion__evidence';
-    const attribution = document.createElement('p');
-    attribution.className = 'skills-accordion__source';
-    attribution.textContent = document.getElementById(control.dataset.source).textContent;
-    const description = document.createElement('p');
-    description.textContent = document.getElementById(control.getAttribute('aria-describedby')).textContent;
-    evidence.append(attribution, description);
-    disclosure.append(summary, evidence);
-    // Support browsers that do not yet group details using the name attribute.
-    disclosure.addEventListener('toggle', () => {
-      if (!disclosure.open) return;
-      accordion.querySelectorAll('details[open]').forEach((other) => {
-        if (other !== disclosure) other.open = false;
-      });
-    });
-    accordion.append(disclosure);
-  });
-  orbit.append(accordion);
-  orbit.classList.add('has-phone-accordion');
+  // The instruction only makes sense once the buttons actually work.
+  if (instruction) instruction.hidden = false;
 
+  // Copy one skill's name, source and description (as plain text) into the preview.
+  const fillPreview = (control) => {
+    const card = cardFor(control);
+    const parts = [
+      ['skills-orbit__preview-name', textOf(control, '.skills-orbit__name')],
+      ['skills-orbit__preview-source', textOf(card, '.skills-evidence__source')],
+      ['skills-orbit__preview-detail', textOf(card, '.skills-evidence__description')],
+    ];
+    preview.replaceChildren(...parts.map(([className, text]) => {
+      const paragraph = document.createElement('p');
+      paragraph.className = className;
+      paragraph.textContent = text;
+      return paragraph;
+    }));
+  };
+
+  // Each SVG ray is drawn at a fixed angle; remember it so it can be rotated onto its button.
   const networkGeometry = networkPaths.map((path) => {
     const point = path.querySelector('circle');
     return {
       path,
-      baseAngle: Math.atan2(Number(point.getAttribute('cy')) - 100, Number(point.getAttribute('cx')) - 100),
+      baseAngle: point
+        ? Math.atan2(Number(point.getAttribute('cy')) - 100, Number(point.getAttribute('cx')) - 100)
+        : 0,
     };
   });
   let alignmentFrame = null;
 
+  // Rotate every ray so it points at the centre of its button, whatever the stage size.
   const alignNetwork = () => {
     alignmentFrame = null;
     if (!network || !network.getClientRects().length || document.hidden) return;
     const matrix = network.getScreenCTM();
     if (!matrix) return;
     const inverse = matrix.inverse();
-    // Align every fixed ray to its button centre, independent of galaxy rotation.
-    // Hover enlargement is centred, so it cannot change the connection direction.
     networkGeometry.forEach(({ path, baseAngle }) => {
       const control = controls.find((button) => button.dataset.skill === path.dataset.skill);
       if (!control) return;
@@ -103,67 +89,58 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
       path.setAttribute('transform', `rotate(${(angle - baseAngle) * 180 / Math.PI} 100 100)`);
     });
   };
+  // Batch alignment requests into a single update per animation frame.
   const scheduleAlignment = () => {
     if (alignmentFrame !== null) cancelAnimationFrame(alignmentFrame);
-    alignmentFrame = null;
     alignmentFrame = requestAnimationFrame(alignNetwork);
   };
-  // These events also cover switching between the mobile grid and desktop orbit.
+  // Resizing also covers the stage reappearing when the window widens past 1100px.
   window.addEventListener('resize', scheduleAlignment, { passive: true });
-  reducedMotion.addEventListener('change', scheduleAlignment);
   document.addEventListener('visibilitychange', scheduleAlignment);
   scheduleAlignment();
   if (network && 'ResizeObserver' in window) {
     const observer = new ResizeObserver(scheduleAlignment);
-    observer.observe(orbit.querySelector('.skills-orbit__stage'));
+    observer.observe(orbit.querySelector('.skills-orbit__stage') || network);
     observer.observe(network);
   }
 
+  // Apply the hovered/focused/selected state to the buttons, rays, panel and cards.
   const render = () => {
     const active = hovered || focused || selected;
-    orbit.classList.toggle('is-interacting', Boolean(active));
-    // Share the panel's active skill; the network has no independent selection state.
     if (network) network.classList.toggle('has-active', Boolean(active));
     networkPaths.forEach((path) => {
-      const isActive = Boolean(active && path.dataset.skill === active.dataset.skill);
-      path.classList.toggle('is-active', isActive);
+      path.classList.toggle('is-active', Boolean(active && path.dataset.skill === active.dataset.skill));
     });
-    scheduleAlignment();
     controls.forEach((control) => {
       control.setAttribute('aria-pressed', String(control === selected));
       control.classList.toggle('is-previewed', control === active);
+      const card = cardFor(control);
+      if (card) card.classList.toggle('is-highlighted', control === selected);
     });
-    const nextTitle = active ? active.querySelector('.skills-orbit__name').textContent : defaultTitle;
-    const nextDetail = active ? document.getElementById(active.getAttribute('aria-describedby')).textContent : defaultDetail;
-    const nextSource = active ? document.getElementById(active.dataset.source).textContent : '';
-    const changed = title.textContent !== nextTitle || detail.textContent !== nextDetail;
-    // Overlap the outgoing and incoming text inside a fixed panel for a true crossfade.
-    if (changed) {
-      if (fade) fade.cancel();
-      if (ghost) ghost.remove();
-      ghost = null;
-      if (!reducedMotion.matches && content.animate) {
-        ghost = content.cloneNode(true);
-        ghost.classList.add('skills-orbit__ghost');
-        ghost.setAttribute('aria-hidden', 'true');
-        ghost.querySelectorAll('[id]').forEach((element) => element.removeAttribute('id'));
-        panel.prepend(ghost);
-        const outgoing = ghost;
-        outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: 'ease' }).onfinish = () => outgoing.remove();
-        fade = content.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease' });
-      }
-      content.scrollTop = 0;
+    if (active === shown) return;
+
+    // Crossfade: an aria-hidden copy of the old panel fades out over the new one.
+    if (fade) fade.cancel();
+    if (ghost) ghost.remove();
+    ghost = null;
+    if (!reducedMotion.matches && content.animate) {
+      ghost = content.cloneNode(true);
+      ghost.classList.add('skills-orbit__ghost');
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.querySelectorAll('[id]').forEach((element) => element.removeAttribute('id'));
+      panel.prepend(ghost);
+      const outgoing = ghost;
+      outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: 'ease' }).onfinish = () => outgoing.remove();
+      fade = content.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease' });
     }
-    instruction.hidden = Boolean(active);
-    source.hidden = !active;
-    if (source.textContent !== nextSource) source.textContent = nextSource;
-    // Avoid repeating live-region announcements when the displayed text is unchanged.
-    if (title.textContent !== nextTitle) title.textContent = nextTitle;
-    if (detail.textContent !== nextDetail) detail.textContent = nextDetail;
+    if (active) fillPreview(active);
+    orbit.classList.toggle('has-preview', Boolean(active));
+    content.scrollTop = 0;
+    shown = active;
   };
 
   controls.forEach((control, index) => {
-    // Suppress pointer-induced scrolling; keyboard Tab retains native navigation.
+    // Stop a mouse press from scrolling to the button; keyboard focus behaves normally.
     control.addEventListener('pointerdown', (event) => {
       if (event.button === 0 && event.pointerType === 'mouse') event.preventDefault();
     });
@@ -175,11 +152,13 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
     control.addEventListener('pointerleave', () => { hovered = null; render(); });
     control.addEventListener('focus', () => { focused = control.matches(':focus-visible') ? control : null; render(); });
     control.addEventListener('blur', () => { focused = null; render(); });
+    // Toggle selection; a real mouse click (detail > 0) drops the keyboard focus preview.
     control.addEventListener('click', (event) => {
       if (event.detail > 0) focused = null;
       selected = selected === control ? null : control;
       render();
     });
+    // Arrow keys, Home and End move round the orbit; Escape clears every state.
     control.addEventListener('keydown', (event) => {
       const offsets = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
       if (event.key in offsets || event.key === 'Home' || event.key === 'End') {
@@ -197,8 +176,11 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
   });
 });
 
-// Shared, native modal viewer: only explicitly marked image links opt in.
-// showModal supplies background inertness and keyboard focus containment.
+/*
+ * 2. Image lightbox
+ * Shared, native modal viewer: only explicitly marked image links opt in.
+ * showModal() supplies background inertness and keyboard focus containment.
+ */
 (() => {
   const triggers = [...document.querySelectorAll('a[data-lightbox]')];
   if (!triggers.length) return;
