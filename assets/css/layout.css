@@ -1,5 +1,29 @@
-/* Shared page layout, navigation and footer. */
+/* ==========================================================================
+   layout.css - Shared page frame: header, navigation, main width, footer
+   --------------------------------------------------------------------------
+   Loaded second on every page, after base.css.
 
+   Layout model: the header and footer are centred at up to 1120px and
+   <main> at up to 1200px, each keeping a side gutter (calc(100% - 64px))
+   so content never touches the edge of the screen.
+
+   Breakpoints (shared with components.css and the page stylesheets)
+     <=680px    phone
+     681-900px  tablet
+     <=1099px   compact navigation (menu button added by navigation.js)
+
+   Contents
+     1. Header and brand
+     2. Navigation links
+     3. Main content and footer
+     4. Base breakpoints
+     5. Screen-only responsive and touch refinements
+     6. Mobile menu (progressive enhancement)
+     7. Print
+   ========================================================================== */
+
+/* 1. Header and brand
+   ----------------------------------------------------------------------- */
 .topbar {
   width: min(1120px, calc(100% - 64px));
   min-height: 88px;
@@ -22,6 +46,7 @@
   text-decoration: none;
 }
 
+/* Circular "AR" monogram beside the name. */
 .brand-mark {
   display: grid;
   width: 36px;
@@ -33,6 +58,10 @@
   letter-spacing: -.06em;
 }
 
+/* 2. Navigation links
+   -----------------------------------------------------------------------
+   clamp() lets the gap between links shrink smoothly as the window
+   narrows. The final link (.nav-cta) is drawn as a pill button. */
 nav {
   display: flex;
   align-items: center;
@@ -54,6 +83,8 @@ nav .nav-cta:hover {
   border-color: var(--accent);
 }
 
+/* 3. Main content and footer
+   ----------------------------------------------------------------------- */
 main {
   width: min(1200px, calc(100% - 64px));
   margin: 0 auto;
@@ -73,6 +104,10 @@ footer {
   letter-spacing: .05em;
 }
 
+/* 4. Base breakpoints
+   -----------------------------------------------------------------------
+   Phone: stack the header and footer vertically and narrow the gutters.
+   When JavaScript runs, section 6 turns the links into a menu instead. */
 @media (max-width: 680px) {
   .topbar, main, footer {
     width: min(100% - 36px, 520px);
@@ -107,6 +142,11 @@ footer {
   }
 }
 
+/* 5. Screen-only responsive and touch refinements
+   -----------------------------------------------------------------------
+   min-width: 0 lets flex children shrink below their content width, and
+   44px minimum heights give comfortable touch targets on small and
+   coarse-pointer (touch) screens. */
 @media screen {
   main, .topbar, footer {
     min-width: 0;
@@ -197,6 +237,16 @@ footer {
   }
 }
 
+/* 6. Mobile menu (progressive enhancement)
+   -----------------------------------------------------------------------
+   navigation.js inserts the .menu-toggle button and adds .has-menu to the
+   header. Without JavaScript the button never exists and every link stays
+   visible, so the site remains fully usable.
+
+   At <=1099px the script hides the nav with the hidden attribute and
+   toggles .menu-open on the header. The icon is two lines that first move
+   together and then rotate into an "X"; the transition delays are swapped
+   between the two states so closing plays the same steps in reverse. */
 .menu-toggle {
   display: none;
 }
@@ -289,6 +339,7 @@ footer {
   }
 }
 
+/* 7. Print: always print the full navigation, never the menu button. */
 @media print {
   .menu-toggle {
     display: none;

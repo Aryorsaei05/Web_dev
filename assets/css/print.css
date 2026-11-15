@@ -1,4 +1,28 @@
-/* Showcase A4 print and PDF layout. */
+/* ==========================================================================
+   print.css - Showcase page A4 print / "Save as PDF" layout
+   --------------------------------------------------------------------------
+   Linked from showcase.html with media="print", so the browser applies it
+   only when printing. Every rule is scoped to .showcase-page so it cannot
+   affect any other page.
+
+   Approach
+     - A named @page keeps the site's dark background on A4 paper, and
+       print-color-adjust: exact stops the browser dropping backgrounds.
+     - Sizes switch to print units (pt, mm) for predictable output.
+     - Transforms, shadows and outlines used for screen hover effects are
+       removed, and screen-only elements (grain overlay, lightbox) hidden.
+     - break-inside / break-after avoid splitting cards, figures and
+       headings across pages; the research project starts a new page.
+
+   Contents
+     1. Page box and document
+     2. Header, footer and headings
+     3. Power BI project
+     4. Research project
+   ========================================================================== */
+
+/* 1. Page box and document
+   ----------------------------------------------------------------------- */
 
 @page showcase-report {
   size: A4 portrait;
@@ -33,10 +57,12 @@
     outline: none !important;
   }
 
+  /* Hide decorative and interactive screen-only elements. */
   .showcase-page .grain, .showcase-page .image-lightbox {
     display: none !important;
   }
 
+  /* 2. Header, footer and headings: use the full printable width. */
   .showcase-page main, .showcase-page .topbar, .showcase-page footer {
     width: 100%;
     max-width: none;
@@ -98,6 +124,7 @@
     line-height: 1.15;
   }
 
+  /* Shared spacing and heading sizes for both projects. */
   .showcase-page :is(.powerbi-project, .research-project) {
     margin: 0;
     padding: 5mm 0;
@@ -132,11 +159,13 @@
     font-size: 7.5pt;
   }
 
+  /* Avoid leaving one or two lines of a paragraph alone on a page. */
   .showcase-page p {
     orphans: 3;
     widows: 3;
   }
 
+  /* 3. Power BI project: two-column screenshot gallery and summaries. */
   .showcase-page .powerbi-project__gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4mm;
@@ -224,6 +253,7 @@
     gap: 3mm;
   }
 
+  /* 4. Research project: always begins on a new page. */
   .showcase-page .research-project {
     break-before: page;
   }

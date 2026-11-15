@@ -1,5 +1,23 @@
-/* Design tokens, reset, global defaults and accessibility. */
+/* ==========================================================================
+   base.css - Design tokens, reset, global defaults and accessibility
+   --------------------------------------------------------------------------
+   Loaded first on every page. Defines the custom properties (variables)
+   that all other stylesheets use, so colours and fonts change in one place.
 
+   Contents
+     1. Design tokens
+     2. Reset and element defaults
+     3. Reduced motion
+     4. Accessibility helpers (skip link, anchor offset, current page)
+     5. Screen-only defaults
+   ========================================================================== */
+
+/* 1. Design tokens
+   -----------------------------------------------------------------------
+   A dark "paper" background with light "ink" text and one gold accent.
+   color-scheme: dark asks the browser to draw native controls and
+   scrollbars in dark mode to match. Each font stack ends with system
+   fallbacks in case the Google Fonts request fails. */
 :root {
   color-scheme: dark;
   --paper: #111210;
@@ -12,6 +30,10 @@
   --mono: "DM Mono", Consolas, monospace;
 }
 
+/* 2. Reset and element defaults
+   -----------------------------------------------------------------------
+   border-box sizing makes width include padding and border, which keeps
+   the layout maths in the other files predictable. */
 * {
   box-sizing: border-box;
 }
@@ -41,6 +63,12 @@ a:hover {
   color: var(--accent);
 }
 
+/* 3. Reduced motion
+   -----------------------------------------------------------------------
+   Respects the operating-system "reduce motion" setting on every page.
+   Durations are set to almost zero (not removed) so animation and
+   transition end events still fire for any script that relies on them.
+   !important is deliberate so this preference beats component rules. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -52,7 +80,11 @@ a:hover {
   }
 }
 
-/* Keep keyboard navigation direct on every page. */
+/* 4. Accessibility helpers
+   -----------------------------------------------------------------------
+   The skip link is the first focusable element on each page. It sits just
+   above the viewport and slides into view when it receives keyboard
+   focus, letting keyboard users jump straight to <main>. */
 .skip-link {
   position: absolute;
   z-index: 100;
@@ -69,16 +101,23 @@ a:hover {
   transform: translateY(0);
 }
 
+/* Leave a small gap above any element reached through an in-page #link. */
 [id] {
   scroll-margin-top: 24px;
 }
 
+/* Highlight the navigation link for the current page. Styling the ARIA
+   attribute keeps the visual state and the screen-reader state in sync. */
 .topbar a[aria-current="page"] {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 6px;
 }
 
+/* 5. Screen-only defaults (excluded from print)
+   -----------------------------------------------------------------------
+   Images never overflow their container, and links/buttons get a clear
+   accent outline for keyboard focus (:focus-visible) but not mouse clicks. */
 @media screen {
   img {
     max-width: 100%;

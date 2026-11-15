@@ -1,10 +1,32 @@
-/* Homepage hero, experience and selected work. */
+/* ==========================================================================
+   pages/home.css - Homepage (index.html) only
+   --------------------------------------------------------------------------
+   Loaded after base.css, layout.css and components.css, so rules here may
+   refine shared components (.hero-copy, .page-title, .tags) for the homepage.
+   Most homepage-only refinements are scoped with the .homepage body class.
 
+   Contents
+     1. Cinematic hero (photo banner, name, introduction)
+     2. Hover-enlarged copy blocks
+     3. Profile / experience two-column layout
+     4. Capability preview tags
+     5. Selected work cards (base)
+     6. Base breakpoints: phone (<=680px) and tablet (681-900px)
+     7. Venture Cafe section (photo beside text)
+     8. Selected work cards (homepage refinements and interaction states)
+     9. Screen-only responsive refinements (up to the 1099px menu breakpoint)
+   ========================================================================== */
+
+/* 1. Cinematic hero
+   ----------------------------------------------------------------------- */
 .hero {
   min-height: 0;
   padding: clamp(28px, 5vh, 48px) 0 clamp(36px, 5vh, 54px);
 }
 
+/* The hero is a bordered banner with the photo as a CSS background.
+   isolation: isolate creates a stacking context so the ::before shade can
+   sit at z-index -1 behind the text without slipping behind the page. */
 .hero-cinematic {
   position: relative;
   display: flex;
@@ -18,6 +40,8 @@
   background: #191713 url("../../images/hero-photo.jpg") center 68% / cover no-repeat;
 }
 
+/* Dark gradient shade keeps the text readable on the left while the photo
+   stays visible on the right. Mobile/tablet versions are redefined below. */
 .hero-cinematic::before {
   position: absolute;
   z-index: -1;
@@ -30,43 +54,6 @@
   width: min(58%, 660px);
 }
 
-.profile-frame {
-  position: relative;
-  width: 100%;
-  max-width: 450px;
-  justify-self: end;
-  margin: 0;
-  padding: 8px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #191a17;
-  box-shadow: 0 18px 44px #0005;
-}
-
-.profile-frame img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3.8;
-  object-fit: cover;
-  object-position: 50% 34%;
-  border-radius: 4px;
-  transition: transform .3s ease;
-}
-
-.profile-frame img:hover {
-  transform: scale(1.05);
-}
-
-.profile-frame figcaption {
-  padding: 13px 5px 3px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
 .hero h1 {
   margin: 16px 0 18px;
   font-family: Manrope, var(--sans);
@@ -76,6 +63,8 @@
   line-height: .98;
 }
 
+/* Each word of the name enlarges slightly on hover (inline-block is needed
+   because transforms do not apply to inline boxes). */
 .name-word {
   display: inline-block;
   transition: transform .3s ease;
@@ -85,21 +74,22 @@
   transform: scale(1.05);
 }
 
-.hero-bottom {
-  display: block;
-  min-width: 0;
-}
-
 .hero-intro {
   width: min(100%, 58ch);
   margin: 0;
-  color: #eeece6;
+  color: var(--ink);
   font-size: clamp(17px, 1.5vw, 20px);
   line-height: 1.65;
   text-wrap: pretty;
   text-shadow: 0 1px 18px #0009;
 }
 
+/* 2. Hover-enlarged copy blocks
+   -----------------------------------------------------------------------
+   Paragraphs scale up on hover only for precise pointers (mouse/trackpad)
+   and only when the visitor has not asked for reduced motion. The
+   individual `scale` property is used so it never conflicts with any
+   `transform` applied elsewhere. */
 .homepage :is(.hero-intro, .hero-copy, .contact-copy) {
   transform-origin: top center;
   transition: scale .35s cubic-bezier(.22, 1, .36, 1);
@@ -127,6 +117,11 @@
   }
 }
 
+/* 3. Profile / experience layout
+   -----------------------------------------------------------------------
+   Two columns: heading on the left, text (or photo) on the right. The
+   minmax() minimums stop either column becoming too narrow before the
+   900px breakpoint collapses the grid to one column. */
 .about-layout {
   display: grid;
   grid-template-columns: minmax(280px, .95fr) minmax(300px, 1fr);
@@ -143,16 +138,23 @@
   margin: 5px 0 0;
 }
 
+/* 4. Capability preview: homepage styling of the shared .tags list
+   (components.css) with larger padding and a filled background. */
 .capability-preview {
   margin: 26px 0 20px;
 }
 
-.capability-preview span {
+.capability-preview li {
   padding: 8px 13px;
   color: #d2cfc6;
   background: #191a17;
 }
 
+/* 5. Selected work cards
+   -----------------------------------------------------------------------
+   Each card is a single link containing an image area (.work-card-art)
+   and text (.work-card-copy). Homepage-specific sizing follows in
+   section 8. */
 .work-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -186,75 +188,6 @@
   background: radial-gradient(ellipse at 50% 80%, #49402c 0, #24231e 42%, #191a17 76%);
 }
 
-.work-card-restaurant .work-card-art {
-  background: radial-gradient(ellipse at 50% 55%, #453328 0, #29221d 42%, #191a17 78%);
-}
-
-.art-label {
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  color: #aaa79e;
-  font: 10px var(--mono);
-  letter-spacing: .1em;
-}
-
-.mini-chart {
-  display: flex;
-  width: 54%;
-  height: 94px;
-  align-items: end;
-  gap: 10px;
-  border-bottom: 1px solid #6b6048;
-}
-
-.mini-chart i {
-  flex: 1;
-  height: 35%;
-  background: #8e784b;
-  transition: height .3s ease;
-}
-
-.mini-chart i:nth-child(2) {
-  height: 53%;
-}
-
-.mini-chart i:nth-child(3) {
-  height: 68%;
-  background: #ad925a;
-}
-
-.mini-chart i:nth-child(4) {
-  height: 48%;
-}
-
-.mini-chart i:nth-child(5) {
-  height: 91%;
-  background: var(--accent);
-}
-
-.work-card:hover .mini-chart i {
-  height: 82%;
-}
-
-.mini-plate {
-  width: 118px;
-  aspect-ratio: 1;
-  border: 1px solid #c6a96a;
-  border-radius: 50%;
-  box-shadow: 0 0 0 10px #c6a96a12, 0 0 40px #c6a96a18;
-}
-
-.mini-plate::after {
-  display: block;
-  width: 62%;
-  aspect-ratio: 1;
-  margin: 19%;
-  border: 1px solid #c6a96a77;
-  border-radius: 50%;
-  content: "";
-}
-
 .work-card-copy {
   display: grid;
   gap: 7px;
@@ -278,6 +211,11 @@
   font-size: 12px;
 }
 
+/* 6. Base breakpoints
+   -----------------------------------------------------------------------
+   Phone (<=680px): the hero text moves to the bottom over a vertical
+   shade and all grids become a single column. svh units size the hero to
+   the small mobile viewport so browser toolbars do not crop it. */
 @media (max-width: 680px) {
   .hero {
     min-height: 0;
@@ -329,6 +267,7 @@
   }
 }
 
+/* Tablet (681-900px): narrower hero padding and single-column profile. */
 @media (min-width: 681px) and (max-width: 900px) {
   .hero-cinematic {
     min-height: 560px;
@@ -351,11 +290,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .name-word, .profile-frame img {
+  .name-word {
     transition: none;
   }
 }
 
+/* 7. Venture Cafe section
+   -----------------------------------------------------------------------
+   Re-uses .about-layout, but centres the photo vertically beside the text. */
 .homepage .venture-layout {
   align-items: center;
 }
@@ -391,6 +333,11 @@
   }
 }
 
+/* 8. Selected work cards - homepage refinements
+   -----------------------------------------------------------------------
+   The image area keeps a fixed 16:10 ratio so both cards line up, and the
+   copy uses grid rows so the skills line always sits at the bottom of the
+   card, whatever the description length. */
 .homepage #portfolio .work-card {
   grid-template-rows: auto 1fr;
   transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
@@ -445,6 +392,8 @@
   font: 10px/1.9 var(--mono);
 }
 
+/* Keyboard focus mirrors the hover effect so keyboard users get the same
+   feedback; the lift/zoom is only added when motion is allowed. */
 .homepage #portfolio .work-card:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
@@ -489,6 +438,11 @@
   }
 }
 
+/* 9. Screen-only responsive refinements
+   -----------------------------------------------------------------------
+   Wrapped in `screen` so they never affect printing. min-width: 0 and
+   overflow-wrap stop long words from forcing grid/flex items wider than
+   the viewport on very small screens. */
 @media screen {
   .hero-overlay {
     min-width: 0;
@@ -533,6 +487,7 @@
   }
 }
 
+/* Touch screens have no true hover, so tapped cards should not stay lifted. */
 @media screen and (hover: none) {
   .name-word:hover, .work-card:hover {
     transform: none;
@@ -553,6 +508,8 @@
   }
 }
 
+/* Below 1099px (the same breakpoint as the mobile menu in layout.css and
+   navigation.js) the hero text is centred at the bottom of the photo. */
 @media screen and (max-width: 1099px) {
   .homepage .hero-cinematic {
     align-items: end;

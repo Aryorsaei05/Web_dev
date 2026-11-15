@@ -1,5 +1,26 @@
-/* Shared image dialog and its animations. */
+/* ==========================================================================
+   image-viewer.css - Image lightbox (enlarged screenshot viewer)
+   --------------------------------------------------------------------------
+   Loaded by the Skills and Showcase pages. script.js creates a native
+   <dialog class="image-lightbox"> and opens it with showModal() when a
+   link marked with data-lightbox is activated. A native modal dialog
+   provides Escape-to-close, focus containment and an inert background.
 
+   Contents
+     1. Dialog and backdrop
+     2. Enlarged image
+     3. Close button
+     4. Open animations (only when motion is allowed)
+     5. Small screens
+   ========================================================================== */
+
+/* 1. Dialog and backdrop
+   -----------------------------------------------------------------------
+   The dialog fills the viewport (100dvh follows the visible height on
+   mobile as browser toolbars show or hide; 100% is the fallback for older
+   browsers). The default dialog box styling is removed and the dark
+   overlay comes from ::backdrop instead. overscroll-behavior stops scroll
+   gestures leaking through to the page behind. */
 .image-lightbox {
   position: fixed;
   inset: 0;
@@ -27,6 +48,7 @@
   background: rgb(10 11 9 / 92%);
 }
 
+/* 2. Enlarged image: scaled to fit inside the dialog, never cropped. */
 .image-lightbox__image {
   display: block;
   width: auto;
@@ -37,6 +59,7 @@
   box-shadow: 0 12px 48px rgb(0 0 0 / 35%);
 }
 
+/* 3. Close button: a 44px circular target in the top-right corner. */
 .image-lightbox__close {
   position: absolute;
   top: 10px;
@@ -64,6 +87,11 @@
   outline-offset: 3px;
 }
 
+/* 4. Open animations
+   -----------------------------------------------------------------------
+   The backdrop fades in and the image fades in while growing slightly.
+   They are applied only inside prefers-reduced-motion: no-preference, so
+   visitors who ask for reduced motion see the image appear instantly. */
 @keyframes image-lightbox-fade {
   from {
     opacity: 0;
@@ -96,6 +124,7 @@
   }
 }
 
+/* 5. Small screens: thinner side padding so the image can be larger. */
 @media (max-width: 600px) {
   .image-lightbox {
     padding: 56px 10px 16px;
