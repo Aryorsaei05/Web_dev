@@ -157,7 +157,7 @@
   .restaurant-page .maison-actions { display: grid; }
   .restaurant-page .maison-reservation .restaurant-fields { grid-template-columns: 1fr; }
 }
-/* Dining hero only. The supplied photograph is expected at /restaurant-interior.png. */
+/* Dining hero only: supplied restaurant interior photograph. */
 .restaurant-page .restaurant-hero--dining {
   position: relative;
   isolation: isolate;
@@ -175,7 +175,8 @@
   z-index: -2;
   inset: -16px;
   background: url('../../../restaurant-interior.png') center 48% / cover no-repeat;
-  filter: blur(5px);
+  /* A light softening keeps the restaurant details visible behind the copy. */
+  filter: blur(1.5px);
   pointer-events: none;
 }
 .restaurant-page .restaurant-hero--dining::after {
@@ -202,7 +203,7 @@
   font: inherit;
   letter-spacing: normal;
 }
-.restaurant-page .restaurant-hero--dining .restaurant-setting svg {
+.restaurant-page .restaurant-challenge .restaurant-setting svg {
   width: min(100%, 390px);
   stroke-width: 1.25;
   stroke-linecap: round;
@@ -224,9 +225,28 @@
 @media (max-width: 680px) {
   .restaurant-page .restaurant-hero--dining { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .restaurant-page .restaurant-hero--dining h1 { font-size: clamp(44px, 12vw, 70px); }
-  .restaurant-page .restaurant-hero--dining .restaurant-setting svg { width: 190px; }
+  .restaurant-page .restaurant-challenge .restaurant-setting svg { width: 190px; }
   .restaurant-page .restaurant-hero--dining::before { background-position: 50% center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .restaurant-page .dining-orbit { animation: none; }
+}
+
+/* The hero keeps its left-aligned copy; the photograph fills the open right side. */
+.restaurant-page .restaurant-hero--dining { min-height: 560px; }
+/* The dining mark balances the space below the business-context heading. */
+.restaurant-page .restaurant-challenge .restaurant-setting {
+  width: min(100%, 290px);
+  margin-top: 24px;
+}
+.restaurant-page .restaurant-challenge .restaurant-setting p { font-size: 14px; }
+@media (max-width: 680px) {
+  .restaurant-page .restaurant-hero--dining { min-height: 480px; }
+  .restaurant-page .restaurant-challenge .restaurant-setting { width: 210px; margin: 18px auto 28px; }
+}
+/* Centre the complete business-context copy against the left composition on two-column layouts. */
+@media (min-width: 681px) {
+  .restaurant-page .restaurant-challenge > .restaurant-copy {
+    align-self: center;
+  }
 }
