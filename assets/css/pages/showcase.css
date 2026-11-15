@@ -1,19 +1,218 @@
-/* Shared showcase page content. */
+/* Showcase page: project 03 (restaurant prototype) and the reference list.
+   Projects 01 and 02 are styled in showcase-powerbi.css and showcase-research.css. */
 
-.showcase-restaurant {
-  padding: 36px 0;
+/* ---------- Project 03 and references: shared section frame ---------- */
+
+/* 18px side padding matches the inset used by projects 01 and 02. */
+.showcase-restaurant, .portfolio-references {
+  padding: 44px 18px;
   border-top: 1px solid var(--line);
 }
 
+/* ---------- Project 03 heading (same pattern as projects 01 and 02) ---------- */
+
+.showcase-restaurant__heading {
+  margin-bottom: 28px;
+}
+
 .showcase-restaurant h2 {
-  margin: 14px 0;
-  font: 500 clamp(24px, 3vw, 34px)/1.2 Manrope, var(--sans);
+  margin: 14px 0 18px;
+  font: 500 clamp(27px, 3.5vw, 42px)/1.2 Manrope, var(--sans);
   letter-spacing: -.04em;
 }
 
 .showcase-restaurant p {
-  max-width: 60ch;
+  margin: 0;
   color: var(--muted);
+}
+
+.showcase-restaurant .showcase-restaurant__subtitle {
+  color: var(--accent);
+  font: 11px/1.8 var(--mono);
+}
+
+/* ---------- Icon tile (same look as the project 01/02 icons) ---------- */
+
+.showcase-restaurant__icon {
+  display: inline-grid;
+  flex: 0 0 52px;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgb(198 169 106 / 28%);
+  border-radius: 12px;
+  background: radial-gradient(circle at 40% 30%, rgb(198 169 106 / 5%), transparent 75%), #181914;
+  color: #b39a65;
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.showcase-restaurant__icon svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Wireframe figure and feature cards ---------- */
+
+.showcase-restaurant__visual {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.showcase-restaurant__wireframe {
+  min-width: 0;
+  margin: 0;
+}
+
+.showcase-restaurant__frame {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #171814;
+}
+
+.showcase-restaurant__frame svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.showcase-restaurant__wireframe figcaption {
+  margin-top: 20px;
+  color: var(--muted);
+  font: 10px/1.7 var(--mono);
+  text-align: center;
+}
+
+/* Wireframe parts (SVG classes). */
+.wf-frame {
+  fill: #141511;
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.wf-rule {
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.wf-dot {
+  fill: #34332e;
+}
+
+.wf-block {
+  fill: #1c1d18;
+  stroke: rgb(198 169 106 / 28%);
+  stroke-width: 1.25;
+}
+
+.wf-block--accent {
+  stroke: rgb(198 169 106 / 60%);
+}
+
+.wf-number {
+  fill: var(--accent);
+  font: 500 13px var(--mono);
+}
+
+.wf-label {
+  fill: var(--ink);
+  font: 500 16px Manrope, var(--sans);
+}
+
+.wf-line {
+  fill: none;
+  stroke: #4a4840;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.wf-field {
+  fill: #141511;
+  stroke: #4a4840;
+  stroke-width: 1;
+}
+
+.wf-chip {
+  fill: rgb(198 169 106 / 22%);
+}
+
+/* Feature cards: icon on the left, value and label on the right. */
+.showcase-restaurant__features {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.showcase-restaurant__features li {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 4px 18px;
+  align-items: center;
+  min-width: 0;
+  padding: 20px 22px;
+  border: 1px solid rgb(198 169 106 / 20%);
+  border-radius: 6px;
+  background: radial-gradient(ellipse at 22% 18%, rgb(198 169 106 / 5%), transparent 72%), linear-gradient(145deg, #1c1d18, #151612);
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .35s ease;
+}
+
+.showcase-restaurant__features .showcase-restaurant__icon {
+  grid-row: 1 / span 2;
+}
+
+.showcase-restaurant__feature-value {
+  color: var(--accent);
+  font: 500 clamp(24px, 2.6vw, 32px)/1.15 Manrope, var(--sans);
+  letter-spacing: -.03em;
+}
+
+.showcase-restaurant__feature-label {
+  color: #c9c6bc;
+  font: 12px/1.6 var(--sans);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Project notes (four text sections) ---------- */
+
+.project-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 40px;
+}
+
+.project-notes section {
+  min-width: 0;
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Heading label matches the project 01 section headings. */
+.project-notes h3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 18px;
+  color: var(--accent);
+  font: 11px/1.5 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.showcase-restaurant .showcase-restaurant__cta {
+  margin-top: 36px;
 }
 
 .showcase-restaurant a:focus-visible {
@@ -21,21 +220,37 @@
   outline-offset: 5px;
 }
 
-.showcase-restaurant, .portfolio-references {
-  padding: 44px 18px;
-  border-top: 1px solid var(--line);
+/* ---------- Project 03 hover feedback (precise pointers only) ---------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .showcase-restaurant :is(.showcase-restaurant__features li, .project-notes section):hover .showcase-restaurant__icon {
+    color: #d9be83;
+    border-color: rgb(198 169 106 / 62%);
+    box-shadow: 0 0 20px rgb(198 169 106 / 12%);
+  }
+
+  .showcase-restaurant__features li:hover {
+    border-color: rgb(198 169 106 / 58%);
+  }
 }
 
-.project-notes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px 40px;
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .showcase-restaurant :is(.showcase-restaurant__features li, .project-notes section):hover {
+    transform: translateY(-4px);
+  }
+
+  .showcase-restaurant :is(.showcase-restaurant__features li, .project-notes section):hover .showcase-restaurant__icon {
+    transform: scale(1.1);
+  }
 }
 
-.project-notes h3 {
-  color: var(--accent);
-  font-size: 18px;
+@media (prefers-reduced-motion: reduce) {
+  .showcase-restaurant :is(.showcase-restaurant__icon, .showcase-restaurant__features li, .project-notes section) {
+    transition: none;
+  }
 }
+
+/* ---------- References ---------- */
 
 .reference-list {
   display: grid;
@@ -46,12 +261,41 @@
   overflow-wrap: anywhere;
 }
 
+/* ---------- Responsive ---------- */
+
+/* Tablet: wireframe above, feature cards in two columns below. */
+@media (max-width: 900px) {
+  .showcase-restaurant__visual {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .showcase-restaurant__features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phone: drop the side inset (as projects 01/02 do) and stack everything. */
 @media (max-width: 680px) {
   .project-notes {
     grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
   }
 
   .showcase-restaurant, .portfolio-references {
     padding-inline: 0;
+  }
+
+  .showcase-restaurant__frame {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .showcase-restaurant__features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .showcase-restaurant__features li {
+    padding: 18px 16px;
   }
 }

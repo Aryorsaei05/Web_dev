@@ -1,4 +1,7 @@
-/* Research project content and interactions. */
+/* Showcase project 02: charity sector research (heading, metric cards,
+   worksheet list, findings, audience segments, closing pair) and its hover effects. */
+
+/* ---------- Section frame and typography ---------- */
 
 .research-project {
   padding: 44px 18px;
@@ -43,6 +46,14 @@
   max-width: 95ch;
 }
 
+/* Elements that scale on hover grow from their left edge. */
+.research-project :is(h2, .research-project__closing section) {
+  transform-origin: left center;
+  transition: transform .3s ease, color .3s ease;
+}
+
+/* ---------- Metric cards (project scope) ---------- */
+
 .research-project__metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -67,6 +78,7 @@
   transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .35s ease-out;
 }
 
+/* Soft glow layer, brightened on hover. */
 .research-project__metrics > div::before {
   content: "";
   position: absolute;
@@ -79,6 +91,7 @@
   transition: opacity .35s ease-out;
 }
 
+/* Value (dd) shown above its label (dt). */
 .research-project__metrics dt {
   grid-row: 2;
   min-height: 3.4em;
@@ -97,6 +110,8 @@
   transition: transform .35s cubic-bezier(.22, 1, .36, 1);
 }
 
+/* ---------- Lists: worksheets, findings, segments ---------- */
+
 .research-project__section {
   margin-top: 40px;
 }
@@ -110,232 +125,17 @@
   list-style: none;
 }
 
-.research-project__worksheets li {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  gap: 14px;
-}
-
-.research-project__number, .research-project__segments li > span {
-  color: var(--accent);
-  font: 11px/1.8 var(--mono);
-}
-
-.research-project__findings {
-  padding: 26px 22px;
-  border-left: 1px solid rgb(198 169 106 / 40%);
-  background: linear-gradient(90deg, rgb(198 169 106 / 4%), transparent);
-}
-
-.research-project .research-project__attribution {
-  margin-bottom: 28px;
-  font-size: 13px;
-}
-
-.research-project__finding-list {
-  gap: 26px 40px;
-}
-
-.research-project__sources {
-  margin-top: 28px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-
-.research-project__sources h4 {
-  color: var(--accent);
-  font: 10px/1.7 var(--mono);
-}
-
-.research-project__sources ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: var(--muted);
-  font: 11px/1.8 var(--mono);
-}
-
-.research-project .research-project__intro {
-  margin-bottom: 24px;
-  max-width: 85ch;
-}
-
-.research-project__segments {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px 30px;
-}
-
-.research-project__segments li {
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-}
-
-.research-project__segments h4 {
-  margin: 8px 0 0;
-  font-size: 14px;
-}
-
-.research-project__closing {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.research-project :is(h2, .research-project__subtitle, .research-project__overview, .research-project__attribution, .research-project__intro, .research-project__worksheets li, .research-project__finding-list li, .research-project__segments li, .research-project__closing section) {
-  transform-origin: left center;
-  transition: transform .3s ease, color .3s ease;
-}
-
-.research-project [tabindex]:focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: 6px;
-  border-radius: 2px;
-}
-
-.research-project :is(.research-project__worksheets li, .research-project__finding-list li, .research-project__segments li):focus-visible h4, .research-project__metrics div:focus-visible dd {
-  color: var(--accent);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .research-project :is(.research-project__worksheets li, .research-project__finding-list li, .research-project__segments li):hover h4, .research-project__metrics div:hover dd {
-    color: var(--accent);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .research-project h2:focus-visible {
-    transform: scale(1.03);
-  }
-
-  .research-project :is(p[tabindex], li[tabindex], .research-project__closing section):focus-visible {
-    transform: scale(1.02);
-  }
-
-  .research-project__metrics div:focus-visible dd {
-    transform: scale(1.05);
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .research-project h2:hover {
-    transform: scale(1.03);
-  }
-
-  .research-project :is(p[tabindex], li[tabindex], .research-project__closing section):hover {
-    transform: scale(1.02);
-  }
-
-  .research-project__metrics div:hover dd {
-    transform: scale(1.05);
-  }
-}
-
-@media (max-width: 900px) {
-  .research-project__metrics, .research-project__segments {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 760px) {
-  .research-project__worksheets, .research-project__finding-list, .research-project__closing {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
-
-  .research-project__findings {
-    padding: 22px 14px;
-  }
-}
-
-@media (max-width: 460px) {
-  .research-project__segments {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .research-project__metrics {
-    gap: 22px 18px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .research-project [tabindex], .research-project__metrics dd {
-    transition: none;
-  }
-}
-
-.research-project__metrics > div:focus-visible {
-  border-color: rgb(198 169 106 / 58%);
-  border-radius: 6px;
-}
-
-.research-project__metrics > div:focus-visible::before {
-  opacity: 1;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .research-project__metrics > div:hover {
-    border-color: rgb(198 169 106 / 58%);
-  }
-
-  .research-project__metrics > div:hover::before {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .research-project__metrics > div:focus-visible {
-    transform: translateY(-4px) scale(1.04);
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .research-project__metrics > div:hover {
-    transform: translateY(-4px) scale(1.04);
-  }
-}
-
-@media (max-width: 600px) {
-  .research-project__metrics > div {
-    padding: 24px 18px;
-    gap: 16px;
-  }
-
-  .research-project__metrics dd {
-    font-size: 52px;
-  }
-}
-
-@media (max-width: 380px) {
-  .research-project__metrics {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
-  }
-
-  .research-project__metrics dt {
-    min-height: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .research-project__metrics > div, .research-project__metrics > div::before, .research-project__metrics dd {
-    transition: none;
-  }
-}
-
-.research-project .research-project__worksheets {
+/* Worksheets: icon + number rail beside each description. */
+.research-project__worksheets {
   gap: 36px 40px;
 }
 
-.research-project .research-project__worksheets > li {
+.research-project__worksheets > li {
+  display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
   gap: 18px;
   padding: 6px 0 10px;
+  transform-origin: left center;
   transition: transform .35s cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -373,13 +173,96 @@
   transition: color .35s ease;
 }
 
-.research-project .research-project__worksheets > li:focus-visible .research-worksheet__icon {
-  color: #d9be83;
-  border-color: rgb(198 169 106 / 62%);
-  box-shadow: 0 0 20px rgb(198 169 106 / 12%);
+.research-project__number, .research-project__segments li > span {
+  color: var(--accent);
+  font: 11px/1.8 var(--mono);
 }
 
+/* Findings panel with a gold left rule. */
+.research-project__findings {
+  padding: 26px 22px;
+  border-left: 1px solid rgb(198 169 106 / 40%);
+  background: linear-gradient(90deg, rgb(198 169 106 / 4%), transparent);
+}
+
+.research-project .research-project__attribution {
+  margin-bottom: 28px;
+  font-size: 13px;
+}
+
+.research-project__finding-list {
+  gap: 26px 40px;
+}
+
+.research-project__sources {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.research-project__sources h4 {
+  color: var(--accent);
+  font: 10px/1.7 var(--mono);
+}
+
+.research-project__sources ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font: 11px/1.8 var(--mono);
+}
+
+/* Audience segments: three columns of short labelled items. */
+.research-project .research-project__intro {
+  margin-bottom: 24px;
+  max-width: 85ch;
+}
+
+.research-project__segments {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 30px;
+}
+
+.research-project__segments li {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.research-project__segments h4 {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+/* ---------- Closing pair: workflow + outcome ---------- */
+
+.research-project__closing {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Hover effects (precise pointers only) ---------- */
+
 @media (hover: hover) and (pointer: fine) {
+  .research-project :is(.research-project__worksheets li, .research-project__finding-list li, .research-project__segments li):hover h4 {
+    color: var(--accent);
+  }
+
+  .research-project__metrics > div:hover {
+    border-color: rgb(198 169 106 / 58%);
+  }
+
+  .research-project__metrics > div:hover::before {
+    opacity: 1;
+  }
+
   .research-project .research-project__worksheets > li:hover .research-worksheet__icon {
     color: #d9be83;
     border-color: rgb(198 169 106 / 62%);
@@ -387,17 +270,24 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .research-project .research-project__worksheets > li:focus-visible {
-    transform: translateY(-4px);
-  }
-
-  .research-project .research-project__worksheets > li:focus-visible .research-worksheet__icon {
-    transform: scale(1.1);
-  }
-}
-
+/* Motion: hover lift and zoom, skipped for reduced-motion users. */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .research-project h2:hover {
+    transform: scale(1.03);
+  }
+
+  .research-project .research-project__closing section:hover {
+    transform: scale(1.02);
+  }
+
+  .research-project__metrics div:hover dd {
+    transform: scale(1.05);
+  }
+
+  .research-project__metrics > div:hover {
+    transform: translateY(-4px) scale(1.04);
+  }
+
   .research-project .research-project__worksheets > li:hover {
     transform: translateY(-4px);
   }
@@ -407,16 +297,19 @@
   }
 }
 
-@media (max-width: 760px) {
-  .research-project .research-project__worksheets {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
+@media (prefers-reduced-motion: reduce) {
+  .research-project :is(h2, .research-project__closing section, .research-project__worksheets > li, .research-worksheet__icon, .research-project__worksheets h4),
+  .research-project__metrics > div, .research-project__metrics > div::before, .research-project__metrics dd {
+    transition: none;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .research-project .research-project__worksheets > li, .research-project__worksheets .research-worksheet__icon, .research-project__worksheets h4 {
-    transition: none;
+/* ---------- Responsive ---------- */
+
+/* Tablet: metric cards and segments in two columns. */
+@media (max-width: 900px) {
+  .research-project__metrics, .research-project__segments {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -426,6 +319,19 @@
   }
 }
 
+/* Small tablet: lists and closing pair stack. */
+@media (max-width: 760px) {
+  .research-project__worksheets, .research-project__finding-list, .research-project__closing {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .research-project__findings {
+    padding: 22px 14px;
+  }
+}
+
+/* Phone: remove the side inset and tighten the metric cards. */
 @media screen and (max-width: 680px) {
   .research-project {
     padding-inline: 0;
@@ -441,5 +347,28 @@
 
   .research-project__metrics dd {
     font-size: 46px;
+  }
+}
+
+@media (max-width: 600px) {
+  .research-project__metrics > div {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  .research-project__segments {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Narrowest phones: one metric card per row. */
+@media (max-width: 380px) {
+  .research-project__metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .research-project__metrics dt {
+    min-height: 0;
   }
 }
