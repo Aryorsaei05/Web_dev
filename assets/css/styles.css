@@ -93,7 +93,7 @@ footer {
 
 /* Page content */
 .hero { min-height: 0; padding: clamp(28px, 5vh, 48px) 0 clamp(36px, 5vh, 54px); }
-.hero-cinematic { position: relative; display: flex; min-height: clamp(530px, 74vh, 680px); align-items: center; overflow: hidden; padding: clamp(36px, 6vw, 76px); border: 1px solid #c6a96a44; border-radius: 8px; isolation: isolate; background: #191713 url("hero-photo.jpg") center 68% / cover no-repeat; }
+.hero-cinematic { position: relative; display: flex; min-height: clamp(530px, 74vh, 680px); align-items: center; overflow: hidden; padding: clamp(36px, 6vw, 76px); border: 1px solid #c6a96a44; border-radius: 8px; isolation: isolate; background: #191713 url("../images/hero-photo.jpg") center 68% / cover no-repeat; }
 .hero-cinematic::before { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgb(12 12 10 / 82%) 0%, rgb(12 12 10 / 68%) 36%, rgb(12 12 10 / 28%) 64%, rgb(12 12 10 / 4%) 100%), linear-gradient(0deg, rgb(12 12 10 / 24%), transparent 42%); content: ""; }
 .hero-overlay { width: min(58%, 660px); }
 .text-link { display: inline-block; color: var(--accent); text-decoration: none; border-bottom: 1px solid #c6a96a66; padding-bottom: 3px; }
