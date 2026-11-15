@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111210">
-  <meta name="description" content="Ember & Grain: a fictional Manchester restaurant concept with contact details, opening hours, social links and a booking enquiry that builds an email draft.">
-  <title>Ember &amp; Grain · Restaurant case study</title>
+  <meta name="description" content="A fictional restaurant digital transformation prototype exploring clearer communication, customer engagement and a responsive enquiry form interface.">
+  <title>Restaurant Concept &middot; Restaurant case study</title>
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,177 +27,114 @@
       <a class="nav-cta" href="contact.html">Contact &rarr;</a>
     </nav>
   </header>
-  <main class="section" id="main-content" tabindex="-1">
-    <!-- Branded hero band: the restaurant's identity comes first, drawn as inline SVG (no external images). -->
-    <header class="restaurant-hero">
-      <div class="restaurant-hero__text">
-        <p class="section-kicker">03 / Restaurant digital transformation</p>
-        <h1 class="page-title">Ember <em>&amp; Grain.</em></h1>
-        <p class="hero-copy">A warmer welcome, from the first enquiry.</p>
-        <p class="restaurant-hero__meta">Wood-fired kitchen &middot; Ancoats, Manchester</p>
+  <main id="main-content" tabindex="-1">
+    <!-- 01 / Restaurant hero: neutral identity for the proposed restaurant. -->
+    <section class="restaurant-hero" aria-labelledby="restaurant-title">
+      <div>
+        <p class="section-kicker">01 / A restaurant digital transformation concept</p>
+        <h1 id="restaurant-title">Restaurant<br><em>Concept.</em></h1>
+        <p class="restaurant-subtitle">A more connected dining experience.<br>A warmer welcome, from the first enquiry.</p>
+        <a class="contact-button" href="#booking-title">Make an enquiry <span aria-hidden="true">&darr;</span></a>
       </div>
-      <!-- Decorative mark: a flame rising from two wheat ears inside a ring. -->
-      <svg class="restaurant-mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-        <circle class="mark-ring" cx="100" cy="100" r="92"/>
-        <circle class="mark-ring mark-ring--inner" cx="100" cy="100" r="80"/>
-        <path class="mark-flame" d="M100 32c10 22 34 36 34 66 0 20-15 36-34 36s-34-16-34-36c0-16 8-26 16-34 0 12 5 20 12 22-4-20 2-38 6-54z"/>
-        <path class="mark-flame-core" d="M100 78c6 12 16 18 16 32 0 10-7 18-16 18s-16-8-16-18c0-8 4-13 8-17 1 6 3 9 6 10-2-9 0-17 2-25z"/>
-        <g class="mark-wheat">
-          <path d="M100 172v-36"/>
-          <path d="M100 160c-14-2-26-12-30-28M100 160c14-2 26-12 30-28"/>
-          <path d="M84 148c-6 2-12 0-16-4M116 148c6 2 12 0 16-4M77 138c-6 1-11-2-14-6M123 138c6 1 11-2 14-6"/>
-        </g>
-      </svg>
-    </header>
-
-    <section class="restaurant-context" aria-labelledby="business-context-title">
-      <h2 id="business-context-title">Business context</h2>
-      <p>This fictional Manchester restaurant concept explores the CTO's task of improving customer communication: put essential information in one place, make the concept easy to share, and turn a booking request into a structured email.</p>
-      <!-- The page's single case-study disclaimer. -->
-      <p class="prototype-note"><strong>Case study note.</strong> Ember &amp; Grain is a fictional business. Its address, telephone number, opening hours and social media handles are placeholders. Booking enquiries go to the student's own email address; this website makes no booking and does not send or store any message.</p>
+      <!-- Abstract place setting: decorative, locally drawn and independent of a final brand. -->
+      <div class="restaurant-setting" aria-hidden="true">
+        <svg viewBox="0 0 400 400" focusable="false">
+          <circle cx="200" cy="200" r="150" class="setting-halo"/>
+          <circle cx="200" cy="200" r="114"/>
+          <circle cx="200" cy="200" r="95"/>
+          <path d="M48 108v63q0 18 16 18t16-18v-63M64 108v184M350 108q-24 27-24 72v28h24m0-100v184"/>
+          <path d="M174 200h52m-26-26v52" class="setting-detail"/>
+        </svg>
+        <p>A thoughtful first impression.</p>
+      </div>
     </section>
 
-    <div class="restaurant-layout">
-      <section class="restaurant-contact" aria-labelledby="restaurant-contact-title">
-        <h2 id="restaurant-contact-title">Contact &amp; connect</h2>
-        <!-- The phone number is from Ofcom's range reserved for drama (0161 496 0000–0999). -->
-        <address class="contact-list">
-          <p>
-            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            <span><strong>Address</strong><br>14 Copperworks Lane, Ancoats<br>Manchester, UK</span>
-          </p>
-          <p>
-            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.5 9 4l1.3 4-2 1.6a12 12 0 0 0 6.1 6.1l1.6-2 4 1.3.5 2.4c.1.9-.6 1.7-1.5 1.8C10.6 19.6 4.4 13.4 4.8 5c.1-.9.9-1.6 1.8-1.5z"/></svg>
-            <span><strong>Telephone</strong><br><a href="tel:+441614960123">0161 496 0123</a></span>
-          </p>
-          <p>
-            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg>
-            <span><strong>Booking enquiries</strong><br><a href="mailto:aryorasaei54@gmail.com">aryorasaei54@gmail.com</a></span>
-          </p>
-        </address>
+    <!-- 02 / Business context: assessment scenario, not a claim of client work. -->
+    <section class="restaurant-section restaurant-split" aria-labelledby="challenge-title">
+      <div><p class="section-kicker">02 / Business context</p><h2 id="challenge-title">The <em>challenge.</em></h2></div>
+      <div class="restaurant-copy">
+        <p>A local restaurant wants to strengthen its digital presence, make customer communication more accessible and simplify booking enquiries.</p>
+        <p>In this proposed assessment scenario, I take the role of Chief Technology Officer (CTO), planning a website prototype that brings essential information and customer enquiries together.</p>
+        <p class="restaurant-note">University of Salford &middot; Web App Development Assessment 1. This is a fictional business scenario, not a real client project.</p>
+      </div>
+    </section>
 
-        <h3 class="icon-heading">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
-          Opening hours
-        </h3>
-        <!-- Keep in step with OPENING_HOURS in assets/js/restaurant.js. data-days uses JavaScript day numbers (0 = Sunday). -->
-        <dl class="restaurant-hours">
-          <dt data-days="1">Monday</dt><dd data-days="1">Closed</dd>
-          <dt data-days="2 3 4">Tuesday – Thursday</dt><dd data-days="2 3 4">17:00 – 22:00</dd>
-          <dt data-days="5 6">Friday – Saturday</dt><dd data-days="5 6">12:00 – 23:00</dd>
-          <dt data-days="0">Sunday</dt><dd data-days="0">12:00 – 20:00</dd>
-        </dl>
-        <p class="open-status" id="open-status" hidden></p>
-        <p class="field-help">Times are UK time. Last table 90 minutes before closing.</p>
+    <!-- 03 / Digital solution: three objectives with restrained outline symbols. -->
+    <section class="restaurant-section" aria-labelledby="solution-title">
+      <p class="section-kicker">03 / Digital solution</p>
+      <h2 id="solution-title">Designed around <em>the guest.</em></h2>
+      <div class="restaurant-objectives">
+        <article>
+          <svg class="restaurant-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5"/></svg>
+          <h3>Improve customer engagement.</h3><p>Give guests a welcoming introduction and clear ways to connect.</p>
+        </article>
+        <article>
+          <svg class="restaurant-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 5 3 3 5-5"/></svg>
+          <h3>Simplify enquiries.</h3><p>Bring booking requests and general questions into one straightforward form.</p>
+        </article>
+        <article>
+          <svg class="restaurant-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v12H9l-5 4V4zM8 8h8m-8 4h5"/></svg>
+          <h3>Make communication clearer.</h3><p>Help guests share the details the restaurant needs to respond.</p>
+        </article>
+      </div>
+    </section>
 
-        <h3>Follow Ember &amp; Grain</h3>
-        <ul class="restaurant-social restaurant-social--profiles" aria-label="Ember &amp; Grain social media profiles">
-          <li>
-            <a href="https://www.instagram.com/emberandgrain/" target="_blank" rel="noopener noreferrer">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="icon-fill" cx="17" cy="7" r="1.1"/></svg>
-              <span class="social-text"><span class="visually-hidden">Ember &amp; Grain on </span>Instagram <span class="social-handle">@emberandgrain</span><span class="visually-hidden"> (opens in a new tab)</span></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/emberandgrain" target="_blank" rel="noopener noreferrer">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M13.2 20.5v-7.3h2.4M10.5 13.2h2.7m0 0V10c0-1.4.8-2.2 2.2-2.2h1.1"/></svg>
-              <span class="social-text"><span class="visually-hidden">Ember &amp; Grain on </span>Facebook <span class="social-handle">@emberandgrain</span><span class="visually-hidden"> (opens in a new tab)</span></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/emberandgrain" target="_blank" rel="noopener noreferrer">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4.5h3.8L19 19.5h-3.8z"/><path d="M18.5 4.5 13.4 10.4M10.6 13.6 5.5 19.5"/></svg>
-              <span class="social-text"><span class="visually-hidden">Ember &amp; Grain on </span>X <span class="social-handle">@emberandgrain</span><span class="visually-hidden"> (opens in a new tab)</span></span>
-            </a>
-          </li>
-        </ul>
-
-        <h3>Share this page</h3>
-        <ul class="restaurant-social restaurant-social--share" aria-label="Share this page">
-          <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faryorsaei05.github.io%2FWeb_dev%2Frestaurant.html" target="_blank" rel="noopener noreferrer">Share on Facebook<span class="visually-hidden"> (opens in a new tab)</span></a></li>
-          <li><a href="https://twitter.com/intent/tweet?text=Ember%20%26%20Grain%2C%20Ancoats%2C%20Manchester&amp;url=https%3A%2F%2Faryorsaei05.github.io%2FWeb_dev%2Frestaurant.html" target="_blank" rel="noopener noreferrer">Share on X<span class="visually-hidden"> (opens in a new tab)</span></a></li>
-          <li><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faryorsaei05.github.io%2FWeb_dev%2Frestaurant.html" target="_blank" rel="noopener noreferrer">Share on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
-        </ul>
-      </section>
-
-      <section class="restaurant-booking" aria-labelledby="booking-title">
-        <h2 id="booking-title">Create a booking enquiry</h2>
-        <p id="booking-help">Enter your preferred details to generate an email draft. Review the draft before sending it from your own email app. All fields are required except the message.</p>
-        <!-- novalidate: restaurant.js shows its own inline errors. The native attributes stay for semantics.
-             The button is disabled until JavaScript attaches its submit handler, so there is no accidental GET submission. -->
-        <form class="booking-form" id="booking-form" data-recipient="aryorasaei54@gmail.com" data-phone="0161 496 0123" aria-describedby="booking-help" novalidate>
-          <div class="booking-field">
-            <label for="booking-name">Your name</label>
-            <input id="booking-name" name="name" autocomplete="name" maxlength="100" required>
-            <p class="field-error" id="booking-name-error"></p>
-          </div>
-          <div class="booking-field">
-            <label for="booking-email">Your email</label>
-            <input id="booking-email" type="email" name="email" autocomplete="email" inputmode="email" maxlength="200" spellcheck="false" required>
-            <p class="field-error" id="booking-email-error"></p>
-          </div>
-          <div class="booking-fields">
-            <div class="booking-field">
-              <label for="booking-date">Preferred date</label>
-              <input id="booking-date" type="date" name="date" required>
-              <p class="field-error" id="booking-date-error"></p>
-            </div>
-            <div class="booking-field">
-              <label for="booking-time">Preferred time</label>
-              <select id="booking-time" name="time" aria-describedby="booking-time-hint" required disabled>
-                <option value="">Choose a date first</option>
-              </select>
-              <p class="field-help" id="booking-time-hint" aria-live="polite">Available times appear once you choose a date.</p>
-              <p class="field-error" id="booking-time-error"></p>
-            </div>
-          </div>
-          <div class="booking-field">
-            <label for="booking-guests">Number of guests (1–20)</label>
-            <input id="booking-guests" type="number" name="guests" min="1" max="20" step="1" inputmode="numeric" required>
-            <p class="field-error" id="booking-guests-error"></p>
-          </div>
-          <div class="booking-field">
-            <label for="booking-message">Message <span class="field-help">Optional. Please avoid sensitive personal information.</span></label>
-            <textarea id="booking-message" name="message" rows="4" maxlength="1000" aria-describedby="message-count"></textarea>
-            <p class="field-help char-count" id="message-count">Up to 1000 characters.</p>
-            <p class="visually-hidden" id="message-count-live" aria-live="polite"></p>
-          </div>
-          <button class="contact-button" type="submit" disabled>Generate email draft</button>
-        </form>
-        <noscript><p>JavaScript is needed to generate a draft. You can instead <a href="mailto:aryorasaei54@gmail.com?subject=Booking%20enquiry">email your booking enquiry</a>, including your name, preferred date and time, and number of guests.</p></noscript>
-        <p id="draft-status" role="status" aria-live="polite" aria-atomic="true"></p>
-        <section class="email-preview" id="email-preview" aria-labelledby="preview-title" hidden>
-          <h3 id="preview-title" tabindex="-1">Review your email draft</h3>
-          <dl class="draft-meta">
-            <dt>To</dt><dd id="draft-to"></dd>
+    <!-- 04 / Contact and social placeholders: no invented destinations or live contact actions. -->
+    <section class="restaurant-section restaurant-split" aria-labelledby="connect-title">
+      <div><p class="section-kicker">04 / Contact &amp; social</p><h2 id="connect-title">Stay <em>connected.</em></h2><p class="restaurant-note">Demonstration details only.<br>Contact and social destinations will be selected later.</p></div>
+      <div>
+        <address class="restaurant-details">
+          <dl>
+            <div><dt>Restaurant email</dt><dd>hello@restaurant.example <span>Demo placeholder &middot; not monitored</span></dd></div>
+            <div><dt>Restaurant telephone</dt><dd>To be confirmed <span>Demo placeholder</span></dd></div>
+            <div><dt>Restaurant location</dt><dd>Local restaurant location <span>Demo placeholder &middot; address to be confirmed</span></dd></div>
           </dl>
-          <label for="email-subject">Subject</label>
-          <input id="email-subject" type="text" readonly>
-          <label for="email-draft">Message</label>
-          <textarea id="email-draft" rows="14" readonly></textarea>
-          <p class="draft-warning" id="draft-length-note" hidden></p>
-          <div class="draft-actions">
-            <a class="contact-button" id="open-email">Open email app</a>
-            <button class="contact-button" id="copy-email" type="button">Copy message</button>
-            <button class="contact-button contact-button--quiet" id="copy-subject" type="button">Copy subject</button>
-          </div>
-          <p>Your email app may need to be configured. If it does not open, copy the subject and message and send them manually. A generated or sent enquiry is not a confirmed reservation.</p>
-        </section>
-      </section>
-    </div>
-
-    <section class="restaurant-design" aria-labelledby="restaurant-design-title">
-      <h2 id="restaurant-design-title">Design choices</h2>
-      <p>Business context and contact details come before the enquiry, so visitors can understand the concept before entering information. Visible labels, required-field checks and a date limit help make requests complete. The email preview lets visitors inspect the result; a copy option supports visitors without a configured email app.</p>
-      <p>The layout switches to a single column on smaller screens. It uses the portfolio's existing colours and typography, standard form controls and a local JavaScript generator. No database or automated reservation confirmation is needed for this prototype.</p>
-      <p><a href="showcase.html#restaurant-project-title">Explore the project structure and limitations &rarr;</a></p>
+        </address>
+        <ul class="restaurant-social" aria-label="Restaurant social media placeholders">
+          <li><span>Instagram</span><span class="restaurant-note">Demo &middot; account to be selected</span></li>
+          <li><span>Facebook</span><span class="restaurant-note">Demo &middot; account to be selected</span></li>
+        </ul>
+      </div>
     </section>
-    <p><a href="showcase.html">Back to selected work</a></p>
+
+    <!-- 05 / Enquiry interface: stable field names for later JavaScript integration.
+         No recipient or submit handler is connected. The disabled button prevents submission. -->
+    <section class="restaurant-section restaurant-split restaurant-enquiry" aria-labelledby="booking-title">
+      <div><p class="section-kicker">05 / Customer enquiry</p><h2 id="booking-title" tabindex="-1">Plan <em>your visit.</em></h2><p class="restaurant-copy">A simple starting point for a booking request, a question or a little feedback.</p><p class="restaurant-note" id="booking-help">Interface preview only. Email generation is not available yet. This form does not send messages, store details or confirm bookings.</p></div>
+      <form class="booking-form" id="booking-form" aria-labelledby="booking-title" aria-describedby="booking-help booking-required">
+        <p class="restaurant-note" id="booking-required">All fields are required unless marked optional.</p>
+        <div class="restaurant-fields">
+          <div class="booking-field"><label for="booking-name">Customer name</label><input id="booking-name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
+          <div class="booking-field"><label for="booking-email">Email address</label><input id="booking-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
+        </div>
+        <div class="booking-field"><label for="enquiry-type">Enquiry type</label><select id="enquiry-type" name="enquiryType" required><option value="">Select an enquiry type</option><option value="booking">Booking</option><option value="general">General Enquiry</option><option value="feedback">Feedback</option></select></div>
+        <fieldset><legend>Booking preferences <span>(optional)</span></legend>
+          <div class="restaurant-fields">
+            <div class="booking-field"><label for="booking-date">Preferred booking date (optional)</label><input id="booking-date" name="date" type="date"></div>
+            <div class="booking-field"><label for="booking-time">Preferred booking time (optional)</label><input id="booking-time" name="time" type="time"></div>
+          </div>
+          <div class="booking-field"><label for="booking-guests">Number of guests (optional)</label><input id="booking-guests" name="guests" type="number" min="1" step="1" inputmode="numeric"></div>
+        </fieldset>
+        <div class="booking-field"><label for="booking-message">Message</label><textarea id="booking-message" name="message" rows="5" maxlength="1000" required aria-describedby="message-help"></textarea><p class="restaurant-note" id="message-help">Up to 1,000 characters. Please avoid sensitive personal information.</p></div>
+        <div><button class="contact-button" type="button" id="generate-email" disabled aria-describedby="email-stage">Generate Email</button><p class="restaurant-note" id="email-stage">Email generation will be added in the next stage.</p></div>
+      </form>
+    </section>
+
+    <!-- 06 / Design rationale: concise decisions linked to visitor needs. -->
+    <section class="restaurant-section restaurant-split" aria-labelledby="design-title">
+      <div><p class="section-kicker">06 / Design rationale</p><h2 id="design-title">Why this <em>design works.</em></h2></div>
+      <ul class="restaurant-rationale">
+        <li><strong>Clear navigation.</strong> Familiar links and a direct route to the enquiry form reduce friction.</li>
+        <li><strong>Responsive layout.</strong> Stacked mobile sections, readable text and generous tap targets improve accessibility.</li>
+        <li><strong>Visible contact information.</strong> A dedicated contact area makes communication easier.</li>
+        <li><strong>A simple enquiry form.</strong> One clear interface reduces unnecessary steps.</li>
+        <li><strong>Consistent hierarchy.</strong> Editorial typography, gold accents and considered spacing make information easier to find.</li>
+      </ul>
+    </section>
   </main>
   <footer>
     <span>ARYO RASAEI &middot; MANCHESTER, UK</span><a href="index.html">PORTFOLIO HOME</a>
   </footer>
-  <script src="assets/js/restaurant.js" defer></script>
   <script src="assets/js/navigation.js" defer></script>
 </body>
 </html>
