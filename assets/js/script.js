@@ -36,6 +36,46 @@ document.querySelectorAll('.skills-page .skills-orbit').forEach((orbit) => {
   let hovered = null;
   let focused = null;
 
+  // Reuse the same evidence for native phone disclosures and the larger orbit.
+  const accordion = document.createElement('div');
+  accordion.className = 'skills-accordion';
+  const intro = document.createElement('p');
+  intro.className = 'skills-accordion__intro';
+  intro.textContent = `${defaultDetail} Select a skill to explore its experience.`;
+  accordion.append(intro);
+  controls.forEach((control) => {
+    const disclosure = document.createElement('details');
+    disclosure.className = 'skills-accordion__item';
+    disclosure.name = 'phone-skills';
+    const summary = document.createElement('summary');
+    const number = document.createElement('span');
+    number.className = 'skills-accordion__number';
+    number.setAttribute('aria-hidden', 'true');
+    number.textContent = control.querySelector('.skills-orbit__number').textContent;
+    const name = document.createElement('span');
+    name.textContent = control.querySelector('.skills-orbit__name').textContent;
+    summary.append(number, name);
+    const evidence = document.createElement('div');
+    evidence.className = 'skills-accordion__evidence';
+    const attribution = document.createElement('p');
+    attribution.className = 'skills-accordion__source';
+    attribution.textContent = document.getElementById(control.dataset.source).textContent;
+    const description = document.createElement('p');
+    description.textContent = document.getElementById(control.getAttribute('aria-describedby')).textContent;
+    evidence.append(attribution, description);
+    disclosure.append(summary, evidence);
+    // Support browsers that do not yet group details using the name attribute.
+    disclosure.addEventListener('toggle', () => {
+      if (!disclosure.open) return;
+      accordion.querySelectorAll('details[open]').forEach((other) => {
+        if (other !== disclosure) other.open = false;
+      });
+    });
+    accordion.append(disclosure);
+  });
+  orbit.append(accordion);
+  orbit.classList.add('has-phone-accordion');
+
   const networkGeometry = networkPaths.map((path) => {
     const point = path.querySelector('circle');
     return {
