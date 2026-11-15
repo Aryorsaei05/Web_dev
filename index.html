@@ -3,32 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f4ef">
+  <meta name="theme-color" content="#111210">
   <meta name="description" content="Aryo Rasaei is an aspiring business and data analyst who turns information into clear insights and practical decisions.">
   <title>Aryo Rasaei - Business &amp; Data Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/home.css">
 </head>
 <body class="homepage">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="grain" aria-hidden="true"></div>
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="Aryo Rasaei, home"><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a>
+    <a class="brand" href="#home" aria-label="Aryo Rasaei, home"><span class="brand-mark">AR</span><span>ARYO RASAEI</span></a>
     <nav aria-label="Main navigation">
-      <a href="index.html#home">Home</a>
+      <a href="index.html#home" aria-current="page">Home</a>
       <a href="showcase.html">Selected work</a>
       <a href="skills.html">Capabilities</a>
-      <a href="restauraunt.html">Restaurant concept</a>
+      <a href="restaurant.html">Restaurant concept</a>
       <a class="nav-cta" href="contact.html">Let's talk &rarr;</a>
     </nav>
   </header>
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="hero hero-cinematic" id="home" aria-label="Introduction">
       <div class="hero-overlay">
         <div class="eyebrow reveal"><span class="status-dot"></span>Business &amp; data analyst&nbsp; &middot; &nbsp;Manchester, UK</div>
         <h1 class="reveal delay-1"><span class="name-word">Aryo</span> <span class="soft name-word">Rasaei</span></h1>
-        <p class="hero-intro reveal delay-2">Aspiring business and data analyst focused on turning complex information into clear insights and practical decisions. A curious, research-led approach helps uncover problems, simplify information, and support confident decision-making.</p>
+        <p class="hero-intro reveal delay-2">Aspiring business and data analyst focused on turning complex information into clear insights and practical decisions. A curious, research-led approach helps uncover problems, simplify information, and support confident decision-making. My goal is to develop a career in business and data analysis, connecting useful insights with practical digital tools.</p>
       </div>
     </section>
 
@@ -47,7 +51,7 @@
           <h2 class="page-title" id="venture-cafe-title"><span class="heading-word">Community</span> <span class="heading-word">focused.</span><br><em><span class="heading-word">Connection</span> <span class="heading-word">driven.</span></em></h2>
           <p class="hero-copy">As an Ambassador and Presenter at Venture Café Manchester, contributed to an inclusive community by welcoming attendees, facilitating professional connections and supporting <strong>15+ events</strong>, including startup networking sessions, entrepreneurship gatherings, pitching activities and innovation-focused events bringing together people from diverse industries. Also hosted <strong>Get Pitched</strong>, an interactive pitching and networking workshop, strengthening public speaking and facilitation skills. Recognised with the <strong>Outstanding Ambassador of the Year</strong> award for contributions to the Venture Café community.</p>
         </div>
-        <img class="venture-photo" src="assets/images/venture-cafe.jpg" width="1919" height="1279" alt="Aryo Rasaei holding his Outstanding Ambassador of the Year award beside a presenter at Venture Café Manchester." loading="lazy" decoding="async">
+        <img class="venture-photo" src="assets/images/venture-cafe.jpg" width="1919" height="1279" alt="Aryo Rasaei holding his Outstanding Ambassador of the Year award beside a presenter at Venture Café Manchester." decoding="async">
       </div>
     </section>
 
@@ -55,7 +59,7 @@
       <p class="section-kicker">03 / Capabilities</p>
       <h2 class="page-title" id="capabilities-title"><span class="heading-word">A</span> <span class="heading-word">practical</span> <em><span class="heading-word">toolkit.</span></em></h2>
       <p class="hero-copy">A growing set of skills for understanding needs, working with information, and sharing useful findings.</p>
-      <div class="tags capability-preview" aria-label="Core capabilities">
+      <div class="tags capability-preview" role="group" aria-label="Core capabilities">
         <span>Business Analysis</span><span>Data Analysis</span><span>Microsoft Excel</span>
         <span>Power BI</span><span>Research</span><span>Communication</span>
       </div>
@@ -69,7 +73,7 @@
       <div class="work-cards">
         <a class="work-card work-card-data" href="showcase.html#powerbi-project-title" aria-labelledby="home-powerbi-title" aria-describedby="home-powerbi-description">
           <span class="work-card-art">
-            <img class="work-card-visual work-card-dashboard" src="assets/images/Screenshot%202026-11-14%20224206.png" width="1165" height="650" alt="UK CO2 emissions Power BI dashboard showing headline figures, historical trends, fuel sources and a country comparison." loading="lazy" decoding="async">
+            <img class="work-card-visual work-card-dashboard" src="assets/images/Screenshot%202026-11-14%20224206.png" width="1165" height="650" alt="UK CO2 emissions Power BI dashboard showing headline figures, historical trends, fuel sources and a country comparison." decoding="async">
           </span>
           <span class="work-card-copy">
             <small>DATA &amp; INSIGHT / 01</small>

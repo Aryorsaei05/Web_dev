@@ -1,28 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5f4ef" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111210">
     <title>Capabilities - Aryo Rasaei</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/skills.css">
+    <link rel="stylesheet" href="assets/css/image-viewer.css">
   </head>
   <body class="skills-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
-      <a class="brand" href="index.html"><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">AR</span><span>ARYO RASAEI</span></a>
       <nav aria-label="Main navigation">
         <a href="index.html#home">Home</a>
         <a href="showcase.html">Selected work</a>
         <a href="skills.html" aria-current="page">Capabilities</a>
-        <a href="restauraunt.html">Restaurant concept</a>
-        <a class="nav-cta" href="contact.html">Let's talk ?</a>
+        <a href="restaurant.html">Restaurant concept</a>
+        <a class="nav-cta" href="contact.html">Let's talk &rarr;</a>
       </nav>
     </header>
-    <main class="section">
+    <main class="section" id="main-content" tabindex="-1">
       <div class="section-kicker">CAPABILITIES</div>
       <h1 class="page-title">A toolkit for <em>moving forward.</em></h1>
       <section class="skills-orbit" aria-label="Skills and capabilities">
@@ -126,7 +131,7 @@
               <span class="skills-orbit__tagline">Ask better questions</span>
             </button>
             <p id="orbit-source-5" hidden>PurposeTech.ai | Analyst &amp; Research Internship</p>
-            <p id="orbit-description-5" hidden>Researched 20 real-world patient-data platforms and narrowed the longlist to 6 key competitors for detailed comparison. Also investigated the UK charity grant market and developed 4 outreach segments to support more focused research and stakeholder engagement.</p>
+            <p id="orbit-description-5" hidden>Researched 20 real-world patient-data platforms and narrowed the longlist to 6 key competitors for detailed comparison. Also investigated the UK charity grant market and developed targeted outreach segments to support more focused research and stakeholder engagement.</p>
           </li>
           <li class="skills-orbit__item" style="--skill-x: 13.9277%; --skill-y: 58.2333%">
             <button class="skills-orbit__control" type="button" aria-pressed="false" aria-controls="skills-orbit-description" data-skill="problem-solving" data-source="orbit-source-6" aria-describedby="orbit-description-6">
@@ -157,6 +162,17 @@
             <p class="skills-orbit__instruction">Select a skill to explore how it has been applied.</p>
           </div>
         </div>
+      </section>
+
+      <!-- Experience uses only roles and contributions already supplied in this portfolio. -->
+      <section class="experience-summary" aria-labelledby="experience-title">
+        <p class="section-kicker">Experience / In practice</p>
+        <h2 id="experience-title">Putting skills to work.</h2>
+        <dl>
+          <div><dt>Analyst &amp; Research Intern · PurposeTech.ai</dt><dd>Market and competitor research, Excel-based analysis, stakeholder interviews and testing an AI-assisted media outreach workflow.</dd></div>
+          <div><dt>Ambassador &amp; Presenter · Venture Café Manchester</dt><dd>Supported more than 15 community events, facilitated professional connections and hosted the Get Pitched workshop.</dd></div>
+          <div><dt>Web development · Portfolio project</dt><dd>HTML5, external CSS and JavaScript applied to responsive navigation, image previews and a restaurant email-draft prototype. <a href="showcase.html#restaurant-project-title">Explore the implementation</a>.</dd></div>
+        </dl>
       </section>
 
       <section class="skills-certifications" id="certifications" aria-labelledby="certifications-title">

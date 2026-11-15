@@ -1,43 +1,50 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5f4ef" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111210">
     <title>Selected Work · Aryo Rasaei</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+      rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/showcase.css">
+    <link rel="stylesheet" href="assets/css/pages/showcase-powerbi.css">
+    <link rel="stylesheet" href="assets/css/pages/showcase-research.css">
+    <link rel="stylesheet" href="assets/css/image-viewer.css">
+    <link rel="stylesheet" href="assets/css/print.css" media="print">
   </head>
   <body class="showcase-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="index.html"
-        ><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a
+        ><span class="brand-mark">AR</span><span>ARYO RASAEI</span></a
       >
       <nav aria-label="Main navigation">
         <a href="index.html#home">Home</a>
-        <a href="showcase.html">Selected work</a>
+        <a href="showcase.html" aria-current="page">Selected work</a>
         <a href="skills.html">Capabilities</a>
-        <a href="restauraunt.html">Restaurant concept</a>
+        <a href="restaurant.html">Restaurant concept</a>
         <a class="nav-cta" href="contact.html">Let's talk ↗</a>
       </nav>
     </header>
-    <main class="section">
+    <main class="section" id="main-content" tabindex="-1">
       <div class="section-kicker">SELECTED WORK</div>
       <h1 class="page-title">From analysis to <em>impact.</em></h1>
       <!-- Actual report screenshots link to their uncropped full-size originals. -->
       <article class="powerbi-project" aria-labelledby="powerbi-project-title">
         <header class="powerbi-project__heading">
           <div class="project-meta"><span>01</span><span>Data &amp; insight</span></div>
-          <h2 id="powerbi-project-title" tabindex="0">Business Intelligence &amp; Data Visualisation</h2>
-          <p class="powerbi-project__subtitle" tabindex="0">University Assessment | Power BI &middot; Excel &middot; DAX</p>
+          <h2 id="powerbi-project-title">Business Intelligence &amp; Data Visualisation</h2>
+          <p class="powerbi-project__subtitle">University Assessment | Power BI &middot; Excel &middot; DAX</p>
         </header>
-            <div class="powerbi-project__gallery" aria-label="Power BI report screenshots">
+            <div class="powerbi-project__gallery" role="group" aria-label="Power BI report screenshots">
               <figure class="powerbi-project__screenshot">
                 <a href="assets/images/Screenshot%202026-11-14%20224206.png" aria-label="Enlarge the main CO2 emissions dashboard" data-lightbox aria-haspopup="dialog">
                   <img src="assets/images/Screenshot%202026-11-14%20224206.png" width="1165" height="650" alt="Power BI UK CO2 emissions dashboard with 2023 KPI cards, annual emissions, Germany and France comparison, fuel sources and annual reductions." decoding="async">
@@ -53,62 +60,63 @@
             </div>
           <div class="powerbi-project__summary">
             <section aria-labelledby="powerbi-overview-title">
-              <h3 id="powerbi-overview-title" tabindex="0"><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 16v-3M17 16v-5"/></svg></span><span>Project Overview</span></h3>
-              <p tabindex="0">Developed an interactive Power BI report examining UK CO&#8322; emissions and population trends between 1990 and 2023. Worked with two Excel datasets containing 7,585 emissions records and 232 country records, organising data and developing analytical visualisations to communicate key trends.</p>
+              <h3 id="powerbi-overview-title"><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 16v-3M17 16v-5"/></svg></span><span>Project Overview</span></h3>
+              <p>The project addressed the need to make a large emissions dataset easier to explore and compare. Developed an interactive Power BI report examining UK CO&#8322; emissions and population trends between 1990 and 2023. Worked with two Excel datasets containing 7,585 emissions records and 232 country records, organising data and developing analytical visualisations to communicate key trends.</p>
             </section>
             <section aria-labelledby="powerbi-role-title">
-              <h3 id="powerbi-role-title" tabindex="0"><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></svg></span><span>My Role</span></h3>
-              <p tabindex="0">Prepared and structured datasets, developed data relationships and DAX measures, and created report visuals covering UK annual emissions, emissions by fuel source, annual reductions, emissions per person, population changes and comparisons with Germany and France.</p>
+              <h3 id="powerbi-role-title"><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></svg></span><span>My Role</span></h3>
+              <p>Prepared and structured datasets, developed data relationships and DAX measures, and created report visuals covering UK annual emissions, emissions by fuel source, annual reductions, emissions per person, population changes and comparisons with Germany and France.</p>
             </section>
           </div>
             <dl class="powerbi-project__figures" aria-label="Dataset record counts">
-              <div tabindex="0"><dt>Emissions dataset records</dt><dd><span class="powerbi-project__metric-value">7,585</span><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg></span></dd></div>
-              <div tabindex="0"><dt>Country dataset records</dt><dd><span class="powerbi-project__metric-value">232</span><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></svg></span></dd></div>
+              <div><dt>Emissions dataset records</dt><dd><span class="powerbi-project__metric-value">7,585</span><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg></span></dd></div>
+              <div><dt>Country dataset records</dt><dd><span class="powerbi-project__metric-value">232</span><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></svg></span></dd></div>
             </dl>
             <section class="powerbi-project__findings" aria-labelledby="powerbi-findings-title">
-              <h3 id="powerbi-findings-title" tabindex="0"><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 4v16h16M7 7l5 5 3-3 5 7M16 16h4v-4"/></svg></span><span>Key Findings</span></h3>
-              <p tabindex="0">UK CO&#8322; emissions fell substantially between 1990 and 2023, reaching approximately 307.83 million tonnes in 2023, or 4.48 tonnes per person. Emissions declined despite UK population growth, while coal-related emissions fell markedly. The country comparison showed that the UK's absolute 2023 emissions were lower than Germany's but higher than France's. These national trends provide context rather than measurements of the NHS Trust's own emissions.</p>
+              <h3 id="powerbi-findings-title"><span class="powerbi-project__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 4v16h16M7 7l5 5 3-3 5 7M16 16h4v-4"/></svg></span><span>Key Findings</span></h3>
+              <p>UK CO&#8322; emissions fell substantially between 1990 and 2023, reaching approximately 307.83 million tonnes in 2023, or 4.48 tonnes per person. Emissions declined despite UK population growth, while coal-related emissions fell markedly. The country comparison showed that the UK's absolute 2023 emissions were lower than Germany's but higher than France's. These national trends provide context rather than measurements of the NHS Trust's own emissions.</p>
+              <p><strong>Outcome:</strong> An interactive report brings trends, country comparisons and emissions-per-person measures into one place. It supports exploration of the supplied data; no real-world NHS emissions reduction or operational impact is claimed.</p>
             </section>
       </article>
       <article class="research-project" aria-labelledby="research-project-title">
         <header class="research-project__heading">
           <div class="project-meta"><span>02</span><span>Business &amp; Market Research</span></div>
-          <h2 id="research-project-title" tabindex="0">UK Charity Sector Research &amp; Outreach Strategy</h2>
-          <p class="research-project__subtitle" tabindex="0">PurposeTech.ai | Analyst &amp; Research Internship | Microsoft Excel</p>
+          <h2 id="research-project-title">UK Charity Sector Research &amp; Outreach Strategy</h2>
+          <p class="research-project__subtitle">PurposeTech.ai | Analyst &amp; Research Internship | Microsoft Excel</p>
         </header>
 
-        <p class="research-project__overview" tabindex="0">During my Analyst &amp; Research Internship at PurposeTech.ai, conducted research into the UK charity grant-funding market to understand fundraising challenges, digital adoption and opportunities for more targeted stakeholder engagement. Structured the findings across four Excel worksheets, connecting secondary research to practical charity segmentation and outreach planning.</p>
+        <p class="research-project__overview">During my Analyst &amp; Research Internship at PurposeTech.ai, conducted research into the UK charity grant-funding market to understand fundraising challenges, digital adoption and opportunities for more targeted stakeholder engagement. Structured the findings across four Excel worksheets, connecting secondary research to practical charity segmentation and outreach planning.</p>
 
         <dl class="research-project__metrics" aria-label="Project scope">
-          <div tabindex="0"><dt>Structured Excel worksheets</dt><dd>4</dd></div>
-          <div tabindex="0"><dt>Research questions investigated</dt><dd>7</dd></div>
-          <div tabindex="0"><dt>Research entries documented</dt><dd>19</dd></div>
-          <div tabindex="0"><dt>Outreach variants developed</dt><dd>6</dd></div>
+          <div><dt>Structured Excel worksheets</dt><dd>4</dd></div>
+          <div><dt>Research questions investigated</dt><dd>7</dd></div>
+          <div><dt>Research entries documented</dt><dd>19</dd></div>
+          <div><dt>Outreach variants developed</dt><dd>6</dd></div>
         </dl>
 
         <section class="research-project__section" aria-labelledby="research-worksheets-title">
           <h3 id="research-worksheets-title">My Work / Four Worksheets</h3>
           <ol class="research-project__worksheets">
-            <li tabindex="0"><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 4v16h16"/><path d="m7 14 4-4 4 2 5-7"/><path d="M16 5h4v4"/></svg></span><span class="research-project__number" aria-hidden="true">01</span></span><div><h4>Research + Trends</h4><p>Collected evidence from sector reports, charity research websites, grant discovery platforms and webinars. Recorded themes, source links, insights, emerging patterns and potential outreach applications.</p></div></li>
-            <li tabindex="0"><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="research-project__number" aria-hidden="true">02</span></span><div><h4>Questions Summary</h4><p>Synthesised answers to seven questions covering grant application challenges, time-consuming tasks, funding discovery, tools, common frustrations, AI adoption and fundraising trends.</p></div></li>
-            <li tabindex="0"><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="research-project__number" aria-hidden="true">03</span></span><div><h4>UK Charity Outreach Tracks</h4><p>Developed six targeted variants with qualification criteria, audience descriptions, messaging angles, personalised email subjects, initial email drafts and follow-up variations.</p></div></li>
-            <li tabindex="0"><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6z"/><path d="m8 12 3 3 5-6"/></svg></span><span class="research-project__number" aria-hidden="true">04</span></span><div><h4>Verification Criteria</h4><p>Established checks for charity registration, organisation size, cause area, relevant job titles, website and LinkedIn evidence, grant activity and exclusion criteria to distinguish suitable prospects from weak matches.</p></div></li>
+            <li><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 4v16h16"/><path d="m7 14 4-4 4 2 5-7"/><path d="M16 5h4v4"/></svg></span><span class="research-project__number" aria-hidden="true">01</span></span><div><h4>Research + Trends</h4><p>Collected evidence from sector reports, charity research websites, grant discovery platforms and webinars. Recorded themes, source links, insights, emerging patterns and potential outreach applications.</p></div></li>
+            <li><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="research-project__number" aria-hidden="true">02</span></span><div><h4>Questions Summary</h4><p>Synthesised answers to seven questions covering grant application challenges, time-consuming tasks, funding discovery, tools, common frustrations, AI adoption and fundraising trends.</p></div></li>
+            <li><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="research-project__number" aria-hidden="true">03</span></span><div><h4>UK Charity Outreach Tracks</h4><p>Developed six targeted variants with qualification criteria, audience descriptions, messaging angles, personalised email subjects, initial email drafts and follow-up variations.</p></div></li>
+            <li><span class="research-worksheet__rail"><span class="research-worksheet__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#b39a65" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6z"/><path d="m8 12 3 3 5-6"/></svg></span><span class="research-project__number" aria-hidden="true">04</span></span><div><h4>Verification Criteria</h4><p>Established checks for charity registration, organisation size, cause area, relevant job titles, website and LinkedIn evidence, grant activity and exclusion criteria to distinguish suitable prospects from weak matches.</p></div></li>
           </ol>
         </section>
 
         <section class="research-project__findings research-project__section" aria-labelledby="research-findings-title">
           <h3 id="research-findings-title">Key Findings / Secondary Research</h3>
-          <p class="research-project__attribution" tabindex="0">Findings drawn from the consulted sources and recorded in the workbook; these are not results from an independently conducted charity survey.</p>
+          <p class="research-project__attribution">Findings drawn from the consulted sources and recorded in the workbook; these are not results from an independently conducted charity survey.</p>
           <ul class="research-project__finding-list">
-            <li tabindex="0"><h4>Fundraising capacity</h4><p>Sector research highlighted limited staff and resources at smaller charities, making funding research and repeated applications particularly demanding.</p></li>
-            <li tabindex="0"><h4>Application friction</h4><p>Grant discovery, eligibility checks and differing funder requirements contribute to repetitive administrative work.</p></li>
-            <li tabindex="0"><h4>Funding pressure</h4><p>The workbook cites CAF reporting that UK public donations fell from &pound;15.4 billion in 2024 to &pound;14 billion in 2025, increasing the importance of diversified funding.</p></li>
-            <li tabindex="0"><h4>AI adoption</h4><p>The workbook cites Zoe Amar Digital's early 2026 survey: 88% of responding charities reported day-to-day AI use, compared with 76% in 2025. The research also identified skills, accuracy, privacy and governance concerns.</p></li>
-            <li tabindex="0"><h4>Existing market tools</h4><p>GrantFinder and 360Giving GrantNav already support grant discovery, suggesting value in integrated research, eligibility checking and application support rather than funding search alone.</p></li>
+            <li><h4>Fundraising capacity</h4><p>Sector research highlighted limited staff and resources at smaller charities, making funding research and repeated applications particularly demanding.</p></li>
+            <li><h4>Application friction</h4><p>Grant discovery, eligibility checks and differing funder requirements contribute to repetitive administrative work.</p></li>
+            <li><h4>Funding pressure</h4><p>Charities Aid Foundation reported estimated public donations of &pound;15.4 billion in 2024 and &pound;14 billion in 2025 (<a href="#ref-caf-2025">2025</a>, <a href="#ref-caf-2026">2026</a>). This provides context for the project's focus on fundraising pressures.</p></li>
+            <li><h4>AI adoption</h4><p>The workbook used interim 2026 research reporting 88% AI adoption. The final Charity Digital Skills Report (<a href="#ref-ai-2026">2026</a>) revised the figure to 79%, compared with 76% in 2025, covering exploring, active and strategic adoption. The interim figure should not be treated as the final sector estimate or a measure of everyday use.</p></li>
+            <li><h4>Existing market tools</h4><p><a href="#ref-grantfinder">GrantFinder (n.d.)</a> helps users find funding opportunities, while <a href="#ref-grantnav">360Giving (n.d.)</a> provides searchable data about grants already awarded. Their different purposes matter when considering which tools could support prospect research.</p></li>
           </ul>
           <div class="research-project__sources">
-            <h4>Sources consulted</h4>
-            <ul aria-label="Research sources">
+            <h4>Research background</h4>
+            <ul aria-label="Organisations and services recorded in the project">
               <li>CAF UK Giving Report</li><li>Charity Commission guidance</li><li>Charity Digital</li><li>Zoe Amar Digital / Charity Digital Skills Report</li><li>Rathbones Charity Expert Series</li><li>GrantFinder</li><li>360Giving GrantNav</li><li>Plinth</li>
             </ul>
           </div>
@@ -116,29 +124,51 @@
 
         <section class="research-project__section" aria-labelledby="research-outreach-title">
           <h3 id="research-outreach-title">Outreach Strategy / Six Audience Variants</h3>
-          <p class="research-project__intro" tabindex="0">The research informed six audience-specific outreach variants, aligning messaging with each charity's circumstances and likely challenges.</p>
+          <p class="research-project__intro">The research informed six audience-specific outreach variants, aligning messaging with each charity's circumstances and likely challenges.</p>
           <ul class="research-project__segments">
-            <li tabindex="0"><span>T1</span><h4>Small Charities with Limited Capacity</h4></li>
-            <li tabindex="0"><span>T2</span><h4>Grant-Intensive Charities / Frequent Applicants</h4></li>
-            <li tabindex="0"><span>T3</span><h4>Charities Already Using or Experimenting with AI</h4></li>
-            <li tabindex="0"><span>T4</span><h4>Charities Diversifying Income</h4></li>
-            <li tabindex="0"><span>T5a</span><h4>Grant Professionals New in Role, Hiring or Talking About Grants</h4></li>
-            <li tabindex="0"><span>T5b</span><h4>Charities Hiring a Grant Professional</h4></li>
+            <li><span>T1</span><h4>Small Charities with Limited Capacity</h4></li>
+            <li><span>T2</span><h4>Grant-Intensive Charities / Frequent Applicants</h4></li>
+            <li><span>T3</span><h4>Charities Already Using or Experimenting with AI</h4></li>
+            <li><span>T4</span><h4>Charities Diversifying Income</h4></li>
+            <li><span>T5a</span><h4>Grant Professionals New in Role, Hiring or Talking About Grants</h4></li>
+            <li><span>T5b</span><h4>Charities Hiring a Grant Professional</h4></li>
           </ul>
         </section>
 
         <div class="research-project__closing">
-          <section tabindex="0" aria-labelledby="research-workflow-title">
+          <section aria-labelledby="research-workflow-title">
             <h3 id="research-workflow-title">Instantly.ai Workflow</h3>
             <p>After identifying target audiences and their challenges, developed segment-specific cold email drafts and follow-up variants for use with Instantly.ai outreach campaigns. Personalisation placeholders, relevant subject lines and follow-up sequences tailored the messaging to different charity circumstances rather than relying on a single generic promotional email.</p>
           </section>
-          <section tabindex="0" aria-labelledby="research-outcome-title">
+          <section aria-labelledby="research-outcome-title">
             <h3 id="research-outcome-title">Outcome</h3>
             <p>Produced a structured research resource combining sector evidence, answers to business questions, audience segmentation, charity qualification criteria and tailored outreach messaging. The work provided a practical foundation for more targeted charity engagement at PurposeTech.ai.</p>
           </section>
         </div>
       </article>
-      <!-- Add the third assessment project as a sibling article when its content is supplied. -->
+      <!-- Project three documents the implemented restaurant prototype and its limits. -->
+      <article class="showcase-restaurant" aria-labelledby="restaurant-project-title">
+        <p class="project-meta">03 / Restaurant digital transformation</p>
+        <h2 id="restaurant-project-title">Ember &amp; Grain: from enquiry to email draft</h2>
+        <p><strong>Project context:</strong> A fictional local restaurant scenario, implemented as the problem-solving page of this portfolio.</p>
+        <div class="project-notes">
+          <section aria-labelledby="restaurant-role"><h3 id="restaurant-role">Role &amp; problem</h3><p>The assessment role is CTO: turn a restaurant's communication needs into a usable web prototype. The page brings business context, a contact route, social sharing and structured booking requests into a single experience.</p></section>
+          <section aria-labelledby="restaurant-structure"><h3 id="restaurant-structure">Page structure</h3><p>The introduction explains the concept and its demonstration status. Contact and sharing links precede the form. Visitors then enter a name, email, date, time, guest count and optional message, inspect the generated draft and choose whether to open an email app or copy it.</p></section>
+          <section aria-labelledby="restaurant-implementation"><h3 id="restaurant-implementation">Implementation</h3><p>Hand-written HTML and external CSS provide labelled controls and a responsive two-column layout. JavaScript prevents page submission, checks the input, encodes the email subject and body, and generates a copyable preview. Editing an input clears a stale draft.</p></section>
+          <section aria-labelledby="restaurant-outcome"><h3 id="restaurant-outcome">Outcome &amp; limitations</h3><p>The deliverable is an email-draft prototype, with no database, payment processing or booking confirmation. A visible copy fallback supports visitors without a configured email app. The concept uses the portfolio author's address and sharing actions; a real launch would require restaurant-owned contact details, social profiles and an agreed enquiry-handling process.</p></section>
+        </div>
+        <p><a class="text-link" href="restaurant.html">Try the restaurant prototype &rarr;</a></p>
+      </article>
+      <section class="portfolio-references" aria-labelledby="references-title">
+        <h2 id="references-title">References</h2>
+        <ul class="reference-list">
+          <li id="ref-grantnav">360Giving. (n.d.). <cite>GrantNav</cite>. Retrieved November 15, 2026, from <a href="https://grantnav.threesixtygiving.org/">https://grantnav.threesixtygiving.org/</a></li>
+          <li id="ref-ai-2026">Charity Digital Skills Report. (2026). <cite>Artificial intelligence (AI)</cite>. <a href="https://charitydigitalskills.co.uk/report/detailed-findings/artificial-intelligence/">https://charitydigitalskills.co.uk/report/detailed-findings/artificial-intelligence/</a></li>
+          <li id="ref-caf-2025">Charities Aid Foundation. (2025). <cite>UK giving 2025</cite>. <a href="https://www.cafonline.org/docs/default-source/uk-giving-reports/uk_giving_report_2025.pdf">https://www.cafonline.org/docs/default-source/uk-giving-reports/uk_giving_report_2025.pdf</a></li>
+          <li id="ref-caf-2026">Charities Aid Foundation. (2026). <cite>UK giving report 2026</cite>. <a href="https://www.cafonline.org/insights/research/uk-giving-report">https://www.cafonline.org/insights/research/uk-giving-report</a></li>
+          <li id="ref-grantfinder">GrantFinder. (n.d.). <cite>GrantFinder: The UK's funding intelligence platform</cite>. Retrieved November 15, 2026, from <a href="https://grantfinder.co.uk/">https://grantfinder.co.uk/</a></li>
+        </ul>
+      </section>
       <p><a href="index.html">Back to portfolio</a></p>
     </main>
     <footer>

@@ -1,0 +1,168 @@
+/* Restaurant prototype: information first, then a clearly labelled email draft. */
+.restaurant-intro {
+  max-width: 800px;
+}
+
+.restaurant-intro .page-title {
+  font-size: clamp(44px, 7vw, 80px);
+}
+
+.prototype-note {
+  max-width: 72ch;
+  padding: 16px 20px;
+  border-left: 2px solid var(--accent);
+  background: #1b1c19;
+  color: var(--muted);
+}
+
+.restaurant-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(28px, 6vw, 72px);
+  margin-top: 44px;
+}
+
+.restaurant-layout > *, .restaurant-page input, .restaurant-page textarea {
+  min-width: 0;
+}
+
+.restaurant-page h2 {
+  font: 500 clamp(24px, 3vw, 34px)/1.25 Manrope, var(--sans);
+  letter-spacing: -.04em;
+}
+
+.restaurant-page h3 {
+  font: 500 21px/1.4 Manrope, var(--sans);
+}
+
+.restaurant-page address {
+  font-style: normal;
+}
+
+.restaurant-page p, .restaurant-page li {
+  color: var(--muted);
+}
+
+.restaurant-page a, .restaurant-page strong {
+  color: var(--ink);
+}
+
+.restaurant-page a:hover {
+  color: var(--accent);
+}
+
+/* Opening hours: day on the left, times on the right. */
+.restaurant-hours {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 24px;
+  margin: 0 0 16px;
+}
+
+.restaurant-hours dt {
+  color: var(--ink);
+}
+
+.restaurant-hours dd {
+  margin: 0;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.restaurant-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.restaurant-social a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.restaurant-page .booking-form {
+  max-width: none;
+  margin: 24px 0;
+}
+
+.booking-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.restaurant-page .field-help {
+  font-size: 13px;
+}
+
+.restaurant-page .booking-form button {
+  justify-self: start;
+  margin: 0;
+}
+
+.email-preview {
+  margin-top: 32px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: #191a17;
+}
+
+.email-preview[hidden] {
+  display: none;
+}
+
+.email-preview h3 {
+  margin-top: 0;
+}
+
+.email-preview textarea {
+  display: block;
+  width: 100%;
+  min-height: 290px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 14px/1.7 var(--mono);
+  resize: vertical;
+}
+
+.email-preview textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.draft-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+.restaurant-design {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.restaurant-design p {
+  max-width: 75ch;
+}
+
+@media (max-width: 760px) {
+  .restaurant-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .booking-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

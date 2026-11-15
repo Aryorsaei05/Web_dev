@@ -1,0 +1,103 @@
+/* Shared image dialog and its animations. */
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 56px 24px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.image-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-lightbox::backdrop {
+  background: rgb(10 11 9 / 92%);
+}
+
+.image-lightbox__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 12px 48px rgb(0 0 0 / 35%);
+}
+
+.image-lightbox__close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgb(198 169 106 / 35%);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font: 28px/1 var(--sans);
+  cursor: pointer;
+}
+
+.image-lightbox__close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.image-lightbox__close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@keyframes image-lightbox-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes image-lightbox-reveal {
+  from {
+    opacity: 0;
+    transform: scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .image-lightbox[open]::backdrop {
+    animation: image-lightbox-fade .25s ease both;
+  }
+
+  .image-lightbox[open] .image-lightbox__image {
+    animation: image-lightbox-reveal .25s ease both;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-lightbox {
+    padding: 56px 10px 16px;
+  }
+}

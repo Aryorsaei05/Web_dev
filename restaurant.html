@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111210">
+  <meta name="description" content="Ember & Grain: a restaurant transformation prototype with a validated booking enquiry and a locally generated email draft.">
+  <title>Ember &amp; Grain · Restaurant prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/restaurant.css">
+</head>
+<body class="restaurant-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">AR</span><span>ARYO RASAEI</span></a>
+    <nav aria-label="Main navigation">
+      <a href="index.html#home">Home</a>
+      <a href="showcase.html">Selected work</a>
+      <a href="skills.html">Capabilities</a>
+      <a href="restaurant.html" aria-current="page">Restaurant concept</a>
+      <a class="nav-cta" href="contact.html">Let's talk &rarr;</a>
+    </nav>
+  </header>
+  <main class="section" id="main-content" tabindex="-1">
+    <!-- A fictional business makes the assessment scenario explicit without claiming real bookings. -->
+    <div class="restaurant-intro">
+      <p class="section-kicker">03 / Restaurant digital transformation</p>
+      <h1 class="page-title">Ember <em>&amp; Grain.</em></h1>
+      <p class="hero-copy">A warmer welcome, from the first enquiry.</p>
+      <p>This fictional Manchester restaurant concept explores the CTO's task of improving customer communication: put essential information in one place, make the concept easy to share, and turn a booking request into a structured email.</p>
+      <p class="prototype-note"><strong>Portfolio demonstration.</strong> Ember &amp; Grain is not an operating restaurant. Drafts use the portfolio author's contact address. No booking is made, no message is sent automatically, and no enquiry is saved by this website.</p>
+    </div>
+
+    <div class="restaurant-layout">
+      <section aria-labelledby="restaurant-contact-title">
+        <h2 id="restaurant-contact-title">Contact &amp; connect</h2>
+        <!-- Fictional details for the case study. The phone number is from Ofcom's range reserved for fiction (0161 496 0000–0999). -->
+        <address>
+          <p><strong>Address</strong><br>14 Copperworks Lane, Ancoats<br>Manchester, UK</p>
+          <p><strong>Telephone</strong><br><a href="tel:+441614960123">0161 496 0123</a></p>
+          <p><strong>Booking enquiries</strong><br><a href="mailto:aryorasaei54@gmail.com">aryorasaei54@gmail.com</a></p>
+        </address>
+        <h3>Opening hours</h3>
+        <dl class="restaurant-hours">
+          <dt>Monday</dt><dd>Closed</dd>
+          <dt>Tuesday – Thursday</dt><dd>17:00 – 22:00</dd>
+          <dt>Friday – Saturday</dt><dd>12:00 – 23:00</dd>
+          <dt>Sunday</dt><dd>12:00 – 20:00</dd>
+        </dl>
+        <p class="field-help">Address, telephone and opening hours are fictional, for this case study only. Booking enquiries go to the prototype author.</p>
+        <h3>Share the restaurant concept</h3>
+        <p>Share this demonstration with your network.</p>
+        <ul class="restaurant-social" aria-label="Social sharing">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faryorsaei05.github.io%2FWeb_dev%2Frestaurant.html" target="_blank" rel="noopener noreferrer">Share on Facebook</a></li>
+          <li><a href="https://twitter.com/intent/tweet?text=Explore%20the%20Ember%20%26%20Grain%20restaurant%20prototype&amp;url=https%3A%2F%2Faryorsaei05.github.io%2FWeb_dev%2Frestaurant.html" target="_blank" rel="noopener noreferrer">Share on X</a></li>
+          <li><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faryorsaei05.github.io%2FWeb_dev%2Frestaurant.html" target="_blank" rel="noopener noreferrer">Share on LinkedIn</a></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="booking-title">
+        <h2 id="booking-title">Create a booking enquiry</h2>
+        <p id="booking-help">Enter your preferred details to generate an email draft. Review the draft before sending it from your own email app. All fields are required except the message.</p>
+        <!-- Disabled until JavaScript attaches its submit handler: no accidental GET fallback. -->
+        <form class="booking-form" id="booking-form" data-recipient="aryorasaei54@gmail.com" aria-describedby="booking-help">
+          <label for="booking-name">Your name
+            <input id="booking-name" name="name" autocomplete="name" maxlength="100" required>
+          </label>
+          <label for="booking-email">Your email
+            <input id="booking-email" type="email" name="email" autocomplete="email" maxlength="200" required>
+          </label>
+          <div class="booking-fields">
+            <label for="booking-date">Preferred date
+              <input id="booking-date" type="date" name="date" required>
+            </label>
+            <label for="booking-time">Preferred time
+              <input id="booking-time" type="time" name="time" required>
+            </label>
+          </div>
+          <label for="booking-guests">Number of guests (1–20)
+            <input id="booking-guests" type="number" name="guests" min="1" max="20" step="1" required>
+          </label>
+          <label for="booking-message">Message <span class="field-help">Optional. Please avoid sensitive personal information.</span>
+            <textarea id="booking-message" name="message" rows="4" maxlength="1000"></textarea>
+          </label>
+          <button class="contact-button" type="submit" disabled>Generate email draft</button>
+        </form>
+        <noscript><p>JavaScript is needed to generate a draft. You can instead <a href="mailto:aryorasaei54@gmail.com?subject=Restaurant%20prototype%20enquiry">email the prototype author</a> with your enquiry.</p></noscript>
+        <p id="draft-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <section class="email-preview" id="email-preview" aria-labelledby="preview-title" hidden>
+          <h3 id="preview-title" tabindex="-1">Review your email draft</h3>
+          <label for="email-draft">Generated message</label>
+          <textarea id="email-draft" rows="14" readonly></textarea>
+          <div class="draft-actions">
+            <a class="contact-button" id="open-email">Open email app</a>
+            <button class="contact-button" id="copy-email" type="button">Copy draft</button>
+          </div>
+          <p>Your email app may need to be configured. If it does not open, copy the draft and send it manually. A generated or sent enquiry is not a confirmed reservation.</p>
+        </section>
+      </section>
+    </div>
+
+    <section class="restaurant-design" aria-labelledby="restaurant-design-title">
+      <h2 id="restaurant-design-title">How the page works</h2>
+      <p>Business context and contact details come before the enquiry, so visitors can understand the concept before entering information. Visible labels, required-field checks and a date limit help make requests complete. The email preview lets visitors inspect the result; a copy option supports visitors without a configured email app.</p>
+      <p>The layout switches to a single column on smaller screens. It uses the portfolio's existing colours and typography, standard form controls and a local JavaScript generator. No database or automated reservation confirmation is needed for this prototype.</p>
+      <p><a href="showcase.html#restaurant-project-title">Explore the project structure and limitations &rarr;</a></p>
+    </section>
+    <p><a href="showcase.html">Back to selected work</a></p>
+  </main>
+  <footer><span>RESTAURANT PROTOTYPE · MANCHESTER, UK</span><a href="index.html">PORTFOLIO HOME</a></footer>
+  <script src="assets/js/restaurant.js" defer></script>
+  <script src="assets/js/navigation.js" defer></script>
+</body>
+</html>

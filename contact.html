@@ -1,33 +1,36 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5f4ef" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111210">
     <title>Contact · Aryo Rasaei</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+      rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/contact.css">
   </head>
   <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="index.html"
-        ><span class="brand-mark">AA</span><span>ARYO RASAEI</span></a
+        ><span class="brand-mark">AR</span><span>ARYO RASAEI</span></a
       >
       <nav aria-label="Main navigation">
         <a href="index.html#home">Home</a>
         <a href="showcase.html">Selected work</a>
         <a href="skills.html">Capabilities</a>
-        <a href="restauraunt.html">Restaurant concept</a>
-        <a class="nav-cta" href="contact.html">Let's talk ↗</a>
+        <a href="restaurant.html">Restaurant concept</a>
+        <a class="nav-cta" href="contact.html" aria-current="page">Let's talk ↗</a>
       </nav>
     </header>
-    <main class="section contact-page">
+    <main class="section contact-page" id="main-content" tabindex="-1">
       <div class="section-kicker">GET IN TOUCH</div>
       <h1 class="contact-title">Let's talk.</h1>
       <p class="contact-copy">
@@ -39,6 +42,7 @@
           >LinkedIn</a
         >
       </p>
+      <p><a href="https://github.com/Aryorsaei05" target="_blank" rel="noopener">GitHub</a></p>
       <a class="contact-button" href="index.html">Back to portfolio</a>
     </main>
     <footer>
