@@ -294,3 +294,35 @@
   .restaurant-page .maison-experience .movement-graphic,
   .restaurant-page .maison-experience .movement-numeral { transform: none; }
 }
+/* Stay connected only: informative prototype rows, with no simulated link actions. */
+.restaurant-page .restaurant-connect .connect-information { position: relative; isolation: isolate; min-width: 0; }
+.restaurant-page .restaurant-connect .connect-information::before { content: ''; position: absolute; inset: -32px -12px; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 42% 48%, #b99c6020, transparent 72%); filter: blur(28px); opacity: .55; transition: opacity 400ms ease; }
+.restaurant-page .restaurant-connect .restaurant-details dl > .connect-row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 20px 0 20px 68px; min-height: 104px; }
+.restaurant-page .restaurant-connect .restaurant-details dl > .connect-row:first-child { padding-top: 10px; }
+.restaurant-page .restaurant-connect .connect-row dt { font-size: 12px; }
+.restaurant-page .restaurant-connect .connect-row dd { font-size: 17px; line-height: 1.5; transition: color 350ms ease, transform 350ms cubic-bezier(.22,.61,.36,1); }
+.restaurant-page .restaurant-connect .connect-row dd span { font-size: 12px; line-height: 1.65; }
+.restaurant-page .restaurant-connect .connect-icon { width: 46px; height: 46px; display: grid; place-items: center; flex-shrink: 0; border: 1px solid #8e78534d; border-radius: 12px; background: #1b1c17; color: #bfa575; transition: transform 350ms cubic-bezier(.22,.61,.36,1), color 350ms ease, border-color 350ms ease, box-shadow 350ms ease; }
+.restaurant-page .restaurant-connect .connect-row .connect-icon { position: absolute; top: 25px; left: 0; }
+.restaurant-page .restaurant-connect .connect-row:first-child .connect-icon { top: 15px; }
+.restaurant-page .restaurant-connect .connect-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.restaurant-page .restaurant-connect .restaurant-social { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.restaurant-page .restaurant-connect .restaurant-social .connect-social-item { position: relative; display: flex; align-items: center; gap: 12px; padding: 16px 12px; min-width: 0; border: 1px solid #8e785333; background: #14151066; transition: border-color 350ms ease, background-color 350ms ease; }
+.restaurant-page .restaurant-connect .connect-social-item > div { min-width: 0; }
+.restaurant-page .restaurant-connect .connect-social-name { display: block; font-size: 15px; transition: color 350ms ease; }
+.restaurant-page .restaurant-connect .connect-social-item .restaurant-note { display: block; font-size: 11px; margin-top: 4px; }
+.restaurant-page .restaurant-connect .connect-cue { position: absolute; top: 6px; right: 9px; color: var(--accent); font-size: 14px; opacity: 0; transform: translate(-2px, 2px); transition: opacity 350ms ease, transform 350ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  .restaurant-page .restaurant-connect .connect-information:hover::before { opacity: .85; }
+  .restaurant-page .restaurant-connect :is(.connect-row,.connect-social-item):hover .connect-icon { transform: translateY(-2px) scale(1.09); color: #e1c693; border-color: #d2b77f99; box-shadow: 0 0 20px #c6ad7c15; }
+  .restaurant-page .restaurant-connect .connect-row:hover dd { transform: translateY(-2px); color: #fff6e4; }
+  .restaurant-page .restaurant-connect .connect-social-item:hover { border-color: #c6ad7c66; background: #1b1b1466; }
+  .restaurant-page .restaurant-connect .connect-social-item:hover .connect-social-name { color: #fff6e4; }
+  .restaurant-page .restaurant-connect .connect-social-item:hover .connect-cue { opacity: .7; transform: translate(0,0); }
+}
+@media (max-width: 900px) {
+  .restaurant-page .restaurant-connect .restaurant-social { grid-template-columns: minmax(0,1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page .restaurant-connect :is(.connect-icon,dd,.connect-cue) { transform: none !important; }
+}
