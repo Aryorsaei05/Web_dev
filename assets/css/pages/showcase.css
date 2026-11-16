@@ -252,12 +252,32 @@
 
 /* ---------- References ---------- */
 
-.reference-list {
+/* APA alphabetisation treats 360Giving as ?three sixty giving?. */
+.portfolio-references .reference-list {
   display: grid;
-  gap: 20px;
-  padding-left: 22px;
-  color: var(--muted);
+  gap: 14px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
   font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-references .reference-list li {
+  min-width: 0;
+  padding-left: 0.5in;
+  text-indent: -0.5in;
+}
+
+.portfolio-references .reference-list cite {
+  font-style: italic;
+}
+
+.portfolio-references .reference-list a {
+  color: var(--accent);
   overflow-wrap: anywhere;
 }
 
